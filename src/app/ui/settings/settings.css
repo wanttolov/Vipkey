@@ -1,0 +1,921 @@
+/* NexusKey Settings — Claude-inspired Warm UI */
+/* base.css + toggle.css loaded via <link> in HTML */
+
+/* Main Container */
+.container {
+    width: 750px;          /* Always expanded — no toggle */
+    height: auto;
+    padding: 0;
+    background: var(--bg-glass);
+    border-radius: 10px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    font-size: 0;          /* Eliminate inline-block whitespace */
+}
+
+/* During animation: kill hover hit-testing AND all child transitions.
+   On WS_EX_LAYERED windows every mouse-move triggers full surface repaint;
+   disabling transitions means hover style recalc produces no repaint work. */
+.animating {
+    pointer-events: none;
+}
+
+#main-container:disabled {
+    opacity: 1;
+    filter: none;
+}
+
+.animating * {
+    transition: none !important;
+}
+
+/* Title Bar — Claude warm dark header */
+.title-bar {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 14px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: rgba(40, 34, 28, 0.88);
+    border-bottom: 1px solid rgba(255, 245, 235, 0.10);
+    cursor: default;
+    z-index: 100;
+}
+
+body.dark .title-bar {
+    background: rgba(20, 16, 12, 0.92);
+    border-bottom: 1px solid rgba(255, 245, 235, 0.08);
+}
+
+.title-text {
+    font-size: 14px;
+    font-weight: 650;
+    color: #F0E8DC;
+    letter-spacing: 0.3px;
+    line-height: 38px;
+}
+
+/* Pin Button */
+.btn-pin {
+    display: block;
+    text-align: center;
+    line-height: 24px;
+    position: absolute;
+    right: 42px;
+    top: 7px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    border-radius: 50%;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-pin:hover {
+    background: rgba(62, 197, 75, 0.2);
+    transform: scale(1.1);
+}
+
+.btn-pin:focus { outline: none; border: none; }
+
+.btn-pin .icon-unpin { display: block; fill: #6ED472; }
+.btn-pin .icon-pin   { display: none;  fill: #F0B845; }
+
+.btn-pin.pinned .icon-unpin { display: none; }
+.btn-pin.pinned .icon-pin   { display: block; }
+.btn-pin.pinned:hover { background: rgba(240, 184, 69, 0.18); }
+
+/* Close Button */
+.btn-close {
+    display: block;
+    text-align: center;
+    line-height: 24px;
+    position: absolute;
+    right: 12px;
+    top: 7px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+    color: #F06060;
+    line-height: 1;
+}
+
+.btn-close:hover { background: rgba(192, 84, 75, 0.2); }
+.btn-close:focus  { outline: none; border: none; }
+
+.btn-close svg {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+/* ─── Layout Panels ─── */
+/* Compact Section (Left Panel) */
+.compact-section {
+    display: block;
+    width: 338px;
+    padding: 14px 6px 14px 16px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.compact-section.repainting {
+    transform: translateZ(0);
+}
+
+/* Advanced Section (Right Panel) — always visible */
+.advanced-section {
+    display: block;
+    width: 412px;
+    padding: 14px 10px 14px 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    flow: horizontal;
+    width: *;
+    height: *;
+}
+
+/* Expanded state — same dimensions (always expanded now) */
+.container.expanded {
+    width: 750px;
+    height: auto;
+    overflow: hidden;
+}
+
+.container.expanded .compact-section {
+    width: 338px;
+    padding: 14px 6px 14px 16px;
+}
+
+.container.expanded .advanced-section {
+    display: block;
+    width: 412px;
+    padding: 14px 10px 14px 6px;
+    box-sizing: border-box;
+}
+
+/* (Removed: Arrow icon styles - now using toggle switch) */
+
+/* (Removed: .header — replaced by .settings-card wrapper in HTML) */
+
+/* =============================================
+   V/E Language Toggle - Labels Inside Pill
+   ============================================= */
+
+/* Toggle Switch - Pink pill style for V/E */
+.toggle-switch {
+    display: inline-block;
+    width: 90px;
+    height: 38px;
+    border-radius: 19px;
+    background: var(--toggle-ve-bg);
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    flex-shrink: 0;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* English mode - blue background */
+.toggle-switch.checked {
+    background: var(--toggle-ve-bg-english);
+}
+
+/* Labels INSIDE the white thumb */
+.toggle-label {
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    z-index: 3;
+    transition:
+        left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* V - visible when unchecked (thumb on left) */
+.toggle-v {
+    color: #f36267;
+    opacity: 1;
+}
+
+/* E - hidden when unchecked, follows thumb position */
+.toggle-e {
+    color: #2fafda;
+    opacity: 0;
+}
+
+/* White thumb */
+.toggle-switch .toggle-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--toggle-thumb-bg);
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+}
+
+/* Checked state (English mode) - thumb and labels move right */
+.toggle-switch.checked .toggle-thumb {
+    left: 56px;
+}
+
+.toggle-switch.checked .toggle-label {
+    left: 56px;
+}
+
+/* When checked: V hides, E shows */
+.toggle-switch.checked .toggle-v {
+    opacity: 0;
+}
+
+.toggle-switch.checked .toggle-e {
+    opacity: 1;
+}
+
+/* Input Type Dropdown in Header - premium style */
+.input-type-dropdown {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 400;
+    box-shadow: inset 0 0 0 1px var(--border-input);
+    border-radius: 8px;
+    background-color: var(--bg-card-solid);
+    color: var(--text-primary);
+    cursor: pointer;
+    outline: none;
+    flex-shrink: 0;
+    height: 34px;
+    vertical-align: middle;
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* Fixed width to ensure "Simple Telex" is never truncated */
+    width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    transition: all 0.2s ease;
+}
+
+.input-type-dropdown:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--text-secondary);
+}
+
+.input-type-dropdown:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(62, 197, 75, 0.15);
+}
+
+/* Settings Button (gear icon) */
+.btn-settings {
+    display: inline-block;
+    text-align: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 2px;
+    flex-shrink: 0;
+    margin-left: auto;
+    outline: none;
+    border-radius: 4px;
+}
+
+.btn-settings:hover {
+    background: var(--bg-hover);
+}
+
+.btn-settings:focus {
+    outline: none;
+    border: none;
+}
+
+.btn-settings svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    color: var(--text-secondary);
+}
+
+.btn-settings:hover svg {
+    color: var(--color-primary);
+}
+
+/* Settings Card — warm glass card */
+.settings-card {
+    margin-top: 8px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: inset 0 0 0 1px var(--border-card);
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* Setting Row */
+.setting-row {
+    flow: horizontal;
+    vertical-align: middle;
+    padding: 5px 0;
+    border-bottom: none;
+}
+
+.setting-row.group-last {
+    border-bottom: 1px solid var(--border-row-light);
+    margin-bottom: 4px;
+    padding-bottom: 8px;
+}
+
+.child-setting-row {
+    padding-left: 16dip;
+}
+
+.setting-row.disabled {
+    opacity: 0.38;
+}
+.setting-row.disabled .btn-action {
+    cursor: not-allowed;
+}
+
+.setting-row-vertical {
+    flow: vertical;
+    border-spacing: 8px;
+}
+
+.setting-label {
+    font-size: 13px;
+    font-weight: 450;
+    color: var(--text-primary);
+    width: max-content;
+}
+
+/* Switch Key Container (2 rows layout) */
+.switch-key-container {
+    flow: vertical;
+    border-spacing: 6px;
+}
+
+.switch-key-row {
+    flow: horizontal;
+    vertical-align: middle;
+    border-spacing: 16px;
+}
+
+.switch-key-item {
+    flow: horizontal;
+    vertical-align: middle;
+    border-spacing: 4px;
+    cursor: pointer;
+}
+
+.switch-key-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    min-width: 28px;
+}
+
+/* Switch Key Custom Input */
+.switch-key-input {
+    width: 55px;
+    height: 24px;
+    box-shadow: inset 0 0 0 1px var(--border-input);
+    border-radius: 4px;
+    background: var(--bg-card-solid);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    outline: none;
+    padding: 0;
+}
+
+.switch-key-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+/* Setting Dropdown inside card - flat modern style */
+.setting-dropdown {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 400;
+    box-shadow: inset 0 0 0 1px var(--border-input);
+    border-radius: 8px;
+    background: var(--bg-card-solid);
+    color: var(--text-primary);
+    cursor: pointer;
+    outline: none;
+    width: 130px; /* Match width of input-type-dropdown */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Small dropdown - same size as input-type-dropdown */
+.setting-dropdown-small {
+    display: inline-block;
+    padding: 2px 10px 2px 6px;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: inset 0 0 0 1px var(--border-input);
+    border-radius: 6px;
+    background: var(--bg-card-solid);
+    color: var(--text-primary);
+    cursor: pointer;
+    outline: none;
+    height: 26px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Action button — amber style */
+.btn-action {
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-primary);
+    background: var(--bg-card-solid);
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.btn-action:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-action.btn-danger {
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.btn-action.btn-danger:hover {
+    background: var(--color-danger);
+    color: white;
+}
+
+.btn-action.btn-small {
+    padding: 4px 10px;
+    font-size: 11px;
+    height: 24px;
+}
+
+/* Reset colors button - pink styling */
+#btn-reset-colors {
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+    height: auto;
+    /* Override btn-small height to match original */
+    padding: 4px 10px;
+}
+
+#btn-reset-colors:hover {
+    background: var(--color-danger);
+    color: white;
+}
+
+/* Color picker group layout */
+.color-picker-group {
+    flow: horizontal;
+    vertical-align: middle;
+    border-spacing: 6px;
+}
+
+.color-picker-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* Color swatch button styling */
+.color-swatch {
+    width: 28px;
+    height: 24px;
+    border: 2px solid var(--border-input);
+    border-radius: 4px;
+    padding: 0;
+    cursor: pointer;
+    background: #f36267;
+    /* Default color - will be updated via style */
+}
+
+.color-swatch:hover {
+    border-color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+#btn-color-v {
+    background-color: #f36267;
+    /* Default V color - Pink RGB(243,98,103) */
+}
+
+#btn-color-e {
+    background-color: #2fafda;
+    /* Default E color - Blue RGB(47,175,218) */
+}
+
+/* Fix Check Update button layout */
+#btn-check-update {
+    padding: 0px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+    margin-right: 6px;
+    min-width: auto;
+    height: 20px;
+    line-height: 20px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+#btn-check-update[disabled] {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* ============================================
+   ADVANCED SECTION - HORIZONTAL TABS LAYOUT
+   ============================================ */
+
+/* Tab Header — amber pill segmented control */
+.tab-header {
+    position: relative;
+    flow: horizontal;
+    justify-content: center;
+    width: max-content;
+    padding: 4px;
+    margin: 0 * 8px *;
+    background: var(--bg-card-solid);
+    border-radius: 12px;
+    box-shadow:
+        inset 0 0 0 1px var(--border-input),
+        0 2px 8px rgba(40,34,28,0.06);
+}
+
+.tab-indicator {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 28px;
+    background: var(--color-primary);
+    border-radius: 9px;
+    box-shadow: 0 2px 8px rgba(207, 111, 44, 0.35);
+    transition:
+        left 0.15s cubic-bezier(0.2, 0.8, 0.2, 1),
+        width 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1;
+}
+
+.tab-item {
+    position: relative;
+    z-index: 2;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.15s ease;
+    border: none;
+    background: transparent;
+    border-radius: 9px;
+    white-space: nowrap;
+}
+
+.tab-item:hover  { color: var(--text-primary); }
+.tab-item.active { color: #FFFFFF; }
+
+/* Tab Content Area (below tabs) */
+.tab-content {
+    padding: 0 8px 0 8px;
+    margin-top: 8px;
+    height: *;
+    /* Replaces flex: 1 */
+}
+
+/* Tab Panels - with fade and slide transition */
+/* behavior:layer buffers subtree into offscreen bitmap for hardware BitBlt during animation */
+.tab-panel {
+    visibility: none;
+    opacity: 0;
+    transform: translate(0, 10px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    behavior: layer;
+    image-rendering: optimize-speed;
+}
+
+.tab-panel:expanded {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.tab-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.tab-body {
+    height: auto;
+    box-sizing: border-box;
+    /* overflow-y removed to allow natural content growth and accurate height measurement */
+    padding: 16px;
+    /* Card styling - matches .settings-card */
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1px var(--border-card);
+}
+
+/* Reuse setting-row styles in advanced section - Inherit 5px padding from left panel! */
+
+/* Placeholder for macro list */
+.macro-list-placeholder {
+    padding: 20px;
+    text-align: center;
+    background: var(--bg-hover-subtle);
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+.placeholder-text {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* About content styles */
+.about-content {
+    text-align: center;
+    padding: 20px 16px;
+    position: relative;
+    z-index: 1;
+    /* Establish stacking context so update-card tooltip can render above */
+}
+
+.app-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+}
+
+.app-tagline {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.app-version {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+
+.app-author {
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.app-origin {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.app-license {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 12px;
+    font-style: italic;
+}
+
+/* Update Card in About tab - Separate card */
+.update-card {
+    margin-top: 8px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1px var(--border-card);
+    position: relative;
+    z-index: 2;
+    /* Higher than about-content so its tooltip-upwards renders above the text block */
+}
+
+.update-card .setting-row {
+    padding: 0;
+    gap: 12px;
+    /* Space between label, button, and toggle */
+}
+
+.update-card .setting-label {
+    font-size: 13px;
+}
+
+/* === UPDATE-CARD TOGGLE STYLING === */
+/* Using completely different approach - no position absolute */
+.update-thumb-white {
+    display: inline-block;
+    width: 22px;
+    height: 16px;
+    border-radius: 8px;
+    background: white;
+    margin: 2px;
+    margin-left: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Move thumb right when toggle is checked */
+#check-update.checked .update-thumb-white {
+    margin-left: 16px;
+}
+
+/* Override default toggle behavior for update-card */
+#check-update {
+    flow: horizontal;
+    vertical-align: middle;
+}
+
+.app-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.app-link:hover {
+    background: var(--color-primary-hover);
+}
+
+/* ============================================
+   CUSTOM OPACITY SLIDER - Pink Theme
+   ============================================ */
+.slider-container {
+    flow: horizontal;
+    vertical-align: middle;
+    border-spacing: 12px;
+}
+
+.custom-slider {
+    position: relative;
+    width: 140px;
+    height: 24px;
+    display: block;
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+.slider-track {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 8px;
+    background: rgba(180, 180, 180, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.slider-fill {
+    height: 100%;
+    width: 80%;
+    background: var(--toggle-on-bg);
+    border-radius: 4px;
+    transition: width 0.05s ease;
+}
+
+.slider-thumb {
+    position: absolute;
+    left: 80%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--toggle-on-bg);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transform: translate(-50%, -50%);
+    margin-top: 4px;
+    cursor: grab;
+}
+
+.slider-thumb:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.slider-thumb:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.slider-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Info Button Styling */
+.btn-info {
+    padding: 0;
+    margin: 0;
+    margin-left: 6px;
+    margin-right: 6px;
+    background: transparent;
+    border: none;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    position: static !important;
+    /* Force tooltip anchor to fall back to the parent .setting-row */
+    /* Just in case for hover effect shape */
+}
+
+.btn-info > svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--text-primary);
+    /* Default bright color */
+    transition:
+        fill 0.2s ease,
+        transform 0.2s ease;
+}
+
+.btn-info:hover > svg {
+    fill: var(--color-primary);
+    /* Highlight color on hover */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+}
+
+/* Report Issue button in About tab */
+.btn-report-issue {
+    display: block;
+    margin: 8px auto 0;
+    padding: 6px 20px;
+    background: transparent;
+    color: var(--color-danger);
+    box-shadow: inset 0 0 0 1px var(--color-danger);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-report-issue:hover {
+    background: var(--color-danger);
+    color: white;
+}

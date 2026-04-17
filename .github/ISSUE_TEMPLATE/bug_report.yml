@@ -1,0 +1,57 @@
+name: Bug Report
+description: Báo lỗi bộ gõ
+title: "[BUG]: "
+labels: ["bug"]
+
+body:
+  - type: dropdown
+    id: windows_version
+    attributes:
+      label: Phiên bản Windows
+      options:
+        - Windows 10
+        - Windows 11
+        - Khác (ghi rõ bên dưới)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: input_method
+    attributes:
+      label: Kiểu gõ
+      options:
+        - Telex
+        - VNI
+        - Khác
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Mô tả lỗi
+      placeholder: Gõ gì, ở app nào, bị gì
+    validations:
+      required: true
+
+  - type: textarea
+    id: settings
+    attributes:
+      label: Toàn bộ settings
+      description: |
+        BẮT BUỘC: cung cấp settings theo 1 trong 2 cách:
+        - Dán nội dung file .toml
+        - Hoặc chụp màn hình
+      placeholder: |
+        # Dán file .toml vào đây
+        # hoặc attach ảnh
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: Chi tiết thêm (optional)
+      description: Log, ảnh, video, hoặc bất kỳ thông tin nào giúp debug
+    validations:
+      required: false

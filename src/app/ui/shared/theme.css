@@ -1,0 +1,368 @@
+/* NexusKey Theme — Claude-inspired Warm Edition */
+
+:root {
+    /* ─── Primary: Claude warm amber ─── */
+    --color-primary: #CF6F2C;
+    --color-primary-hover: #A85620;
+    --color-primary-light: rgba(207, 111, 44, 0.12);
+    --color-primary-medium: rgba(207, 111, 44, 0.22);
+
+    /* ─── Danger ─── */
+    --color-danger: #C0544B;
+    --color-danger-hover: #A64039;
+    --color-danger-light: rgba(192, 84, 75, 0.15);
+
+    /* ─── Warning ─── */
+    --color-warning: #D97706;
+
+    /* ─── Toggle Switch ─── */
+    --toggle-off-bg: #C4BCAF;
+    --toggle-on-bg: #CF6F2C;
+    --toggle-thumb-bg: #FFFFFF;
+    --toggle-label-off: #5C5148;
+    --toggle-label-on: #FFFFFF;
+
+    /* ─── V/E Language Toggle ─── */
+    --toggle-ve-bg: #E8A87C;        /* Vietnamese: warm apricot */
+    --toggle-ve-bg-english: #8FB8D8; /* English: muted sky */
+    --toggle-ve-text-v: #6B310A;
+    --toggle-ve-text-e: #1A3E6B;
+
+    /* ─── Text — warm charcoal ─── */
+    --text-primary: #1C1917;
+    --text-secondary: #3D3936;
+    --text-muted: #6B6460;
+    --text-dark: #1C1917;
+    --text-light: #4A4540;
+
+    /* ─── Backgrounds — warm cream palette ─── */
+    --bg-glass: rgba(250, 248, 245, 1);
+    --bg-glass-light: rgba(250, 248, 245, 0.85);
+    --bg-card: rgba(255, 255, 255, 0.65);
+    --bg-card-solid: rgba(255, 255, 252, 0.92);
+    --bg-card-tab: rgba(255, 255, 255, 0.8);
+    --bg-title-bar: rgba(40, 34, 28, 0.06);
+    --bg-hover: rgba(40, 34, 28, 0.05);
+    --bg-hover-subtle: rgba(40, 34, 28, 0.03);
+    --bg-primary-hover: rgba(207, 111, 44, 0.08);
+
+    /* ─── Borders — warm tones ─── */
+    --border-light: rgba(40, 34, 28, 0.06);
+    --border-medium: rgba(40, 34, 28, 0.10);
+    --border-input: rgba(40, 34, 28, 0.16);
+    --border-row-light: rgba(40, 34, 28, 0.06);
+    --border-inset: rgba(40, 34, 28, 0.14);
+    --border-card: rgba(180, 165, 145, 0.32);
+    --border-row: rgba(180, 165, 145, 0.42);
+
+    /* ─── Focus Ring ─── */
+    --focus-ring: 0 0 0 2px rgba(207, 111, 44, 0.28);
+
+    /* ─── Shadows ─── */
+    --shadow-card: inset 0 0 0 1px rgba(40,34,28,0.09), 0 8px 30px rgba(40,34,28,0.13);
+    --shadow-thumb: 0 2px 6px rgba(40,34,28,0.22);
+    --shadow-thumb-small: 0 1px 3px rgba(40,34,28,0.18);
+
+    /* ─── Radii ─── */
+    --radius-small: 6px;
+    --radius-medium: 8px;
+    --radius-large: 12px;
+    --radius-round: 50%;
+
+    --font-family: system, 'Segoe UI Variable Text', 'Segoe UI', sans-serif;
+}
+
+/* ============================================
+   FALLBACK — no blur / no transparency
+   ============================================ */
+html.no-alpha,
+body.no-alpha {
+    background-color: #FAF8F5 !important;
+    color: #1C1917 !important;
+}
+
+body.dark.no-alpha,
+html.dark.no-alpha {
+    background-color: #1C1917 !important;
+    color: #F5F0EA !important;
+}
+
+html.no-alpha #main-container {
+    background-color: #FAF8F5 !important;
+}
+
+html.no-alpha body.dark #main-container {
+    background-color: #1C1917 !important;
+}
+
+/* ============================================
+   DARK MODE — warm deep brown tones
+   ============================================ */
+body.dark {
+    /* Primary — brighter amber for dark bg */
+    --color-primary: #E8872E;
+    --color-primary-hover: #CF6F2C;
+    --color-primary-light: rgba(232, 135, 46, 0.22);
+    --color-primary-medium: rgba(232, 135, 46, 0.32);
+
+    /* Danger */
+    --color-danger: #E07B72;
+    --color-danger-hover: #C96059;
+    --color-danger-light: rgba(224, 123, 114, 0.2);
+
+    /* Toggle */
+    --toggle-off-bg: rgba(100, 88, 75, 0.7);
+    --toggle-on-bg: rgba(232, 135, 46, 0.9);
+    --toggle-label-off: #C4B8A8;
+    --toggle-thumb-bg: #FFFFFF;
+
+    /* V/E Toggle */
+    --toggle-ve-bg: rgba(200, 110, 60, 0.85);
+    --toggle-ve-bg-english: rgba(80, 140, 200, 0.85);
+    --toggle-ve-text-v: #FFFFFF;
+    --toggle-ve-text-e: #FFFFFF;
+
+    /* Text */
+    --text-primary: #F0EBE4;
+    --text-secondary: #C8BEB4;
+    --text-muted: #8A8078;
+    --text-dark: #F5F0EA;
+    --text-light: #D8D0C8;
+
+    /* Backgrounds — warm dark */
+    --bg-glass: rgba(24, 20, 17, 0.94);
+    --bg-glass-light: rgba(30, 26, 22, 0.88);
+    --bg-card: rgba(255, 248, 240, 0.07);
+    --bg-card-solid: rgba(255, 245, 235, 0.10);
+    --bg-card-solid-dark: rgba(40, 34, 28, 0.96);
+    --bg-title-bar: rgba(255, 245, 235, 0.07);
+    --bg-card-tab: rgba(255, 245, 235, 0.13);
+    --bg-hover: rgba(255, 245, 235, 0.09);
+    --bg-hover-subtle: rgba(255, 245, 235, 0.05);
+    --bg-primary-hover: rgba(232, 135, 46, 0.14);
+
+    /* Borders */
+    --border-light: rgba(255, 245, 235, 0.08);
+    --border-medium: rgba(255, 245, 235, 0.12);
+    --border-input: rgba(255, 245, 235, 0.22);
+    --border-row-light: rgba(255, 245, 235, 0.06);
+    --border-inset: rgba(255, 245, 235, 0.10);
+    --border-card: rgba(255, 245, 235, 0.10);
+    --border-row: rgba(255, 245, 235, 0.08);
+
+    /* Focus Ring */
+    --focus-ring: 0 0 0 2px rgba(232, 135, 46, 0.45);
+
+    /* Shadows */
+    --shadow-card: inset 0 0 0 1px rgba(255,245,235,0.12), 0 10px 40px rgba(0,0,0,0.55);
+    --shadow-thumb: 0 2px 8px rgba(0,0,0,0.75);
+    --shadow-thumb-small: 0 1px 4px rgba(0,0,0,0.55);
+}
+
+/* ============================================
+   SCITER POPUP — dropdown lists
+   ============================================ */
+popup {
+    border-radius: 8px !important;
+    padding: 4px !important;
+    background-color: #FFFDF9 !important;
+    color: #1C1917 !important;
+    box-shadow: 0 4px 18px rgba(40,34,28,0.18), inset 0 0 0 1px rgba(40,34,28,0.10) !important;
+    border: none !important;
+}
+
+popup option {
+    border-radius: 5px !important;
+    padding: 4px 8px !important;
+    background-color: transparent !important;
+}
+
+popup option:hover,
+popup option:checked {
+    background-color: #CF6F2C !important;
+    color: white !important;
+}
+
+body.dark popup {
+    background-color: rgba(38, 32, 26, 0.98) !important;
+    color: #F0EBE4 !important;
+    box-shadow: inset 0 0 0 1px rgba(255,245,235,0.18), 0 4px 18px rgba(0,0,0,0.75) !important;
+    backdrop-filter: blur(10px);
+}
+
+body.dark popup option:hover {
+    background-color: #E8872E !important;
+    color: white !important;
+}
+
+body.dark select {
+    background-color: var(--bg-card-solid) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-input) !important;
+}
+
+body.dark select option {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark select option:hover,
+body.dark select option:checked {
+    background-color: #E8872E !important;
+    color: white !important;
+}
+
+/* ============================================
+   CUSTOM TOOLTIP
+   ============================================ */
+[data-tooltip]:hover::before {
+    display: none !important;
+}
+
+[data-tooltip]:hover,
+.setting-row:hover,
+.option-row:hover,
+.switch-key-item:hover {
+    z-index: 99999 !important;
+}
+
+.setting-row,
+.option-row,
+.switch-key-item {
+    position: relative;
+    z-index: auto;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   CUSTOM SCROLL INDICATOR
+   ============================================ */
+@set warm-scroll-indicator {
+    .slider {
+        background: rgba(207, 111, 44, 0.55);
+        margin: 1px;
+        border-radius: 3px;
+    }
+
+    .slider:hover {
+        background: rgba(207, 111, 44, 0.9);
+    }
+
+    .base {
+        width: 8px;
+        min-width: 0;
+        background: transparent;
+    }
+}
+
+@set pink-scroll-indicator {
+    .slider {
+        background: rgba(207, 111, 44, 0.55);
+        margin: 1px;
+        border-radius: 3px;
+    }
+
+    .slider:hover {
+        background: rgba(207, 111, 44, 0.9);
+    }
+
+    .base {
+        width: 8px;
+        min-width: 0;
+        background: transparent;
+    }
+}
+
+/* ─── Thin scrollbar ─── */
+.scrollbar-thin {
+    scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+    width: 1px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(207, 111, 44, 0.25);
+    border-radius: 1px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ─── Normal scrollbar ─── */
+.scrollbar-normal {
+    scrollbar-width: auto;
+}
+
+.scrollbar-normal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollbar-normal::-webkit-scrollbar-thumb {
+    background: rgba(207, 111, 44, 0.55);
+    border-radius: 3px;
+}
+
+.scrollbar-normal::-webkit-scrollbar-thumb:hover {
+    background: rgba(207, 111, 44, 0.85);
+}
+
+.scrollbar-normal::-webkit-scrollbar-track {
+    background: rgba(40, 34, 28, 0.04);
+    border-radius: 3px;
+}
+
+/* ============================================
+   JS-BASED TOOLTIP
+   ============================================ */
+.js-tooltip {
+    position: fixed;
+    background-color: rgba(28, 25, 23, 0.95);
+    color: #F0EBE4;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    border-radius: 8px;
+    padding: 10px 14px;
+    white-space: normal;
+    min-width: 150px;
+    max-width: 250px;
+    text-align: left;
+    z-index: 999999;
+    pointer-events: none;
+    border: 1px solid rgba(255, 245, 235, 0.14);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+}
+
+/* ============================================
+   WINDOWS 10 FALLBACKS
+   ============================================ */
+body.win10 {
+    --shadow-card: 0 4px 18px rgba(40, 34, 28, 0.2);
+}
+
+body.dark.win10 {
+    --shadow-card: 0 5px 24px rgba(0, 0, 0, 0.5);
+}
+
+body.win10 .container {
+    border: 1px solid #B0A898;
+    margin: 12px;
+    border-radius: 10px;
+}
+
+body.dark.win10 .container {
+    border: 1px solid #3A3230;
+}

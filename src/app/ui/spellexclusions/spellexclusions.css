@@ -1,0 +1,24 @@
+/* Spell Check Exclusions Dialog Styles */
+
+.info-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+    padding: 4px 0 8px;
+    line-height: 1.4;
+}
+
+/* Let dropdown.css handle the list structure max-width */
+.list-col-name {
+    max-width: none;
+}
+
+.list-card {
+    margin-bottom: 0;
+}
+
+.app-list {
+    height: *;
+    overflow-y: scroll-indicator;
+}
+
+

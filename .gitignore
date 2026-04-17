@@ -1,0 +1,65 @@
+# ===== CMake-generated files =====
+src/core/Version.h
+
+# ===== Build artifacts =====
+/build/
+/build-*/
+/_build/
+/out/
+/bin/
+/lib/
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+
+# ===== IDE / Editor =====
+.vs/
+.vscode/
+.idea/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== AI / Agent / Tooling =====
+.agent/
+.agents/
+.claude/
+.claude-m/
+_bmad/
+_bmad-output/
+
+# ===== Logs =====
+*.log
+
+# ===== Temporary / Backup =====
+*.tmp
+*.bak
+*~
+
+# ===== Testing artifacts =====
+/Testing/Temporary/
+/Testing/Cache/
+/benchmark_results/
+
+# ===== Optional: external deps build =====
+/extern/**/build/
+sciter.skill
+CLAUDE.md
+skills-lock.json
+/sciter-js-sdk/
+changes.md
+.claudeignore
+# ===== Internal docs (keep only public-safe files) =====
+docs/*
+!docs/images/
+!docs/index.md
+!docs/CODING_RULES/
+!docs/telex-test-specification/
+!docs/Architecture/
+!docs/vietnamese-phonology-spec-distillate.md
+!docs/SECURITY.md
+!docs/SECURITY_FIXES-distillate.md
+!docs/tray-icon-sync-analysis-v2-distillate.md
+!docs/plans/
+!docs/plans/pre-tone-stop-final-check-distillate.md

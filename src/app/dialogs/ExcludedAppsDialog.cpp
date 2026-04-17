@@ -1,0 +1,205 @@
+// NexusKey - Excluded Apps Dialog Implementation
+// SPDX-License-Identifier: GPL-3.0-only
+
+#include "ExcludedAppsDialog.h"
+#include "DialogUtils.h"
+#include "core/config/ConfigManager.h"
+#include "helpers/AppHelpers.h"
+#include "core/WinStrings.h"
+#include "sciter-x-dom.hpp"
+#include <algorithm>
+#include <fstream>
+#include <vector>
+
+using namespace sciter::dom;
+
+// TODO: Add to i18n string table
+static constexpr const wchar_t* MSG_CANNOT_EXCLUDE_SELF =
+    L"Không thể thêm NexusKey vào danh sách loại trừ.";
+
+namespace NextKey {
+
+ExcludedAppsDialog::ExcludedAppsDialog(HWND parent)
+    : WindowPickerDialog({
+        L"this://app/excludedapps/excludedapps.html",
+        L"NexusKey - Excluded Apps",
+        420, 420, parent, true, 36, 40, true
+    }) {
+    appList_ = ConfigManager::LoadAllExcludedApps(ConfigManager::GetConfigPath());
+    populateList();
+}
+
+void ExcludedAppsDialog::persistAndSignal() {
+    (void)ConfigManager::SaveExcludedApps(ConfigManager::GetConfigPath(), appList_);
+    SignalConfigChange();
+}
+
+bool ExcludedAppsDialog::handle_event(HELEMENT he, BEHAVIOR_EVENT_PARAMS& params) {
+    // Handle BUTTON_CLICK for close button
+    if (params.cmd == BUTTON_CLICK) {
+        sciter::dom::element el(params.heTarget);
+        std::wstring id = el.get_attribute("id");
+
+        if (id == L"btn-close") {
+            PostMessage(get_hwnd(), WM_CLOSE, 0, 0);
+            return true;
+        }
+    }
+
+    // Handle VALUE_CHANGED for #val-action (triggered by JS triggerAction)
+    if (params.cmd == VALUE_CHANGED) {
+        sciter::dom::element el(params.heTarget);
+        std::wstring id = el.get_attribute("id");
+
+        if (id == L"val-action") {
+            sciter::value val = el.get_value();
+            std::wstring action = val.is_string() ? val.get<std::wstring>() : L"";
+            if (!action.empty()) {
+                // Read app name from hidden input
+                sciter::dom::element root = get_root();
+                sciter::dom::element nameInput = root.find_first("#val-app-name");
+                std::wstring appName;
+                if (nameInput.is_valid()) {
+                    sciter::value nv = nameInput.get_value();
+                    appName = nv.is_string() ? nv.get<std::wstring>() : L"";
+                }
+
+                if (action == L"add-manual") {
+                    if (!appName.empty()) {
+                        addApp(appName);
+                    }
+                } else if (action == L"add-current") {
+                    startWindowPicking();
+                } else if (action == L"delete") {
+                    if (!appName.empty()) {
+                        removeApp(appName);
+                    }
+                } else if (action == L"get-running-apps") {
+                    auto apps = getRunningApps();
+                    sciter::value arr;
+                    for (size_t i = 0; i < apps.size(); ++i) {
+                        arr.set_item(static_cast<int>(i), sciter::value(apps[i].c_str()));
+                    }
+                    call_function("setRunningApps", arr);
+                } else if (action == L"import") {
+                    importApps();
+                } else if (action == L"export") {
+                    exportApps();
+                } else if (action == L"close") {
+                    PostMessage(get_hwnd(), WM_CLOSE, 0, 0);
+                }
+
+                // Clear the action value to allow re-triggering
+                el.set_value(sciter::value(L""));
+            }
+            return true;
+        }
+    }
+
+    return sciter::window::handle_event(he, params);
+}
+
+void ExcludedAppsDialog::onWindowPicked(const std::wstring& exeName) {
+    if (exeName == L"nexuskey.exe") {
+        MessageBoxW(get_hwnd(), MSG_CANNOT_EXCLUDE_SELF,
+                    L"NexusKey", MB_OK | MB_ICONWARNING);
+    } else {
+        addApp(exeName);
+    }
+}
+
+void ExcludedAppsDialog::populateList() {
+    call_function("clearAppList");
+    for (auto& app : appList_) {
+        call_function("addAppToList", sciter::value(app.c_str()));
+    }
+    call_function("forceRefresh");
+}
+
+void ExcludedAppsDialog::addApp(const std::wstring& name) {
+    std::wstring lower = ToLowerAscii(name);
+
+    // Check for duplicates
+    if (std::find(appList_.begin(), appList_.end(), lower) != appList_.end()) return;
+
+    appList_.push_back(lower);
+    call_function("addAppToList", sciter::value(lower.c_str()));
+    call_function("forceRefresh");
+    persistAndSignal();
+}
+
+void ExcludedAppsDialog::removeApp(const std::wstring& name) {
+    std::wstring lower = ToLowerAscii(name);
+
+    auto it = std::find(appList_.begin(), appList_.end(), lower);
+    if (it != appList_.end()) {
+        appList_.erase(it);
+        call_function("removeAppFromList", sciter::value(lower.c_str()));
+        persistAndSignal();
+    }
+}
+
+void ExcludedAppsDialog::importApps() {
+    std::wstring path = ShowOpenFileDialogW(
+        get_hwnd(),
+        L"Text file (*.txt)\0*.txt\0All (*.*)\0*.*\0",
+        L"txt"
+    );
+    if (path.empty()) return;
+
+    int msgboxID = MessageBoxW(
+        get_hwnd(),
+        L"B\u1EA1n c\u00F3 mu\u1ED1n gi\u1EEF l\u1EA1i danh s\u00E1ch hi\u1EC7n t\u1EA1i kh\u00F4ng?",
+        L"Danh s\u00E1ch lo\u1EA1i tr\u1EEB",
+        MB_ICONEXCLAMATION | MB_YESNO
+    );
+
+    bool append = (msgboxID == IDYES);
+
+    std::ifstream infile(path);
+    if (!infile.is_open()) return;
+
+    if (!append) {
+        appList_.clear();
+    }
+
+    std::string line;
+    while (std::getline(infile, line)) {
+        // Trim CR (Windows line endings)
+        if (!line.empty() && line.back() == '\r') line.pop_back();
+        // Skip empty lines and comments
+        if (line.empty() || line[0] == ';') continue;
+
+        std::wstring wName = ToLowerAscii(Utf8ToWide(line));
+        if (wName.empty()) continue;
+        if (std::find(appList_.begin(), appList_.end(), wName) == appList_.end()) {
+            appList_.push_back(wName);
+        }
+    }
+
+    populateList();
+    persistAndSignal();
+}
+
+void ExcludedAppsDialog::exportApps() {
+    std::wstring path = ShowSaveFileDialogW(
+        get_hwnd(),
+        L"Text file (*.txt)\0*.txt\0",
+        L"txt",
+        L"NexusKeyExcludedApps"
+    );
+    if (path.empty()) return;
+
+    std::ofstream outfile(path);
+    if (!outfile.is_open()) return;
+
+    outfile << ";NexusKey Excluded Apps\n";
+
+    std::vector<std::wstring> sorted = appList_;
+    std::sort(sorted.begin(), sorted.end());
+    for (auto& app : sorted) {
+        outfile << WideToUtf8(app) << "\n";
+    }
+}
+
+}  // namespace NextKey

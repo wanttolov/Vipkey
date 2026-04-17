@@ -1,0 +1,118 @@
+/* Macro Dialog Styles */
+/* base.css + subdialog.css loaded via <link> in HTML */
+
+/* Content Section override - smaller padding */
+.content-section {
+    padding: 10px;
+    min-height: 0;
+}
+
+/* Settings Card override - solid background for macro */
+.settings-card {
+    background: var(--bg-card-solid);
+}
+
+/* Second settings-card (list) - fixed height container */
+.settings-card:nth-child(2) {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 40px;
+    overflow: hidden;
+}
+
+/* Footer row override */
+.footer-row {
+    width: 100%;
+}
+
+/* Footer buttons are smaller */
+.footer-row .btn-action {
+    font-size: 11px;
+    padding: 6px 4px;
+}
+
+/* List Header */
+.list-header {
+    display: flex;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-medium);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.list-col-name {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.list-col-content {
+    flex: 1;
+}
+
+/* Macro List - Flexible height with scroll, max 5 items visible */
+.macro-list {
+    display: block;
+    flex: 1;
+    min-height: 40px;
+    max-height: 170px;
+    /* ~5 items × 34px per item */
+    overflow: scroll-indicator;
+    vertical-scrollbar: pink-scroll-indicator;
+    padding-right: 10px;
+}
+
+.macro-item {
+    display: flex;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    border-bottom: 1px solid var(--border-row-light);
+}
+
+.macro-item:hover {
+    background: var(--bg-primary-hover);
+}
+
+.macro-item.selected {
+    background: var(--color-primary-medium);
+}
+
+.macro-item-name {
+    min-width: 60px;
+    max-width: 80px;
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+
+/* Newline hint below content input */
+.hint-row {
+    padding: 2px 0 4px 0;
+}
+
+.hint-text {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.hint-text code {
+    display: inline-block;
+    font-family: monospace;
+    background: var(--bg-primary-hover);
+    padding: 0 3px;
+    border-radius: 2px;
+}
+
+.macro-item-content {
+    flex: 1;
+    font-size: 12px;
+    color: var(--text-secondary);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+}
+

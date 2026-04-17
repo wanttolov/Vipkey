@@ -1,0 +1,31 @@
+// NexusKey - Input Engine Factory Implementation
+// Copyright (c) 2024-2026 PhatMT. All rights reserved.
+// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-NexusKey-Commercial
+// Dual-licensed: GPL-3.0 for open-source use, commercial license for proprietary use.
+// See LICENSE and LICENSE-COMMERCIAL in the project root.
+
+#include "EngineFactory.h"
+#include "TelexEngine.h"
+#include "VniEngine.h"
+
+namespace NextKey {
+
+std::unique_ptr<IInputEngine> EngineFactory::Create(const TypingConfig& config) {
+    switch (config.inputMethod) {
+        case InputMethod::VNI:
+            return std::make_unique<Vni::VniEngine>(config);
+        case InputMethod::SimpleTelex:
+            [[fallthrough]];
+        case InputMethod::Telex:
+        default:
+            return std::make_unique<Telex::TelexEngine>(config);
+    }
+}
+
+std::unique_ptr<IInputEngine> EngineFactory::Create(InputMethod method) {
+    TypingConfig config;
+    config.inputMethod = method;
+    return Create(config);
+}
+
+}  // namespace NextKey
