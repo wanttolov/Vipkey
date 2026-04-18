@@ -1,4 +1,4 @@
-// NexusKey - Localized String Dictionary (English translations)
+// Vipkey - Localized String Dictionary (English translations)
 // Vietnamese is the default language (text in HTML), only English needs mapping.
 // Keys match data-i18n attributes in HTML elements.
 
@@ -159,7 +159,7 @@ var STRINGS = {
         // ── About dialog (standalone) ──
         "a.title": "About Vipkey",
         "a.tagline": "Modern Vietnamese Input Method",
-        "a.repo_nexuskey": "Vipkey Repo",
+        "a.repo_vipkey": "Vipkey Repo",
         "a.repo_openkey": "Original OpenKey Repo",
         "a.footer": "Powered by Sciter.JS for a smooth experience.",
 

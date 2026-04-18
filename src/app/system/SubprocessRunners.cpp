@@ -64,7 +64,7 @@ namespace NextKey {
 
     InitSciterSubprocess();
 
-    HWND parent = FindWindowW(nullptr, L"NexusKey Settings");
+    HWND parent = FindWindowW(nullptr, L"Vipkey Settings");
     ExcludedAppsDialog dialog(parent);
     dialog.Show();
 
@@ -77,7 +77,7 @@ namespace NextKey {
 
     InitSciterSubprocess();
 
-    HWND parent = FindWindowW(nullptr, L"NexusKey Settings");
+    HWND parent = FindWindowW(nullptr, L"Vipkey Settings");
     TsfAppsDialog dialog(parent);
     dialog.Show();
 
@@ -90,7 +90,7 @@ namespace NextKey {
 
     InitSciterSubprocess();
 
-    HWND parent = FindWindowW(nullptr, L"NexusKey Settings");
+    HWND parent = FindWindowW(nullptr, L"Vipkey Settings");
     MacroTableDialog dialog(parent);
     dialog.Show();
 
@@ -103,7 +103,7 @@ namespace NextKey {
 
     InitSciterSubprocess();
 
-    HWND parent = FindWindowW(nullptr, L"NexusKey Settings");
+    HWND parent = FindWindowW(nullptr, L"Vipkey Settings");
     ConvertToolDialog dialog(parent);
     dialog.Show();
 
@@ -116,7 +116,7 @@ namespace NextKey {
 
     InitSciterSubprocess();
 
-    HWND parent = FindWindowW(nullptr, L"NexusKey Settings");
+    HWND parent = FindWindowW(nullptr, L"Vipkey Settings");
     AboutDialog dialog(parent);
     dialog.Show();
 
@@ -129,7 +129,7 @@ namespace NextKey {
 
     InitSciterSubprocess();
 
-    HWND parent = FindWindowW(nullptr, L"NexusKey Settings");
+    HWND parent = FindWindowW(nullptr, L"Vipkey Settings");
     AppOverridesDialog dialog(parent);
     dialog.Show();
 
@@ -142,7 +142,7 @@ namespace NextKey {
 
     InitSciterSubprocess();
 
-    HWND parent = FindWindowW(nullptr, L"NexusKey Settings");
+    HWND parent = FindWindowW(nullptr, L"Vipkey Settings");
     SpellExclusionsDialog dialog(parent);
     dialog.Show();
 

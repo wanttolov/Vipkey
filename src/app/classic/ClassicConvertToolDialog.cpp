@@ -348,27 +348,27 @@ void ClassicConvertToolDialog::DoConvert() {
         wchar_t srcPath[MAX_PATH] = {};
         GetWindowTextW(editSourcePath_, srcPath, MAX_PATH);
         if (srcPath[0] == 0) {
-            MessageBoxW(hwnd_, S(StringId::CONVERT_NO_SOURCE_FILE), L"NexusKey", MB_OK | MB_ICONWARNING);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_NO_SOURCE_FILE), L"Vipkey", MB_OK | MB_ICONWARNING);
             return;
         }
         // Use ConvertToolDialog's static readFileContent (same logic)
         HANDLE hFile = CreateFileW(srcPath, GENERIC_READ, FILE_SHARE_READ,
                                    nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
         if (hFile == INVALID_HANDLE_VALUE) {
-            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L"NexusKey", MB_OK | MB_ICONERROR);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L"Vipkey", MB_OK | MB_ICONERROR);
             return;
         }
         DWORD fileSize = GetFileSize(hFile, nullptr);
         if (fileSize == INVALID_FILE_SIZE || fileSize == 0) {
             CloseHandle(hFile);
-            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L"NexusKey", MB_OK | MB_ICONERROR);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L"Vipkey", MB_OK | MB_ICONERROR);
             return;
         }
         std::vector<BYTE> buffer(fileSize);
         DWORD bytesRead = 0;
         if (!ReadFile(hFile, buffer.data(), fileSize, &bytesRead, nullptr)) {
             CloseHandle(hFile);
-            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L"NexusKey", MB_OK | MB_ICONERROR);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L"Vipkey", MB_OK | MB_ICONERROR);
             return;
         }
         CloseHandle(hFile);
@@ -390,13 +390,13 @@ void ClassicConvertToolDialog::DoConvert() {
     } else {
         // ── Clipboard mode ──
         if (!OpenClipboard(hwnd_)) {
-            MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L"NexusKey", MB_OK | MB_ICONWARNING);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L"Vipkey", MB_OK | MB_ICONWARNING);
             return;
         }
         HANDLE hData = GetClipboardData(CF_UNICODETEXT);
-        if (!hData) { CloseClipboard(); MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L"NexusKey", MB_OK | MB_ICONWARNING); return; }
+        if (!hData) { CloseClipboard(); MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L"Vipkey", MB_OK | MB_ICONWARNING); return; }
         auto* pText = static_cast<const wchar_t*>(GlobalLock(hData));
-        if (!pText) { CloseClipboard(); MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L"NexusKey", MB_OK | MB_ICONWARNING); return; }
+        if (!pText) { CloseClipboard(); MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L"Vipkey", MB_OK | MB_ICONWARNING); return; }
         input = pText;
         GlobalUnlock(hData);
         CloseClipboard();
@@ -405,7 +405,7 @@ void ClassicConvertToolDialog::DoConvert() {
     if (input.empty()) {
         MessageBoxW(hwnd_,
             S(fileMode_ ? StringId::CONVERT_READ_ERROR : StringId::CONVERT_CLIPBOARD_EMPTY),
-            L"NexusKey", MB_OK | MB_ICONWARNING);
+            L"Vipkey", MB_OK | MB_ICONWARNING);
         return;
     }
 
@@ -423,13 +423,13 @@ void ClassicConvertToolDialog::DoConvert() {
         wchar_t dstPath[MAX_PATH] = {};
         GetWindowTextW(editDestPath_, dstPath, MAX_PATH);
         if (dstPath[0] == 0) {
-            MessageBoxW(hwnd_, S(StringId::CONVERT_NO_DEST_FILE), L"NexusKey", MB_OK | MB_ICONWARNING);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_NO_DEST_FILE), L"Vipkey", MB_OK | MB_ICONWARNING);
             return;
         }
         HANDLE hFile = CreateFileW(dstPath, GENERIC_WRITE, 0,
                                    nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
         if (hFile == INVALID_HANDLE_VALUE) {
-            MessageBoxW(hwnd_, S(StringId::CONVERT_WRITE_ERROR), L"NexusKey", MB_OK | MB_ICONERROR);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_WRITE_ERROR), L"Vipkey", MB_OK | MB_ICONERROR);
             return;
         }
         DWORD bytesWritten = 0;
@@ -451,13 +451,13 @@ void ClassicConvertToolDialog::DoConvert() {
         }
         CloseHandle(hFile);
         if (!ok) {
-            MessageBoxW(hwnd_, S(StringId::CONVERT_WRITE_ERROR), L"NexusKey", MB_OK | MB_ICONERROR);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_WRITE_ERROR), L"Vipkey", MB_OK | MB_ICONERROR);
             return;
         }
     } else {
         // ── Write to clipboard ──
         if (!OpenClipboard(hwnd_)) {
-            MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_WRITE_ERROR), L"NexusKey", MB_OK | MB_ICONERROR);
+            MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_WRITE_ERROR), L"Vipkey", MB_OK | MB_ICONERROR);
             return;
         }
         EmptyClipboard();
@@ -474,7 +474,7 @@ void ClassicConvertToolDialog::DoConvert() {
     }
 
     if (config_.alertDone) {
-        MessageBoxW(hwnd_, S(StringId::CONVERT_SUCCESS), L"NexusKey", MB_OK | MB_ICONINFORMATION);
+        MessageBoxW(hwnd_, S(StringId::CONVERT_SUCCESS), L"Vipkey", MB_OK | MB_ICONINFORMATION);
     }
 }
 

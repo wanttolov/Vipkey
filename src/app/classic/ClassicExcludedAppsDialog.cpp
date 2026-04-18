@@ -180,7 +180,7 @@ void ClassicExcludedAppsDialog::AddApp(const std::wstring& name) {
     std::wstring lower = ToLowerAscii(name);
 
     // Block NexusKey itself
-    if (lower == L"nexuskey.exe" || lower == L"nexuskeylite.exe") {
+    if (lower == L"vipkey.exe" || lower == L"vipkeylite.exe") {
         MessageBoxW(hwnd_, L"Không thể thêm NexusKey vào danh sách loại trừ.",
             L"Lỗi", MB_ICONWARNING);
         return;

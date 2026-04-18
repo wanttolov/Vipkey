@@ -24,7 +24,7 @@ inline std::wstring ShowOpenFileDialogW(HWND hwnd, const wchar_t* filter, const 
 }
 
 /// Shows a Save File dialog. Returns selected path, or empty string if cancelled.
-/// @param defaultName  Suggested filename (no extension), e.g. L"NexusKeyMacro"
+/// @param defaultName  Suggested filename (no extension), e.g. L"VipkeyMacro"
 inline std::wstring ShowSaveFileDialogW(HWND hwnd, const wchar_t* filter,
                                          const wchar_t* defExt, const wchar_t* defaultName) {
     wchar_t buf[MAX_PATH] = {};

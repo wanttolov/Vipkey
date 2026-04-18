@@ -137,7 +137,7 @@ private:
     static constexpr UINT_PTR kTimerDeferredSave = 1001;
     static constexpr DWORD kDeferredSaveDelayMs  = 30000;  // 30 seconds
 
-    static constexpr const wchar_t* kClassName = L"NexusKeyClassicSettings";
+    static constexpr const wchar_t* kClassName = L"VipkeyClassicSettings";
 };
 
 } // namespace NextKey::Classic

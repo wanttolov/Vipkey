@@ -57,7 +57,7 @@ private:
     // State
     std::vector<std::wstring> entries_;
 
-    static constexpr const wchar_t* kClassName = L"NexusKeySpellExclusions";
+    static constexpr const wchar_t* kClassName = L"VipkeySpellExclusions";
 };
 
 }  // namespace NextKey::Classic

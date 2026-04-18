@@ -18,7 +18,7 @@ void QuickConvertLogToFile(const wchar_t* format, ...) {
         std::wstring logPath(exePath);
         size_t lastSlash = logPath.find_last_of(L"\\/");
         if (lastSlash != std::wstring::npos) {
-            logPath = logPath.substr(0, lastSlash + 1) + L"nexuskey_quick_convert.log";
+            logPath = logPath.substr(0, lastSlash + 1) + L"vipkey_quick_convert.log";
             
             FILE* file = nullptr;
             if (_wfopen_s(&file, logPath.c_str(), L"a, ccs=UTF-8") == 0 && file) {

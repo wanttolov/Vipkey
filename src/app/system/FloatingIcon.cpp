@@ -145,7 +145,7 @@ bool FloatingIcon::Create(HINSTANCE hInstance, bool initialVietnamese) {
     wc.cbSize = sizeof(WNDCLASSEXW);
     wc.lpfnWndProc = WndProc;
     wc.hInstance = hInstance;
-    wc.lpszClassName = L"NexusKeyFloatingIcon";
+    wc.lpszClassName = L"VipkeyFloatingIcon";
 
     if (!RegisterClassExW(&wc)) {
         if (GetLastError() != ERROR_CLASS_ALREADY_EXISTS)
@@ -155,7 +155,7 @@ bool FloatingIcon::Create(HINSTANCE hInstance, bool initialVietnamese) {
     // No WS_EX_TRANSPARENT — window accepts mouse input for drag
     hwnd_ = CreateWindowExW(
         WS_EX_TOPMOST | WS_EX_TOOLWINDOW | WS_EX_LAYERED | WS_EX_NOACTIVATE,
-        L"NexusKeyFloatingIcon",
+        L"VipkeyFloatingIcon",
         L"",
         WS_POPUP,
         0, 0, ICON_SIZE, ICON_SIZE,

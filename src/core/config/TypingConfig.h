@@ -27,18 +27,18 @@ enum class CodeTable : uint8_t {
 
 /// Hotkey configuration for V/E toggle (internal, separate from Windows KL switching)
 struct HotkeyConfig {
-    bool ctrl = false;
-    bool shift = false;
+    bool ctrl = true;
+    bool shift = true;
     bool alt = false;
     bool win = false;
-    wchar_t key = 0;  // e.g. 'Z' for Alt+Z. Default: none (user must configure)
+    wchar_t key = L'~';  // Default is ~
 };
 
 /// Typing configuration loaded from TOML, used by engine
 struct TypingConfig {
     InputMethod inputMethod = InputMethod::Telex;
     CodeTable codeTable = CodeTable::Unicode;
-    bool spellCheckEnabled = false;
+    bool spellCheckEnabled = true;
     bool beepOnSwitch = false;
     bool smartSwitch = false;
     bool excludeApps = false;  // Exclude apps feature toggle
@@ -46,8 +46,8 @@ struct TypingConfig {
     uint8_t optimizeLevel = 0;  // 0 = off, 1 = basic, 2 = aggressive
     bool modernOrtho = false;   // Modern tone placement (oà, uý)
     bool autoCaps = false;      // Auto-capitalize first letter of sentence
-    bool allowZwjf = false;     // z/w/j/f act as tone/modifier keys (normal Vietnamese)
-    bool autoRestoreEnabled = false;  // Restore raw keys when word is invalid
+    bool allowZwjf = true;     // z/w/j/f act as tone/modifier keys (normal Vietnamese)
+    bool autoRestoreEnabled = true;  // Restore raw keys when word is invalid
     bool tempOffByAlt = false;        // Double-Alt tap temporarily disables Vietnamese for current word
     bool macroEnabled = false;         // Allow macro/shorthand expansion
     bool macroInEnglish = false;       // Allow macros even when Vietnamese mode is off

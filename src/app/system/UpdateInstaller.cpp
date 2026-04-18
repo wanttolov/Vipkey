@@ -230,8 +230,8 @@ bool CopyDirectoryContents(const std::wstring& srcDir, const std::wstring& destD
         CopyDirectoryContents(sourceDir, exeDir);
 
         // 6. Find the main executable to launch
-        // Prefer "NexusKey.exe", then "NextKey.exe", then "NextKey32.exe", then any "Nexus/Next*.exe"
-        const std::vector<std::wstring> preferredNames = { L"NexusKey.exe", L"NexusKeyClassic.exe", L"NextKey.exe", L"NextKey32.exe", L"NexusKey64.exe" };
+        // Prefer "Vipkey.exe", then "NextKey.exe", then "NextKey32.exe", then any "Nexus/Next*.exe"
+        const std::vector<std::wstring> preferredNames = { L"Vipkey.exe", L"VipkeyClassic.exe", L"NextKey.exe", L"NextKey32.exe", L"Vipkey64.exe" };
         for (const auto& name : preferredNames) {
             std::wstring testPath = exeDir + L"\\" + name;
             if (fs::exists(testPath)) {

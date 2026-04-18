@@ -89,7 +89,7 @@ private:
 
     ConvertConfig config_{};
 
-    static constexpr const wchar_t* kClassName = L"NexusKeyConvertTool";
+    static constexpr const wchar_t* kClassName = L"VipkeyConvertTool";
 };
 
 }  // namespace NextKey::Classic

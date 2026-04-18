@@ -58,7 +58,7 @@ private:
 
     std::unordered_map<std::wstring, std::wstring> macros_;
 
-    static constexpr const wchar_t* kClassName = L"NexusKeyMacroTable";
+    static constexpr const wchar_t* kClassName = L"VipkeyMacroTable";
 };
 
 }  // namespace NextKey::Classic

@@ -67,7 +67,7 @@ void OnMenuCommand(TrayMenuId id);
 
 // Settings window helpers — search by title (subprocess may or may not be open)
 static HWND GetSettingsHwnd() noexcept {
-    return FindWindowW(nullptr, L"NexusKey Settings");
+    return FindWindowW(nullptr, L"Vipkey Settings");
 }
 static void NotifySettingsMode(bool vietnamese) noexcept {
     if (HWND h = GetSettingsHwnd()) {
@@ -249,7 +249,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
         // existing instance to indicate the app is active. Otherwise, strictly silent.
         auto sysConfig = ConfigManager::LoadSystemConfigOrDefault();
         if (sysConfig.showOnStartup) {
-            HWND existingTrayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+            HWND existingTrayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
             if (existingTrayWnd) {
                 PostMessageW(existingTrayWnd, WM_NEXUSKEY_SHOW_SETTINGS, 0, 0);
                 
@@ -333,7 +333,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
     if (!g_trayIcon.Create(hInstance, startVietnamese)) {
         // MessageBox acceptable: fatal startup error, app cannot function without tray icon.
         // No matching StringId — using English string (language config not yet applied to UI).
-        MessageBoxW(nullptr, L"Failed to create tray icon", L"NexusKey", MB_ICONERROR);
+        MessageBoxW(nullptr, L"Failed to create tray icon", L"Vipkey", MB_ICONERROR);
         CloseHandle(hMutex);
         return 1;
     }
@@ -413,7 +413,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
         // MessageBox acceptable: fatal startup error, app cannot function without keyboard hook.
         // No matching StringId — using English string (language config not yet applied to UI).
         timeEndPeriod(1);
-        MessageBoxW(nullptr, L"Failed to install keyboard hook", L"NexusKey", MB_ICONERROR);
+        MessageBoxW(nullptr, L"Failed to install keyboard hook", L"Vipkey", MB_ICONERROR);
         CloseHandle(hMutex);
         return 1;
     }
@@ -448,7 +448,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
             Sleep(3000);
             auto info = UpdateChecker::CheckForUpdate();
             if (info.available) {
-                HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+                HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
                 if (trayWnd) {
                     auto* pInfo = new (std::nothrow) UpdateInfo(std::move(info));
                     if (pInfo) {
@@ -494,10 +494,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
             // No matching StringId — using English strings (first-run scenario, language not configured yet).
             int result = MessageBoxW(
                 nullptr,
-                L"NexusKey needs to register its input method.\n\n"
+                L"Vipkey needs to register its input method.\n\n"
                 L"This requires administrator privileges.\n"
                 L"Click OK to continue with elevation.",
-                L"NexusKey Setup",
+                L"Vipkey Setup",
                 MB_OKCANCEL | MB_ICONINFORMATION
             );
 
@@ -506,7 +506,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
                     MessageBoxW(nullptr,
                         L"Failed to register input method.\n"
                         L"Please run as administrator.",
-                        L"NexusKey", MB_ICONERROR);
+                        L"Vipkey", MB_ICONERROR);
                 }
             }
         }
@@ -536,7 +536,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
     if (!g_trayIcon.Create(hInstance)) {
         // MessageBox acceptable: fatal startup error, app cannot function without tray icon.
         // No matching StringId — using English string (language config not yet applied to UI).
-        MessageBoxW(nullptr, L"Failed to create tray icon", L"NexusKey", MB_ICONERROR);
+        MessageBoxW(nullptr, L"Failed to create tray icon", L"Vipkey", MB_ICONERROR);
         CoUninitialize();
         CloseHandle(hMutex);
         return 1;
@@ -606,7 +606,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
             Sleep(3000);
             auto info = UpdateChecker::CheckForUpdate();
             if (info.available) {
-                HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+                HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
                 if (trayWnd) {
                     auto* pInfo = new (std::nothrow) UpdateInfo(std::move(info));
                     if (pInfo) {
@@ -692,7 +692,7 @@ void OnMenuCommand(TrayMenuId id) {
             break;
 
         case TrayMenuId::About:
-            SpawnSubprocess(L"NexusKey - About", L"--about");
+            SpawnSubprocess(L"Vipkey - About", L"--about");
             break;
 
         case TrayMenuId::ToggleMode:
@@ -727,11 +727,11 @@ void OnMenuCommand(TrayMenuId id) {
         }
 
         case TrayMenuId::MacroTable:
-            SpawnSubprocess(L"NexusKey - Macro Table", L"--macro");
+            SpawnSubprocess(L"Vipkey - Macro Table", L"--macro");
             break;
 
         case TrayMenuId::ConvertTool:
-            SpawnSubprocess(L"NexusKey - Convert Tool", L"--convert");
+            SpawnSubprocess(L"Vipkey - Convert Tool", L"--convert");
             break;
 
 #ifdef NEXUSKEY_HOOK_ENGINE

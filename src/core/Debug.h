@@ -33,7 +33,7 @@ inline void DebugLog(const wchar_t* /*format*/, ...) {
 }
 #endif  // _WIN32
 
-#define NEXTKEY_LOG(fmt, ...) ::NextKey::DebugLog(L"NexusKey: " fmt L"\n", ##__VA_ARGS__)
+#define NEXTKEY_LOG(fmt, ...) ::NextKey::DebugLog(L"Vipkey: " fmt L"\n", ##__VA_ARGS__)
 
 #else
 

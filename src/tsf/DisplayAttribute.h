@@ -43,7 +43,7 @@ public:
 
     IFACEMETHODIMP GetDescription(BSTR* pbstrDesc) override {
         if (pbstrDesc == nullptr) return E_INVALIDARG;
-        *pbstrDesc = SysAllocString(L"NexusKey Input");
+        *pbstrDesc = SysAllocString(L"Vipkey Input");
         return (*pbstrDesc != nullptr) ? S_OK : E_OUTOFMEMORY;
     }
 

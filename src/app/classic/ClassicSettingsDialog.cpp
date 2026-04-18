@@ -58,7 +58,7 @@ bool ClassicSettingsDialog::Show(HINSTANCE hInstance, HWND parent) {
     hwnd_ = CreateWindowExW(
         0,
         kClassName,
-        L"NexusKey v" NEXUSKEY_VERSION_WSTR,
+        L"Vipkey v" NEXUSKEY_VERSION_WSTR,
         style,
         CW_USEDEFAULT, CW_USEDEFAULT, 400, 300,  // temporary size
         parent, nullptr, hInstance, this
@@ -809,7 +809,7 @@ void ClassicSettingsDialog::OnCommand(WPARAM wParam, LPARAM lParam) {
                     SaveSettings();
                     KillTimer(hwnd_, kTimerDeferredSave);
                     SaveToToml();
-                    HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+                    HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
                     if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
                     return;
                 }
@@ -907,7 +907,7 @@ void ClassicSettingsDialog::OnActionButton(uint16_t controlId) {
                         }
                         // Signal main process to exit so the updater can replace files.
                         // Without this, updater waits 30s then proceeds while we're still running.
-                        HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+                        HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
                         if (trayWnd) {
                             PostMessageW(trayWnd, WM_CLOSE, 0, 0);
                         }
@@ -956,7 +956,7 @@ void ClassicSettingsDialog::OnSystemToggle(const wchar_t* id, bool value) {
         SaveToToml();
         // Restart main process to apply elevation change.
         // Startup registration handled by EnsureStartupRegistration() in new instance.
-        HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+        HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
         if (trayWnd) {
             PostMessageW(trayWnd, WM_NEXUSKEY_RESTART, 0, 0);
         }
@@ -971,14 +971,14 @@ void ClassicSettingsDialog::OnSystemToggle(const wchar_t* id, bool value) {
         // Flush + notify tray to rebuild menu in new language
         KillTimer(hwnd_, kTimerDeferredSave);
         SaveToToml();
-        HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+        HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
         if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
     }
     else if (wcscmp(id, L"floating-icon") == 0) {
         // Flush TOML + notify main thread to show/hide floating icon immediately
         KillTimer(hwnd_, kTimerDeferredSave);
         SaveToToml();
-        HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+        HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
         if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
     }
     else if (wcscmp(id, L"force-light-theme") == 0) {
@@ -1013,7 +1013,7 @@ void ClassicSettingsDialog::OnPickIconColors() {
         // Flush + notify immediately so tray icon updates
         KillTimer(hwnd_, kTimerDeferredSave);
         SaveToToml();
-        HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+        HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
         if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
     }
 }

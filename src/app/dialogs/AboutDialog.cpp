@@ -8,7 +8,7 @@ namespace NextKey {
 AboutDialog::AboutDialog(HWND parent)
     : SciterSubDialog({
         L"this://app/about/about.html",
-        L"NexusKey - About",
+        L"Vipkey - About",
         300, 340, parent, true, 36, 40, true
     }) {
 }

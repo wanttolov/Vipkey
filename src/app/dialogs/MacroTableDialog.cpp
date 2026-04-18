@@ -18,7 +18,7 @@ namespace NextKey {
 MacroTableDialog::MacroTableDialog(HWND parent)
     : SciterSubDialog({
         L"this://app/macro/macro.html",
-        L"NexusKey - Macro Table",
+        L"Vipkey - Macro Table",
         420, 480, parent, true, 36, 40, true
     }) {
     macros_ = ConfigManager::LoadMacros(ConfigManager::GetConfigPath());
@@ -174,7 +174,7 @@ void MacroTableDialog::exportMacros() {
         get_hwnd(),
         L"Text file (*.txt)\0*.txt\0",
         L"txt",
-        L"NexusKeyMacro"
+        L"VipkeyMacro"
     );
     if (path.empty()) return;
 

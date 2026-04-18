@@ -57,7 +57,7 @@ private:
     HFONT previewFont_ = nullptr;  // Cached font for icon preview painting
 
     static COLORREF customColors_[16];
-    static constexpr const wchar_t* kClassName = L"NexusKeyIconColor";
+    static constexpr const wchar_t* kClassName = L"VipkeyIconColor";
 };
 
 }  // namespace NextKey::Classic

@@ -34,7 +34,7 @@ std::wstring GetTempFilePath(const wchar_t* filename) {
 
 std::string UpdateChecker::DownloadToString(const std::wstring& url) noexcept {
     try {
-        std::wstring tempFile = GetTempFilePath(L"nexuskey_update_check.tmp");
+        std::wstring tempFile = GetTempFilePath(L"vipkey_update_check.tmp");
 
         // URLDownloadToFileW is the simplest WinAPI HTTP download
         HRESULT hr = URLDownloadToFileW(nullptr, url.c_str(), tempFile.c_str(), 0, nullptr);
@@ -166,9 +166,9 @@ UpdateInfo UpdateChecker::CheckForUpdate() noexcept {
 
         // Find release asset
 #ifdef NEXUSKEY_LITE_MODE
-        std::string assetUrl = FindAssetUrl(response, "NexusKeyClassic.zip");
+        std::string assetUrl = FindAssetUrl(response, "VipkeyClassic.zip");
 #else
-        std::string assetUrl = FindAssetUrl(response, "NexusKey.zip");
+        std::string assetUrl = FindAssetUrl(response, "Vipkey.zip");
 
         // Fallback: old asset names for releases before v2.1.4
         if (assetUrl.empty()) {
@@ -227,7 +227,7 @@ bool UpdateChecker::ShowUpdateDialog(HWND parent, const UpdateInfo& info) {
     tdc.cbSize = sizeof(tdc);
     tdc.hwndParent = parent;
     tdc.dwFlags = TDF_ENABLE_HYPERLINKS | TDF_USE_COMMAND_LINKS;
-    tdc.pszWindowTitle = L"NexusKey";
+    tdc.pszWindowTitle = L"Vipkey";
     tdc.pszMainIcon = TD_INFORMATION_ICON;
     tdc.pszMainInstruction = S(StringId::UPDATE_AVAILABLE_TITLE);
     tdc.pszContent = content;
@@ -261,12 +261,12 @@ bool UpdateChecker::ShowUpdateDialog(HWND parent, const UpdateInfo& info) {
 }
 
 void UpdateChecker::ShowUpToDateMessage(HWND parent) {
-    TaskDialog(parent, nullptr, L"NexusKey", S(StringId::UPDATE_TITLE),
+    TaskDialog(parent, nullptr, L"Vipkey", S(StringId::UPDATE_TITLE),
                S(StringId::UPDATE_LATEST), TDCBF_OK_BUTTON, TD_INFORMATION_ICON, nullptr);
 }
 
 void UpdateChecker::ShowCheckFailedMessage(HWND parent) {
-    TaskDialog(parent, nullptr, L"NexusKey", S(StringId::UPDATE_TITLE),
+    TaskDialog(parent, nullptr, L"Vipkey", S(StringId::UPDATE_TITLE),
                S(StringId::UPDATE_FAILED), TDCBF_OK_BUTTON, TD_WARNING_ICON, nullptr);
 }
 
@@ -279,7 +279,7 @@ bool UpdateChecker::ShowProgressDialog(HWND parent, const wchar_t* message,
     tdc.cbSize = sizeof(tdc);
     tdc.hwndParent = parent;
     tdc.dwFlags = TDF_SHOW_MARQUEE_PROGRESS_BAR | TDF_CALLBACK_TIMER;
-    tdc.pszWindowTitle = L"NexusKey";
+    tdc.pszWindowTitle = L"Vipkey";
     tdc.pszMainInstruction = message;
     tdc.dwCommonButtons = TDCBF_CANCEL_BUTTON;
     tdc.lpCallbackData = reinterpret_cast<LONG_PTR>(&ctx);
@@ -322,7 +322,7 @@ bool UpdateChecker::DownloadWithProgress(HWND parent, const std::wstring& downlo
     if (!completed) return false;  // User cancelled
 
     if (!state->success) {
-        TaskDialog(parent, nullptr, L"NexusKey", S(StringId::UPDATE_TITLE),
+        TaskDialog(parent, nullptr, L"Vipkey", S(StringId::UPDATE_TITLE),
                    S(StringId::UPDATE_DOWNLOAD_FAILED), TDCBF_OK_BUTTON, TD_WARNING_ICON, nullptr);
         return false;
     }
@@ -334,7 +334,7 @@ bool UpdateChecker::DownloadAndLaunchInstaller(const std::wstring& downloadUrl) 
     try {
         wchar_t tempDir[MAX_PATH] = {};
         GetTempPathW(MAX_PATH, tempDir);
-        std::wstring zipPath = std::wstring(tempDir) + L"NexusKey_update.zip";
+        std::wstring zipPath = std::wstring(tempDir) + L"Vipkey_update.zip";
 
         if (!DownloadFile(downloadUrl, zipPath)) return false;
 

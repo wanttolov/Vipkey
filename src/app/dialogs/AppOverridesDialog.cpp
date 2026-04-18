@@ -12,7 +12,7 @@ namespace NextKey {
 AppOverridesDialog::AppOverridesDialog(HWND parent)
     : WindowPickerDialog({
         L"this://app/appoverrides/appoverrides.html",
-        L"NexusKey - App Overrides",
+        L"Vipkey - App Overrides",
         400, 460, parent, true, 36, 40, true
     }) {
     entries_ = ConfigManager::LoadAppOverrides(ConfigManager::GetConfigPath());

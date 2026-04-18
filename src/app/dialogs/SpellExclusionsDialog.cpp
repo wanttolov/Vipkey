@@ -17,7 +17,7 @@ namespace NextKey {
 SpellExclusionsDialog::SpellExclusionsDialog(HWND parent)
     : SciterSubDialog({
         L"this://app/spellexclusions/spellexclusions.html",
-        L"NexusKey - Spell Exclusions",
+        L"Vipkey - Spell Exclusions",
         340, 380, parent, true, 36, 40, true
     }) {
     auto config = ConfigManager::LoadOrDefault();
@@ -172,7 +172,7 @@ void SpellExclusionsDialog::exportExclusions() {
         get_hwnd(),
         L"Text file (*.txt)\0*.txt\0",
         L"txt",
-        L"NexusKeySpellExclusions"
+        L"VipkeySpellExclusions"
     );
     if (path.empty()) return;
 

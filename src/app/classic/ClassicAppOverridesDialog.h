@@ -58,7 +58,7 @@ private:
     std::unordered_map<std::wstring, AppOverrideEntry> entries_;
     WindowPicker picker_;
 
-    static constexpr const wchar_t* kClassName = L"NexusKeyAppOverrides";
+    static constexpr const wchar_t* kClassName = L"VipkeyAppOverrides";
 };
 
 }  // namespace NextKey::Classic

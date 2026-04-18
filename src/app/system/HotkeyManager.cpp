@@ -20,7 +20,7 @@ void HotkeyManager::Initialize(const HotkeyConfig& config, HWND hwndMessage, HIN
     s_instance = this;
 
     if (!HasNexusKeyHotkey(config_)) {
-        NEXTKEY_LOG(L"NexusKey hotkey disabled by user");
+        NEXTKEY_LOG(L"Vipkey hotkey disabled by user");
         return;
     }
 

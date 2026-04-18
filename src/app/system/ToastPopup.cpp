@@ -50,7 +50,7 @@ void ToastPopup::RegisterWindowClass() {
     WNDCLASSEXW wc = { sizeof(wc) };
     wc.lpfnWndProc = WndProc;
     wc.hInstance = GetModuleHandleW(nullptr);
-    wc.lpszClassName = L"NexusKeyToast";
+    wc.lpszClassName = L"VipkeyToast";
     wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wc.hbrBackground = nullptr;
 
@@ -83,7 +83,7 @@ void ToastPopup::Show(const std::wstring& message, DWORD durationMs) {
 
     HWND hwnd = CreateWindowExW(
         WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_NOACTIVATE,
-        L"NexusKeyToast", nullptr,
+        L"VipkeyToast", nullptr,
         WS_POPUP,
         x, y, w, h,
         nullptr, nullptr, GetModuleHandleW(nullptr),
@@ -146,7 +146,7 @@ static void PaintToast(HWND hwnd, HDC hdc, bool dark) {
 
     SetBkMode(hdc, TRANSPARENT);
 
-    // ── Title row: "NexusKey" ──
+    // ── Title row: "Vipkey" ──
     HFONT hTitleFont = CreateFontW(-12, 0, 0, 0, FW_SEMIBOLD, FALSE, FALSE, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
         CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_SWISS, L"Segoe UI");
@@ -154,7 +154,7 @@ static void PaintToast(HWND hwnd, HDC hdc, bool dark) {
     SetTextColor(hdc, titleColor);
 
     RECT titleRect = { PADDING_X, ACCENT_LINE_H, rc.right - PADDING_X, TITLE_HEIGHT + ACCENT_LINE_H };
-    DrawTextW(hdc, L"NexusKey", -1, &titleRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+    DrawTextW(hdc, L"Vipkey", -1, &titleRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
     SelectObject(hdc, hOldFont);
     DeleteObject(hTitleFont);
 

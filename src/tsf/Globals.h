@@ -23,7 +23,7 @@ extern HINSTANCE g_hInstance;
 extern LONG g_dllRefCount;
 
 // String constants
-constexpr const wchar_t* TEXT_SERVICE_DESCRIPTION = L"NexusKey Vietnamese IME";
+constexpr const wchar_t* TEXT_SERVICE_DESCRIPTION = L"Vipkey Vietnamese IME";
 
 // CLSID as string for registry checks (matches CLSID_TextService in Globals.cpp)
 // {D84D1E5B-8F2C-4B1A-9D3E-6F7A8B9C0D1E}

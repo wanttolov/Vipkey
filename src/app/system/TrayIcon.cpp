@@ -42,7 +42,7 @@ bool TrayIcon::Create(HINSTANCE hInstance, bool initialVietnamese) {
     wc.hInstance = hInstance;
     wc.hIcon = LoadIconW(hInstance, MAKEINTRESOURCEW(IDI_APP));
     wc.hIconSm = LoadIconW(hInstance, MAKEINTRESOURCEW(IDI_APP));
-    wc.lpszClassName = L"NexusKeyTrayClass";
+    wc.lpszClassName = L"VipkeyTrayClass";
 
     if (!RegisterClassExW(&wc)) {
         if (GetLastError() != ERROR_CLASS_ALREADY_EXISTS) {
@@ -53,7 +53,7 @@ bool TrayIcon::Create(HINSTANCE hInstance, bool initialVietnamese) {
     // Create as WS_OVERLAPPEDWINDOW (like OpenKey) so Task Manager recognizes
     // the window and picks up hIcon for the process icon, then hide it.
     hwndMessage_ = CreateWindowExW(
-        0, L"NexusKeyTrayClass", L"NexusKey", WS_OVERLAPPEDWINDOW,
+        0, L"VipkeyTrayClass", L"Vipkey", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
     if (!hwndMessage_) return false;
@@ -161,33 +161,26 @@ void TrayIcon::RefreshIcon() noexcept {
 
     HICON newIcon = nullptr;
 
-    switch (iconStyle_) {
-        case 1:  // Dark mode (white icons)
+    int style = iconStyle_;
+    if (style == 0) {
+        // Auto (Theo Windows Taskbar)
+        style = DarkModeHelper::IsTaskbarDarkMode() ? 1 : 2;
+    }
+
+    switch (style) {
+        case 1:  // Dark mode taskbar (needs white icons)
             newIcon = LoadIconW(hInstance,
                 MAKEINTRESOURCEW(vietnameseMode_ ? IDI_VIET_ON_WHITE : IDI_VIET_OFF_WHITE));
             break;
 
-        case 2:  // Light mode (black icons)
+        case 2:  // Light mode taskbar (needs black icons)
             newIcon = LoadIconW(hInstance,
                 MAKEINTRESOURCEW(vietnameseMode_ ? IDI_VIET_ON_BLACK : IDI_VIET_OFF_BLACK));
             break;
 
-        case 3: {  // Custom color
-            int baseIcon = vietnameseMode_ ? IDI_VIET_ON : IDI_VIET_OFF;
-            COLORREF color = static_cast<COLORREF>(
-                vietnameseMode_
-                    ? (customColorV_ != 0 ? customColorV_ : DEFAULT_ICON_COLOR_V)
-                    : (customColorE_ != 0 ? customColorE_ : DEFAULT_ICON_COLOR_E));
-            newIcon = CreateColorizedIcon(baseIcon, color);
-            if (newIcon) {
-                customIcon_ = newIcon;  // Track for cleanup
-            }
-            break;
-        }
-
-        default:  // 0 = Color (default)
+        default:
             newIcon = LoadIconW(hInstance,
-                MAKEINTRESOURCEW(vietnameseMode_ ? IDI_VIET_ON : IDI_VIET_OFF));
+                MAKEINTRESOURCEW(vietnameseMode_ ? IDI_VIET_ON_WHITE : IDI_VIET_OFF_WHITE));
             break;
     }
 

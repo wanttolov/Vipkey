@@ -263,7 +263,7 @@ std::wstring ConfigManager::GetAppDataDirectory() {
 bool ConfigManager::DirectoryWritable(const std::wstring& path) {
 #ifdef _WIN32
     // Try to create a temp file
-    std::wstring testFile = path + L"\\__nexuskey_test_write__.tmp";
+    std::wstring testFile = path + L"\\__vipkey_test_write__.tmp";
     HANDLE hFile = CreateFileW(
         testFile.c_str(),
         GENERIC_WRITE,
@@ -343,12 +343,14 @@ std::optional<HotkeyConfig> ConfigManager::LoadHotkeyConfig(const std::wstring& 
             config.alt = (*hotkey)["alt"].value_or(false);
             config.win = (*hotkey)["win"].value_or(false);
 
-            auto keyStr = (*hotkey)["key"].value_or<std::string>("");
-            if (!keyStr.empty()) {
-                auto wideKey = Utf8ToWide(keyStr);
-                config.key = wideKey.empty() ? 0 : towupper(wideKey[0]);
-            } else {
-                config.key = 0;
+            if (hotkey->contains("key")) {
+                auto keyStr = (*hotkey)["key"].value_or<std::string>("");
+                if (!keyStr.empty()) {
+                    auto wideKey = Utf8ToWide(keyStr);
+                    config.key = wideKey.empty() ? 0 : towupper(wideKey[0]);
+                } else {
+                    config.key = 0;
+                }
             }
         }
 

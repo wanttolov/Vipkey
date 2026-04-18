@@ -19,8 +19,8 @@ namespace NextKey {
 
 /// Registry key path for user-level startup programs
 inline constexpr const wchar_t* STARTUP_REG_KEY = L"Software\\Microsoft\\Windows\\CurrentVersion\\Run";
-inline constexpr const wchar_t* STARTUP_REG_VALUE = L"NexusKey";
-inline constexpr const wchar_t* STARTUP_TASK_NAME = L"NexusKey";
+inline constexpr const wchar_t* STARTUP_REG_VALUE = L"Vipkey";
+inline constexpr const wchar_t* STARTUP_TASK_NAME = L"Vipkey";
 
 /// Check if the current process is running with admin privileges
 [[nodiscard]] inline bool IsRunningAsAdmin() noexcept {
@@ -200,7 +200,7 @@ inline bool CreateDesktopShortcut() {
 
     pShellLink->SetPath(exePath);
     pShellLink->SetWorkingDirectory(workDir.c_str());
-    pShellLink->SetDescription(L"NexusKey Vietnamese Input");
+    pShellLink->SetDescription(L"Vipkey Vietnamese Input");
     pShellLink->SetIconLocation(exePath, 0);
 
     IPersistFile* pPersistFile = nullptr;

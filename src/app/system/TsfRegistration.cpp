@@ -294,7 +294,7 @@ void RunDiagnostics() {
     }
 
     CoUninitialize();
-    MessageBoxW(nullptr, out.c_str(), L"NexusKey Diagnostics", MB_OK | MB_ICONINFORMATION);
+    MessageBoxW(nullptr, out.c_str(), L"Vipkey Diagnostics", MB_OK | MB_ICONINFORMATION);
 }
 
 void CleanupHkcuClsidOverride() noexcept {

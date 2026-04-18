@@ -179,7 +179,7 @@ static void ApplyConfigChange(const TypingConfig& config) {
     }
 
     // Notify Classic settings dialog (if open) to refresh UI
-    if (HWND settingsWnd = FindWindowW(L"NexusKeyClassicSettings", nullptr)) {
+    if (HWND settingsWnd = FindWindowW(L"VipkeyClassicSettings", nullptr)) {
         PostMessageW(settingsWnd, WM_NEXUSKEY_CONFIG_CHANGED, 0, 0);
     }
 }
@@ -197,10 +197,10 @@ static void OnMenuCommand(TrayMenuId id) {
         case TrayMenuId::About:
             // Lite build: simple MessageBox about dialog
             MessageBoxW(nullptr,
-                L"NexusKey Classic\n"
+                L"Vipkey Classic\n"
                 L"Vietnamese Input Method Editor\n\n"
                 L"https://github.com/wanttolov/Vipkey",
-                L"NexusKey", MB_ICONINFORMATION);
+                L"Vipkey", MB_ICONINFORMATION);
             break;
 
         case TrayMenuId::ToggleMode:
@@ -420,7 +420,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
     // ── Tray Icon ──
 
     if (!g_trayIcon.Create(hInstance, startVietnamese)) {
-        MessageBoxW(nullptr, L"Failed to create tray icon", L"NexusKey", MB_ICONERROR);
+        MessageBoxW(nullptr, L"Failed to create tray icon", L"Vipkey", MB_ICONERROR);
         OleUninitialize();
         CloseHandle(hMutex);
         return 1;
@@ -495,7 +495,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
 
     if (!g_hookEngine.Start(hInstance, config, hotkeyConfig, startVietnamese, systemConfig.startupMode)) {
         timeEndPeriod(1);
-        MessageBoxW(nullptr, L"Failed to install keyboard hook", L"NexusKey", MB_ICONERROR);
+        MessageBoxW(nullptr, L"Failed to install keyboard hook", L"Vipkey", MB_ICONERROR);
         OleUninitialize();
         CloseHandle(hMutex);
         return 1;
@@ -535,7 +535,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
             Sleep(3000);
             auto info = UpdateChecker::CheckForUpdate();
             if (info.available) {
-                HWND trayWnd = FindWindowW(L"NexusKeyTrayClass", nullptr);
+                HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
                 if (trayWnd) {
                     auto* pInfo = new (std::nothrow) UpdateInfo(std::move(info));
                     if (pInfo) {

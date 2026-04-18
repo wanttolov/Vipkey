@@ -26,7 +26,7 @@ static void OpenHookLog() {
     std::wstring logPath(exePath);
     auto pos = logPath.find_last_of(L"\\/");
     if (pos != std::wstring::npos) logPath = logPath.substr(0, pos + 1);
-    logPath += L"NexusKey_hook.log";
+    logPath += L"Vipkey_hook.log";
     (void)_wfopen_s(&g_hookLog, logPath.c_str(), L"w, ccs=UTF-8");
     if (g_hookLog) setvbuf(g_hookLog, nullptr, _IOFBF, 8192);  // 8KB buffer — flushed on CloseHookLog()
 }
@@ -1655,7 +1655,7 @@ bool HookEngine::IsTrayOrTaskbarWindow(HWND hwnd) noexcept {
            _wcsicmp(cls, L"MSTaskSwWClass") == 0 ||            // taskbar app buttons
            _wcsicmp(cls, L"Start") == 0 ||                     // Start button
            _wcsicmp(cls, L"Windows.UI.Core.CoreWindow") == 0 || // Start Menu / Action Center (Win 10/11)
-           _wcsicmp(cls, L"NexusKeyTrayClass") == 0;           // NexusKey own tray window
+           _wcsicmp(cls, L"VipkeyTrayClass") == 0;           // NexusKey own tray window
            // Note: SetForegroundWindow(hwndMessage_) in ShowContextMenu fires
            // EVENT_SYSTEM_FOREGROUND synchronously, but WinEventProc is WINEVENT_OUTOFCONTEXT
            // so it's delivered asynchronously — this filter still catches it correctly.

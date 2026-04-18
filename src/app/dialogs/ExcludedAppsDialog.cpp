@@ -22,7 +22,7 @@ namespace NextKey {
 ExcludedAppsDialog::ExcludedAppsDialog(HWND parent)
     : WindowPickerDialog({
         L"this://app/excludedapps/excludedapps.html",
-        L"NexusKey - Excluded Apps",
+        L"Vipkey - Excluded Apps",
         420, 420, parent, true, 36, 40, true
     }) {
     appList_ = ConfigManager::LoadAllExcludedApps(ConfigManager::GetConfigPath());
@@ -100,9 +100,9 @@ bool ExcludedAppsDialog::handle_event(HELEMENT he, BEHAVIOR_EVENT_PARAMS& params
 }
 
 void ExcludedAppsDialog::onWindowPicked(const std::wstring& exeName) {
-    if (exeName == L"nexuskey.exe") {
+    if (exeName == L"vipkey.exe") {
         MessageBoxW(get_hwnd(), MSG_CANNOT_EXCLUDE_SELF,
-                    L"NexusKey", MB_OK | MB_ICONWARNING);
+                    L"Vipkey", MB_OK | MB_ICONWARNING);
     } else {
         addApp(exeName);
     }
@@ -186,7 +186,7 @@ void ExcludedAppsDialog::exportApps() {
         get_hwnd(),
         L"Text file (*.txt)\0*.txt\0",
         L"txt",
-        L"NexusKeyExcludedApps"
+        L"VipkeyExcludedApps"
     );
     if (path.empty()) return;
 

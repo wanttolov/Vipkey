@@ -64,7 +64,7 @@ private:
     std::vector<std::wstring> appList_;
     WindowPicker picker_;
 
-    static constexpr const wchar_t* kClassName = L"NexusKeyExcludedApps";
+    static constexpr const wchar_t* kClassName = L"VipkeyExcludedApps";
 };
 
 }  // namespace NextKey::Classic

@@ -18,6 +18,12 @@ namespace DarkModeHelper {
     [[nodiscard]] bool IsWindowsDarkMode() noexcept;
 
     /**
+     * Detect Windows taskbar theme via registry (SystemUsesLightTheme).
+     * @return true if taskbar dark mode is active, false for light mode
+     */
+    [[nodiscard]] bool IsTaskbarDarkMode() noexcept;
+
+    /**
      * Detect Windows 11 or greater (build >= 22000).
      * @return true if Windows 11+, false for Windows 10 or older
      */

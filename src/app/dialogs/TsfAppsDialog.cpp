@@ -15,7 +15,7 @@ namespace NextKey {
 TsfAppsDialog::TsfAppsDialog(HWND parent)
     : WindowPickerDialog({
         L"this://app/tsfapps/tsfapps.html",
-        L"NexusKey - TSF Apps",
+        L"Vipkey - TSF Apps",
         360, 420, parent, true, 36, 40, true
     }) {
     appList_ = ConfigManager::LoadTsfApps(ConfigManager::GetConfigPath());
@@ -89,9 +89,9 @@ bool TsfAppsDialog::handle_event(HELEMENT he, BEHAVIOR_EVENT_PARAMS& params) {
 }
 
 void TsfAppsDialog::onWindowPicked(const std::wstring& exeName) {
-    if (exeName == L"nexuskey.exe") {
+    if (exeName == L"vipkey.exe") {
         MessageBoxW(get_hwnd(), L"Không thể thêm NexusKey vào danh sách.",
-                    L"NexusKey", MB_OK | MB_ICONWARNING);
+                    L"Vipkey", MB_OK | MB_ICONWARNING);
     } else {
         addApp(exeName);
     }

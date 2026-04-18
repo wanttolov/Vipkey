@@ -31,6 +31,24 @@ bool IsWindowsDarkMode() noexcept {
     return value == 0;
 }
 
+bool IsTaskbarDarkMode() noexcept {
+    HKEY hKey;
+    DWORD value = 0;  // Default: taskbar uses dark mode basically in Windows 10/11 if key missing
+    DWORD size = sizeof(value);
+
+    // Some older Windows 10 versions may not have SystemUsesLightTheme, but taskbar was dark by default.
+    // If it exists, read it.
+    if (RegOpenKeyExW(HKEY_CURRENT_USER,
+            L"Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+            0, KEY_READ, &hKey) == ERROR_SUCCESS) {
+        RegQueryValueExW(hKey, L"SystemUsesLightTheme", nullptr, nullptr,
+                         reinterpret_cast<LPBYTE>(&value), &size);
+        RegCloseKey(hKey);
+    }
+
+    return value == 0;
+}
+
 bool IsWindows11OrGreater() noexcept {
     // Cache result — OS version doesn't change at runtime, and this is called
     // frequently (e.g., per WM_NCHITTEST in handleWindowDrag).
