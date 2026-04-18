@@ -1,4 +1,4 @@
-// NexusKey - Keyboard Hook Engine
+// Vipkey - Keyboard Hook Engine
 // SPDX-License-Identifier: GPL-3.0-only
 //
 // Single-process Vietnamese input using WH_KEYBOARD_LL.
@@ -78,7 +78,7 @@ public:
     [[nodiscard]] bool IsRunning() const noexcept { return keyboardHook_ != nullptr; }
 
     // Magic number to mark our own SendInput events (prevents other hooks from processing them)
-    static constexpr ULONG_PTR NEXUSKEY_EXTRA_INFO = 0x4E4B;  // "NK"
+    static constexpr ULONG_PTR VIPKEY_EXTRA_INFO = 0x4E4B;  // "NK"
 
     // Get exe name (lowercase) from window handle — used by ClassifyWindow() and smart switch
     [[nodiscard]] static std::wstring GetExeNameForHwnd(HWND hwnd) noexcept;

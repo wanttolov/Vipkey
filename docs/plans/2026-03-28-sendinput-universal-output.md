@@ -137,7 +137,7 @@ Remove the temporary debug log block added earlier (the `{ wchar_t cls[64]... }`
 
 Run (from WSL):
 ```bash
-powershell.exe -Command "cd '\\wsl.localhost\Ubuntu-24.04\home\phatmt\code\NexusKey\build'; cmake --build . --target NexusKey --config Debug 2>&1"
+powershell.exe -Command "cd '\\wsl.localhost\Ubuntu-24.04\home\phatmt\code\Vipkey\build'; cmake --build . --target Vipkey --config Debug 2>&1"
 ```
 Expected: compiles with 0 errors.
 
@@ -211,7 +211,7 @@ In `ProcessKeyDown()`, early in the function (after the `sending_` check, before
 - [ ] **Step 4: Build and verify**
 
 ```bash
-powershell.exe -Command "cd '\\wsl.localhost\Ubuntu-24.04\home\phatmt\code\NexusKey\build'; cmake --build . --target NexusKey --config Debug 2>&1"
+powershell.exe -Command "cd '\\wsl.localhost\Ubuntu-24.04\home\phatmt\code\Vipkey\build'; cmake --build . --target Vipkey --config Debug 2>&1"
 ```
 
 - [ ] **Step 5: Commit**
@@ -263,7 +263,7 @@ Replace the comment block (lines 886-893):
 - [ ] **Step 3: Build and verify**
 
 ```bash
-powershell.exe -Command "cd '\\wsl.localhost\Ubuntu-24.04\home\phatmt\code\NexusKey\build'; cmake --build . --target NexusKey --config Debug 2>&1"
+powershell.exe -Command "cd '\\wsl.localhost\Ubuntu-24.04\home\phatmt\code\Vipkey\build'; cmake --build . --target Vipkey --config Debug 2>&1"
 ```
 
 - [ ] **Step 4: Commit**
@@ -284,11 +284,11 @@ git commit -m "perf: relax hadSynthInWord_ guard — passthrough preserved for W
 
 Change line 160 from:
 ```cmake
-target_compile_definitions(NextKeyApp PRIVATE SKIP_MAIN NEXUSKEY_HOOK_ENGINE NEXTKEY_DEBUG)
+target_compile_definitions(NextKeyApp PRIVATE SKIP_MAIN VIPKEY_HOOK_ENGINE NEXTKEY_DEBUG)
 ```
 Back to:
 ```cmake
-target_compile_definitions(NextKeyApp PRIVATE SKIP_MAIN NEXUSKEY_HOOK_ENGINE)
+target_compile_definitions(NextKeyApp PRIVATE SKIP_MAIN VIPKEY_HOOK_ENGINE)
 ```
 
 - [ ] **Step 2: Commit**

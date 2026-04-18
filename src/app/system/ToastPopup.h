@@ -1,4 +1,4 @@
-// NexusKey - Lightweight Toast Notification
+// Vipkey - Lightweight Toast Notification
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

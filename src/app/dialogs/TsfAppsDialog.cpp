@@ -1,4 +1,4 @@
-// NexusKey - TSF Apps Dialog Implementation
+// Vipkey - TSF Apps Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "TsfAppsDialog.h"
@@ -90,7 +90,7 @@ bool TsfAppsDialog::handle_event(HELEMENT he, BEHAVIOR_EVENT_PARAMS& params) {
 
 void TsfAppsDialog::onWindowPicked(const std::wstring& exeName) {
     if (exeName == L"vipkey.exe") {
-        MessageBoxW(get_hwnd(), L"Không thể thêm NexusKey vào danh sách.",
+        MessageBoxW(get_hwnd(), L"Không thể thêm Vipkey vào danh sách.",
                     L"Vipkey", MB_OK | MB_ICONWARNING);
     } else {
         addApp(exeName);

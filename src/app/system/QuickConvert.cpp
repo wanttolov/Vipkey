@@ -1,4 +1,4 @@
-// NexusKey - Quick Convert Implementation
+// Vipkey - Quick Convert Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "QuickConvert.h"
@@ -324,7 +324,7 @@ void QuickConvert::SimulateCopy() {
     // Ctrl down
     inputs[0].type = INPUT_KEYBOARD;
     inputs[0].ki.wVk = VK_CONTROL;
-    inputs[0].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[0].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     SendInput(1, &inputs[0], sizeof(INPUT));
     
     // CRITICAL: Prevent "c" being typed instead of copied by giving OS time to register Ctrl state
@@ -333,13 +333,13 @@ void QuickConvert::SimulateCopy() {
     // C down
     inputs[1].type = INPUT_KEYBOARD;
     inputs[1].ki.wVk = 'C';
-    inputs[1].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
 
     // C up
     inputs[2].type = INPUT_KEYBOARD;
     inputs[2].ki.wVk = 'C';
     inputs[2].ki.dwFlags = KEYEVENTF_KEYUP;
-    inputs[2].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[2].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     SendInput(2, &inputs[1], sizeof(INPUT));
 
     Sleep(10);
@@ -348,7 +348,7 @@ void QuickConvert::SimulateCopy() {
     inputs[3].type = INPUT_KEYBOARD;
     inputs[3].ki.wVk = VK_CONTROL;
     inputs[3].ki.dwFlags = KEYEVENTF_KEYUP;
-    inputs[3].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[3].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     SendInput(1, &inputs[3], sizeof(INPUT));
 }
 
@@ -358,7 +358,7 @@ void QuickConvert::SimulatePaste() {
     // Ctrl down
     inputs[0].type = INPUT_KEYBOARD;
     inputs[0].ki.wVk = VK_CONTROL;
-    inputs[0].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[0].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     SendInput(1, &inputs[0], sizeof(INPUT));
 
     // CRITICAL: Prevent "v" being typed instead of pasted
@@ -367,13 +367,13 @@ void QuickConvert::SimulatePaste() {
     // V down
     inputs[1].type = INPUT_KEYBOARD;
     inputs[1].ki.wVk = 'V';
-    inputs[1].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
 
     // V up
     inputs[2].type = INPUT_KEYBOARD;
     inputs[2].ki.wVk = 'V';
     inputs[2].ki.dwFlags = KEYEVENTF_KEYUP;
-    inputs[2].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[2].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     SendInput(2, &inputs[1], sizeof(INPUT));
 
     Sleep(10);
@@ -382,7 +382,7 @@ void QuickConvert::SimulatePaste() {
     inputs[3].type = INPUT_KEYBOARD;
     inputs[3].ki.wVk = VK_CONTROL;
     inputs[3].ki.dwFlags = KEYEVENTF_KEYUP;
-    inputs[3].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inputs[3].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     SendInput(1, &inputs[3], sizeof(INPUT));
 }
 
@@ -521,26 +521,26 @@ void QuickConvert::SimulateShiftLeftSelect(int length) {
         // Shift down
         inputs[0].type = INPUT_KEYBOARD;
         inputs[0].ki.wVk = VK_SHIFT;
-        inputs[0].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+        inputs[0].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
 
         for (size_t i = 0; i < batchSize; ++i) {
             size_t base = 1 + i * 2;
             // Left down
             inputs[base].type = INPUT_KEYBOARD;
             inputs[base].ki.wVk = VK_LEFT;
-            inputs[base].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+            inputs[base].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
             // Left up
             inputs[base + 1].type = INPUT_KEYBOARD;
             inputs[base + 1].ki.wVk = VK_LEFT;
             inputs[base + 1].ki.dwFlags = KEYEVENTF_KEYUP;
-            inputs[base + 1].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+            inputs[base + 1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
         }
 
         // Shift up
         inputs[inputCount - 1].type = INPUT_KEYBOARD;
         inputs[inputCount - 1].ki.wVk = VK_SHIFT;
         inputs[inputCount - 1].ki.dwFlags = KEYEVENTF_KEYUP;
-        inputs[inputCount - 1].ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+        inputs[inputCount - 1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
 
         SendInput(static_cast<UINT>(inputCount), inputs.data(), sizeof(INPUT));
         sent += batchSize;

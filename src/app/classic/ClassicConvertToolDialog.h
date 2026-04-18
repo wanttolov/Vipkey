@@ -1,4 +1,4 @@
-// NexusKey Classic — Convert Tool Dialog
+// Vipkey Classic — Convert Tool Dialog
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

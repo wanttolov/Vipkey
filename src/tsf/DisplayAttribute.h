@@ -1,4 +1,4 @@
-// NexusKey - Display Attribute (No Visual Styling)
+// Vipkey - Display Attribute (No Visual Styling)
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

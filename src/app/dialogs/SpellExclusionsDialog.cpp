@@ -1,4 +1,4 @@
-// NexusKey - Spell Check Exclusions Dialog Implementation
+// Vipkey - Spell Check Exclusions Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "SpellExclusionsDialog.h"
@@ -179,7 +179,7 @@ void SpellExclusionsDialog::exportExclusions() {
     std::ofstream outfile(path);
     if (!outfile.is_open()) return;
 
-    outfile << ";NexusKey Spell Exclusions\n";
+    outfile << ";Vipkey Spell Exclusions\n";
 
     std::vector<std::wstring> sorted = entries_;
     std::sort(sorted.begin(), sorted.end());

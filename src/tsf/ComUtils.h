@@ -1,4 +1,4 @@
-// NexusKey - COM Utility Functions
+// Vipkey - COM Utility Functions
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

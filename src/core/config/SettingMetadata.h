@@ -1,4 +1,4 @@
-// NexusKey - Setting Metadata Table
+// Vipkey - Setting Metadata Table
 // Shared mapping for dual-UI (Sciter + Classic Win32) settings binding
 // SPDX-License-Identifier: GPL-3.0-only
 

@@ -1,4 +1,4 @@
-// NexusKey Shared JavaScript Utilities
+// Vipkey Shared JavaScript Utilities
 // Reusable functions for all Sciter dialogs
 
 // ============================================

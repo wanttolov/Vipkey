@@ -1,4 +1,4 @@
-// NexusKey - Startup Helper (Windows-only)
+// Vipkey - Startup Helper (Windows-only)
 // SPDX-License-Identifier: GPL-3.0-only
 //
 // Manages run-on-startup registration via Registry (normal) or
@@ -168,7 +168,7 @@ inline void RegisterRunOnStartup(bool enable, bool asAdmin) {
 [[nodiscard]] inline std::wstring GetDesktopShortcutPath() {
     std::wstring desktop = GetDesktopPath();
     if (desktop.empty()) return {};
-    return desktop + L"\\NexusKey.lnk";
+    return desktop + L"\\Vipkey.lnk";
 }
 
 /// Create a desktop shortcut (.lnk) pointing to the current executable.

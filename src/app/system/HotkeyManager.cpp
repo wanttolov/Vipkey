@@ -1,4 +1,4 @@
-// NexusKey - Hotkey Manager Implementation
+// Vipkey - Hotkey Manager Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "HotkeyManager.h"
@@ -19,12 +19,12 @@ void HotkeyManager::Initialize(const HotkeyConfig& config, HWND hwndMessage, HIN
     hwndMessage_ = hwndMessage;
     s_instance = this;
 
-    if (!HasNexusKeyHotkey(config_)) {
+    if (!HasVipkeyHotkey(config_)) {
         NEXTKEY_LOG(L"Vipkey hotkey disabled by user");
         return;
     }
 
-    // Always install our hotkey. NexusKey is a single-layout TIP —
+    // Always install our hotkey. Vipkey is a single-layout TIP —
     // toggle is via SharedState flag, not keyboard layout switching.
     if (config_.key != 0) {
         InstallRegisterHotKey(hwndMessage);
@@ -49,7 +49,7 @@ void HotkeyManager::Uninstall() {
     }
 }
 
-bool HotkeyManager::HasNexusKeyHotkey(const HotkeyConfig& cfg) {
+bool HotkeyManager::HasVipkeyHotkey(const HotkeyConfig& cfg) {
     return cfg.ctrl || cfg.shift || cfg.alt || cfg.win || cfg.key != 0;
 }
 

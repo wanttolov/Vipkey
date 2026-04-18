@@ -1,4 +1,4 @@
-// NexusKey - Composition Manager
+// Vipkey - Composition Manager
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

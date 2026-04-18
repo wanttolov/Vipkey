@@ -1,4 +1,4 @@
-// NexusKey - TSF DLL Entry Point
+// Vipkey - TSF DLL Entry Point
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "stdafx.h"

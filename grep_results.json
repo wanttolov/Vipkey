@@ -1,0 +1,2332 @@
+﻿[
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Core Application Entry Point"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  22,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  42,
+        "Line":  "// Common Controls v6 is declared in Vipkey.exe.manifest (DPI awareness + CC v6)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  55,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  70,
+        "Line":  "    return FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  74,
+        "Line":  "        PostMessageW(h, WM_VIPKEY_MODE_CHANGED, vietnamese ? 1 : 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  78,
+        "Line":  "#ifndef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  239,
+        "Line":  "    // Ensure only one background instance of Vipkey runs at a time."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  245,
+        "Line":  "    HANDLE hMutex = CreateMutexW(nullptr, TRUE, L\"Local\\\\Vipkey_Main_Mutex\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  252,
+        "Line":  "            HWND existingTrayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  254,
+        "Line":  "                PostMessageW(existingTrayWnd, WM_VIPKEY_SHOW_SETTINGS, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  308,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  336,
+        "Line":  "        MessageBoxW(nullptr, L\"Failed to create tray icon\", L\"Vipkey\", MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  348,
+        "Line":  "            PostMessageW(trayWnd, WM_VIPKEY_TRAY_MODE_SYNC, wp, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  416,
+        "Line":  "        MessageBoxW(nullptr, L\"Failed to install keyboard hook\", L\"Vipkey\", MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  451,
+        "Line":  "                HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  457,
+        "Line":  "                        if (!SendMessageW(trayWnd, WM_VIPKEY_UPDATE_AVAILABLE, 0,"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  497,
+        "Line":  "                L\"Vipkey needs to register its input method.\\n\\n\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  500,
+        "Line":  "                L\"Vipkey Setup\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  509,
+        "Line":  "                        L\"Vipkey\", MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  539,
+        "Line":  "        MessageBoxW(nullptr, L\"Failed to create tray icon\", L\"Vipkey\", MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  609,
+        "Line":  "                HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  615,
+        "Line":  "                        if (!SendMessageW(trayWnd, WM_VIPKEY_UPDATE_AVAILABLE, 0,"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  684,
+        "Line":  "        PostMessageW(settingsWnd, WM_VIPKEY_CONFIG_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  695,
+        "Line":  "            SpawnSubprocess(L\"Vipkey - About\", L\"--about\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  699,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  730,
+        "Line":  "            SpawnSubprocess(L\"Vipkey - Macro Table\", L\"--macro\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  734,
+        "Line":  "            SpawnSubprocess(L\"Vipkey - Convert Tool\", L\"--convert\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  737,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  767,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  786,
+        "Line":  "                    PostMessageW(settingsWnd, WM_VIPKEY_CONFIG_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  800,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main.cpp",
+        "LineNumber":  812,
+        "Line":  "#ifdef VIPKEY_HOOK_ENGINE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Lite build entry point"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  43,
+        "Line":  "// Common Controls v6 manifest is embedded via VipkeyLite.rc + .exe.manifest"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  182,
+        "Line":  "    if (HWND settingsWnd = FindWindowW(L\"VipkeyClassicSettings\", nullptr)) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  183,
+        "Line":  "        PostMessageW(settingsWnd, WM_VIPKEY_CONFIG_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  200,
+        "Line":  "                L\"Vipkey Classic\\n\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  203,
+        "Line":  "                L\"Vipkey\", MB_ICONINFORMATION);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  349,
+        "Line":  "    HANDLE hMutex = CreateMutexW(nullptr, TRUE, L\"Local\\\\VipkeyLite_Main_Mutex\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  423,
+        "Line":  "        MessageBoxW(nullptr, L\"Failed to create tray icon\", L\"Vipkey\", MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  435,
+        "Line":  "            PostMessageW(trayWnd, WM_VIPKEY_TRAY_MODE_SYNC, vietnamese ? 1 : 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  498,
+        "Line":  "        MessageBoxW(nullptr, L\"Failed to install keyboard hook\", L\"Vipkey\", MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  538,
+        "Line":  "                HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\main_lite.cpp",
+        "LineNumber":  544,
+        "Line":  "                        if (!SendMessageW(trayWnd, WM_VIPKEY_UPDATE_AVAILABLE, 0,"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\Vipkey.exe.manifest",
+        "LineNumber":  3,
+        "Line":  "  \u003cassemblyIdentity type=\"win32\" name=\"Vipkey\" version=\"2.1.9.0\" processorArchitecture=\"*\"/\u003e"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\Vipkey.rc",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Resource File"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\Vipkey.rc",
+        "LineNumber":  29,
+        "Line":  "    FILEVERSION    VIPKEY_VERSION_RC"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\Vipkey.rc",
+        "LineNumber":  30,
+        "Line":  "    PRODUCTVERSION VIPKEY_VERSION_RC"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\Vipkey.rc",
+        "LineNumber":  47,
+        "Line":  "            VALUE \"FileVersion\",      VIPKEY_VERSION_STR"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\Vipkey.rc",
+        "LineNumber":  52,
+        "Line":  "            VALUE \"ProductVersion\",   VIPKEY_VERSION_STR"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\resource.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Resource Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicAppOverridesDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — App Overrides Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicAppOverridesDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — App Overrides Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicAppOverridesDialog.h",
+        "LineNumber":  61,
+        "Line":  "    static constexpr const wchar_t* kClassName = L\"VipkeyAppOverrides\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Convert Tool Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  351,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_NO_SOURCE_FILE), L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  358,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  364,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  371,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_READ_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  393,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  397,
+        "Line":  "        if (!hData) { CloseClipboard(); MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L\"Vipkey\", MB_OK | MB_ICONWARNING); return; }"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  399,
+        "Line":  "        if (!pText) { CloseClipboard(); MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_EMPTY), L\"Vipkey\", MB_OK | MB_ICONWARNING); return; }"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  408,
+        "Line":  "            L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  426,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_NO_DEST_FILE), L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  432,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_WRITE_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  454,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_WRITE_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  460,
+        "Line":  "            MessageBoxW(hwnd_, S(StringId::CONVERT_CLIPBOARD_WRITE_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.cpp",
+        "LineNumber":  477,
+        "Line":  "        MessageBoxW(hwnd_, S(StringId::CONVERT_SUCCESS), L\"Vipkey\", MB_OK | MB_ICONINFORMATION);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Convert Tool Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicConvertToolDialog.h",
+        "LineNumber":  92,
+        "Line":  "    static constexpr const wchar_t* kClassName = L\"VipkeyConvertTool\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicDialogUtils.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Shared dialog utilities"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicDialogUtils.h",
+        "LineNumber":  62,
+        "Line":  "/// Filters out system processes and Vipkey itself."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicDialogUtils.h",
+        "LineNumber":  83,
+        "Line":  "                name == L\"vipkey.exe\" || name == L\"vipkeylite.exe\" ||"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicExcludedAppsDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Excluded Apps Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicExcludedAppsDialog.cpp",
+        "LineNumber":  182,
+        "Line":  "    // Block Vipkey itself"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicExcludedAppsDialog.cpp",
+        "LineNumber":  183,
+        "Line":  "    if (lower == L\"vipkey.exe\" || lower == L\"vipkeylite.exe\") {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicExcludedAppsDialog.cpp",
+        "LineNumber":  184,
+        "Line":  "        MessageBoxW(hwnd_, L\"Không thể thêm Vipkey vào danh sách loại trừ.\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicExcludedAppsDialog.cpp",
+        "LineNumber":  262,
+        "Line":  "    file \u003c\u003c \";Vipkey Excluded Apps\\n\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicExcludedAppsDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Excluded Apps Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicExcludedAppsDialog.h",
+        "LineNumber":  67,
+        "Line":  "    static constexpr const wchar_t* kClassName = L\"VipkeyExcludedApps\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicIconColorDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Icon Color Customization Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicIconColorDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Icon Color Customization Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicIconColorDialog.h",
+        "LineNumber":  60,
+        "Line":  "    static constexpr const wchar_t* kClassName = L\"VipkeyIconColor\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicMacroTableDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Macro Table Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicMacroTableDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Macro Table Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicMacroTableDialog.h",
+        "LineNumber":  61,
+        "Line":  "    static constexpr const wchar_t* kClassName = L\"VipkeyMacroTable\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Settings Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  61,
+        "Line":  "        L\"Vipkey v\" VIPKEY_VERSION_WSTR,"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  812,
+        "Line":  "                    HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  813,
+        "Line":  "                    if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  910,
+        "Line":  "                        HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  959,
+        "Line":  "        HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  961,
+        "Line":  "            PostMessageW(trayWnd, WM_VIPKEY_RESTART, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  974,
+        "Line":  "        HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  975,
+        "Line":  "        if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  981,
+        "Line":  "        HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  982,
+        "Line":  "        if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  1016,
+        "Line":  "        HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  1017,
+        "Line":  "        if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.cpp",
+        "LineNumber":  1269,
+        "Line":  "        case WM_VIPKEY_CONFIG_CHANGED:"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Settings Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSettingsDialog.h",
+        "LineNumber":  140,
+        "Line":  "    static constexpr const wchar_t* kClassName = L\"VipkeyClassicSettings\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSpellExclusionsDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Spell Check Exclusions Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSpellExclusionsDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Spell Check Exclusions Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicSpellExclusionsDialog.h",
+        "LineNumber":  60,
+        "Line":  "    static constexpr const wchar_t* kClassName = L\"VipkeySpellExclusions\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicTheme.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Native Windows Theme Engine"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\ClassicTheme.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Native Windows Theme Engine"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\VipkeyLite.exe.manifest",
+        "LineNumber":  3,
+        "Line":  "  \u003cassemblyIdentity type=\"win32\" name=\"Vipkey.Classic\" version=\"2.1.8.0\" processorArchitecture=\"*\"/\u003e"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\VipkeyLite.rc",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic — Resource file"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\VipkeyLite.rc",
+        "LineNumber":  36,
+        "Line":  "    FILEVERSION    VIPKEY_VERSION_RC"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\VipkeyLite.rc",
+        "LineNumber":  37,
+        "Line":  "    PRODUCTVERSION VIPKEY_VERSION_RC"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\VipkeyLite.rc",
+        "LineNumber":  54,
+        "Line":  "            VALUE \"FileVersion\",      VIPKEY_VERSION_STR"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\VipkeyLite.rc",
+        "LineNumber":  59,
+        "Line":  "            VALUE \"ProductVersion\",   VIPKEY_VERSION_STR"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\classic\\resource.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Classic UI — Control IDs"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\AboutDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - About Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\AboutDialog.cpp",
+        "LineNumber":  11,
+        "Line":  "        L\"Vipkey - About\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\AboutDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - About Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\AppOverridesDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - App Overrides Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\AppOverridesDialog.cpp",
+        "LineNumber":  15,
+        "Line":  "        L\"Vipkey - App Overrides\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\AppOverridesDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - App Overrides Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Convert Tool Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  21,
+        "Line":  "        L\"Vipkey - Convert Tool\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  359,
+        "Line":  "            MessageBoxW(get_hwnd(), S(StringId::CONVERT_NO_SOURCE_FILE), L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  364,
+        "Line":  "            MessageBoxW(get_hwnd(), S(StringId::CONVERT_READ_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  370,
+        "Line":  "            MessageBoxW(get_hwnd(), S(StringId::CONVERT_CLIPBOARD_EMPTY), L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  399,
+        "Line":  "            MessageBoxW(get_hwnd(), S(StringId::CONVERT_NO_DEST_FILE), L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  403,
+        "Line":  "            MessageBoxW(get_hwnd(), S(StringId::CONVERT_WRITE_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  408,
+        "Line":  "            MessageBoxW(get_hwnd(), S(StringId::CONVERT_CLIPBOARD_WRITE_ERROR), L\"Vipkey\", MB_OK | MB_ICONERROR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.cpp",
+        "LineNumber":  415,
+        "Line":  "        MessageBoxW(get_hwnd(), S(StringId::CONVERT_SUCCESS), L\"Vipkey\", MB_OK | MB_ICONINFORMATION);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ConvertToolDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Convert Tool Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\DialogUtils.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Shared file dialog helpers"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\DialogUtils.h",
+        "LineNumber":  27,
+        "Line":  "/// @param defaultName  Suggested filename (no extension), e.g. L\"VipkeyMacro\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Excluded Apps Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.cpp",
+        "LineNumber":  18,
+        "Line":  "    L\"Không thể thêm Vipkey vào danh sách loại trừ.\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.cpp",
+        "LineNumber":  25,
+        "Line":  "        L\"Vipkey - Excluded Apps\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.cpp",
+        "LineNumber":  103,
+        "Line":  "    if (exeName == L\"vipkey.exe\") {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.cpp",
+        "LineNumber":  105,
+        "Line":  "                    L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.cpp",
+        "LineNumber":  189,
+        "Line":  "        L\"VipkeyExcludedApps\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.cpp",
+        "LineNumber":  196,
+        "Line":  "    outfile \u003c\u003c \";Vipkey Excluded Apps\\n\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\ExcludedAppsDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Excluded Apps Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\MacroTableDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Macro Table Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\MacroTableDialog.cpp",
+        "LineNumber":  21,
+        "Line":  "        L\"Vipkey - Macro Table\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\MacroTableDialog.cpp",
+        "LineNumber":  177,
+        "Line":  "        L\"VipkeyMacro\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\MacroTableDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Macro Table Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SciterSubDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Sciter SubDialog Base Class Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SciterSubDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Sciter SubDialog Base Class"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Settings Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  113,
+        "Line":  "    SetWindowTextW(get_hwnd(), L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  195,
+        "Line":  "    OutputDebugStringW(L\"Vipkey: Failed to load from archive: \");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  202,
+        "Line":  "        OutputDebugStringW(L\"Vipkey: UI base path not set\\n\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  216,
+        "Line":  "        OutputDebugStringW(L\"Vipkey: Failed to open: \");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  278,
+        "Line":  "    if (msg == WM_VIPKEY_MODE_CHANGED) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  303,
+        "Line":  "    if (msg == WM_VIPKEY_CONFIG_CHANGED) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  332,
+        "Line":  "    if (msg == WM_VIPKEY_OPEN_EXCLUDED) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  333,
+        "Line":  "        SpawnSubprocess(L\"Vipkey - Excluded Apps\", L\"--excludedapps\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  337,
+        "Line":  "    if (msg == WM_VIPKEY_OPEN_TSFAPPS) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  338,
+        "Line":  "        SpawnSubprocess(L\"Vipkey - TSF Apps\", L\"--tsfapps\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  342,
+        "Line":  "    if (msg == WM_VIPKEY_OPEN_MACRO) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  343,
+        "Line":  "        SpawnSubprocess(L\"Vipkey - Macro Table\", L\"--macro\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  347,
+        "Line":  "    if (msg == WM_VIPKEY_OPEN_APPOVERRIDES) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  348,
+        "Line":  "        SpawnSubprocess(L\"Vipkey - App Overrides\", L\"--appoverrides\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  352,
+        "Line":  "    if (msg == WM_VIPKEY_OPEN_SPELLEXCL) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  353,
+        "Line":  "        SpawnSubprocess(L\"Vipkey - Spell Exclusions\", L\"--spellexclusions\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  548,
+        "Line":  "        HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  550,
+        "Line":  "            PostMessageW(trayWnd, WM_VIPKEY_SET_MODE, vietnameseMode_ ? 1 : 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  578,
+        "Line":  "                    L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  584,
+        "Line":  "                L\"Vipkey\", MB_OK | MB_ICONINFORMATION);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  598,
+        "Line":  "                        L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  604,
+        "Line":  "                    L\"Vipkey\", MB_OK | MB_ICONINFORMATION);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  682,
+        "Line":  "        HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  684,
+        "Line":  "            PostMessageW(trayWnd, WM_VIPKEY_RESTART, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  779,
+        "Line":  "        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_EXCLUDED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  783,
+        "Line":  "        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_TSFAPPS, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  787,
+        "Line":  "        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_MACRO, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  807,
+        "Line":  "        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_APPOVERRIDES, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  811,
+        "Line":  "        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_SPELLEXCL, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1024,
+        "Line":  "            verSpan.set_text(VIPKEY_VERSION_WSTR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1029,
+        "Line":  "            titleText.set_text(L\"Vipkey v\" VIPKEY_VERSION_WSTR);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1212,
+        "Line":  "        OutputDebugStringW(L\"Vipkey: Failed to save config file\\n\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1247,
+        "Line":  "        OutputDebugStringW(L\"Vipkey: Failed to save UI config\\n\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1254,
+        "Line":  "        OutputDebugStringW(L\"Vipkey: Failed to save system config\\n\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1260,
+        "Line":  "    HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1262,
+        "Line":  "        PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.cpp",
+        "LineNumber":  1371,
+        "Line":  "    HWND trayWnd = FindWindowW(L\"VipkeyTrayClass\", nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Settings Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SettingsDialog.h",
+        "LineNumber":  100,
+        "Line":  "    void notifyIconChanged();           // Post WM_VIPKEY_ICON_CHANGED to main process"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SpellExclusionsDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Spell Check Exclusions Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SpellExclusionsDialog.cpp",
+        "LineNumber":  20,
+        "Line":  "        L\"Vipkey - Spell Exclusions\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SpellExclusionsDialog.cpp",
+        "LineNumber":  175,
+        "Line":  "        L\"VipkeySpellExclusions\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SpellExclusionsDialog.cpp",
+        "LineNumber":  182,
+        "Line":  "    outfile \u003c\u003c \";Vipkey Spell Exclusions\\n\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SpellExclusionsDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Spell Check Exclusions Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SubDialogConfig.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - SubDialog Configuration"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\SubDialogConfig.h",
+        "LineNumber":  13,
+        "Line":  "    const wchar_t* windowTitle;       // e.g. \"Vipkey - Excluded Apps\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\TsfAppsDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Apps Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\TsfAppsDialog.cpp",
+        "LineNumber":  18,
+        "Line":  "        L\"Vipkey - TSF Apps\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\TsfAppsDialog.cpp",
+        "LineNumber":  92,
+        "Line":  "    if (exeName == L\"vipkey.exe\") {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\TsfAppsDialog.cpp",
+        "LineNumber":  93,
+        "Line":  "        MessageBoxW(get_hwnd(), L\"Không thể thêm Vipkey vào danh sách.\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\TsfAppsDialog.cpp",
+        "LineNumber":  94,
+        "Line":  "                    L\"Vipkey\", MB_OK | MB_ICONWARNING);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\TsfAppsDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Apps Dialog Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\WindowPickerDialog.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Window Picker Base Dialog Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\WindowPickerDialog.cpp",
+        "LineNumber":  30,
+        "Line":  "                name == L\"vipkey.exe\" || name == L\"[system process]\") {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\dialogs\\WindowPickerDialog.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Window Picker Base Dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\helpers\\AppHelpers.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - App-Layer Helper Functions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\sciter\\ScaleHelper.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - DPI \u0026 Resolution Scale Helper"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\sciter\\SciterArchive.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Sciter Archive Resource Binding"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\sciter\\SciterArchive.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Sciter Archive Resource Binding"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\sciter\\SciterHelper.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Sciter Window Helper Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\sciter\\SciterHelper.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Sciter Window Helper"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\DarkModeHelper.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Win32 Dark Mode Helper Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\DarkModeHelper.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Win32 Dark Mode Helper"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\FloatingIcon.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Floating V/E Icon Overlay Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\FloatingIcon.cpp",
+        "LineNumber":  148,
+        "Line":  "    wc.lpszClassName = L\"VipkeyFloatingIcon\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\FloatingIcon.cpp",
+        "LineNumber":  158,
+        "Line":  "        L\"VipkeyFloatingIcon\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\FloatingIcon.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Floating V/E Icon Overlay"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Keyboard Hook Engine Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  18,
+        "Line":  "// Debug file logger (writes to Vipkey_hook.log next to EXE)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  29,
+        "Line":  "    logPath += L\"Vipkey_hook.log\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  508,
+        "Line":  "    if (self \u0026\u0026 pKey-\u003edwExtraInfo == VIPKEY_EXTRA_INFO) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  1414,
+        "Line":  "    inDown.ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  1427,
+        "Line":  "    inDown.ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  1502,
+        "Line":  "    // Simulate Ctrl+V — hook proc passes these through (VIPKEY_EXTRA_INFO marker)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  1508,
+        "Line":  "        in.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  1658,
+        "Line":  "           _wcsicmp(cls, L\"VipkeyTrayClass\") == 0;           // Vipkey own tray window"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  1901,
+        "Line":  "    // Hidden windows = tray message windows owned by apps (Vipkey, IDM, Discord, etc.)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  2260,
+        "Line":  "                down.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  2266,
+        "Line":  "                up.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  2276,
+        "Line":  "                down.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  2283,
+        "Line":  "                up.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  2295,
+        "Line":  "                evt.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  2450,
+        "Line":  "    inputs[0].ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.cpp",
+        "LineNumber":  2455,
+        "Line":  "    inputs[1].ki.dwExtraInfo = VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Keyboard Hook Engine"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HookEngine.h",
+        "LineNumber":  81,
+        "Line":  "    static constexpr ULONG_PTR VIPKEY_EXTRA_INFO = 0x4E4B;  // \"NK\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Hotkey Manager Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.cpp",
+        "LineNumber":  22,
+        "Line":  "    if (!HasVipkeyHotkey(config_)) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.cpp",
+        "LineNumber":  23,
+        "Line":  "        NEXTKEY_LOG(L\"Vipkey hotkey disabled by user\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.cpp",
+        "LineNumber":  27,
+        "Line":  "    // Always install our hotkey. Vipkey is a single-layout TIP —"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.cpp",
+        "LineNumber":  52,
+        "Line":  "bool HotkeyManager::HasVipkeyHotkey(const HotkeyConfig\u0026 cfg) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Hotkey Manager"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.h",
+        "LineNumber":  13,
+        "Line":  "/// Vipkey is a single-layout TIP on English — no layout switching needed."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\HotkeyManager.h",
+        "LineNumber":  30,
+        "Line":  "    [[nodiscard]] static bool HasVipkeyHotkey(const HotkeyConfig\u0026 cfg);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Quick Convert Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  21,
+        "Line":  "            logPath = logPath.substr(0, lastSlash + 1) + L\"vipkey_quick_convert.log\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  327,
+        "Line":  "    inputs[0].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  336,
+        "Line":  "    inputs[1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  342,
+        "Line":  "    inputs[2].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  351,
+        "Line":  "    inputs[3].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  361,
+        "Line":  "    inputs[0].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  370,
+        "Line":  "    inputs[1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  376,
+        "Line":  "    inputs[2].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  385,
+        "Line":  "    inputs[3].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  524,
+        "Line":  "        inputs[0].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  531,
+        "Line":  "            inputs[base].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  536,
+        "Line":  "            inputs[base + 1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.cpp",
+        "LineNumber":  543,
+        "Line":  "        inputs[inputCount - 1].ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\QuickConvert.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Quick Convert (Hotkey-driven text conversion)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\StartupHelper.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Startup Helper (Windows-only)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\StartupHelper.h",
+        "LineNumber":  22,
+        "Line":  "inline constexpr const wchar_t* STARTUP_REG_VALUE = L\"Vipkey\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\StartupHelper.h",
+        "LineNumber":  23,
+        "Line":  "inline constexpr const wchar_t* STARTUP_TASK_NAME = L\"Vipkey\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\StartupHelper.h",
+        "LineNumber":  171,
+        "Line":  "    return desktop + L\"\\\\Vipkey.lnk\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\StartupHelper.h",
+        "LineNumber":  203,
+        "Line":  "    pShellLink-\u003eSetDescription(L\"Vipkey Vietnamese Input\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessHelper.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Subprocess Helper"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Subprocess Runner Functions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  67,
+        "Line":  "    HWND parent = FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  80,
+        "Line":  "    HWND parent = FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  93,
+        "Line":  "    HWND parent = FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  106,
+        "Line":  "    HWND parent = FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  119,
+        "Line":  "    HWND parent = FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  132,
+        "Line":  "    HWND parent = FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.cpp",
+        "LineNumber":  145,
+        "Line":  "    HWND parent = FindWindowW(nullptr, L\"Vipkey Settings\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\SubprocessRunners.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Subprocess Runner Functions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\ToastPopup.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Lightweight Toast Notification Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\ToastPopup.cpp",
+        "LineNumber":  53,
+        "Line":  "    wc.lpszClassName = L\"VipkeyToast\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\ToastPopup.cpp",
+        "LineNumber":  86,
+        "Line":  "        L\"VipkeyToast\", nullptr,"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\ToastPopup.cpp",
+        "LineNumber":  149,
+        "Line":  "    // ── Title row: \"Vipkey\" ──"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\ToastPopup.cpp",
+        "LineNumber":  157,
+        "Line":  "    DrawTextW(hdc, L\"Vipkey\", -1, \u0026titleRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\ToastPopup.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Lightweight Toast Notification"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - System Tray Icon Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  45,
+        "Line":  "    wc.lpszClassName = L\"VipkeyTrayClass\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  56,
+        "Line":  "        0, L\"VipkeyTrayClass\", L\"Vipkey\", WS_OVERLAPPEDWINDOW,"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  395,
+        "Line":  "    if (msg == WM_VIPKEY_TRAY_MODE_SYNC \u0026\u0026 hwnd == hwndMessage_) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  401,
+        "Line":  "    if (msg == WM_VIPKEY_SET_MODE \u0026\u0026 hwnd == hwndMessage_) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  420,
+        "Line":  "    if (msg == WM_VIPKEY_UPDATE_AVAILABLE \u0026\u0026 hwnd == hwndMessage_) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  439,
+        "Line":  "    if (msg == WM_VIPKEY_ICON_CHANGED \u0026\u0026 hwnd == hwndMessage_) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  449,
+        "Line":  "    if (msg == WM_VIPKEY_RESTART \u0026\u0026 hwnd == hwndMessage_) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.cpp",
+        "LineNumber":  461,
+        "Line":  "    if (msg == WM_VIPKEY_SHOW_SETTINGS \u0026\u0026 hwnd == hwndMessage_) {"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - System Tray Icon"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TrayIcon.h",
+        "LineNumber":  92,
+        "Line":  "    /// Set callback when system config changes (WM_VIPKEY_ICON_CHANGED)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Registration \u0026 Diagnostics"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.cpp",
+        "LineNumber":  159,
+        "Line":  "    out += L\"=== Vipkey Diagnostics ===\\n\\n\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.cpp",
+        "LineNumber":  235,
+        "Line":  "            // Vipkey CLSID for comparison"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.cpp",
+        "LineNumber":  241,
+        "Line":  "                ? L\"  → This IS Vipkey\\n\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.cpp",
+        "LineNumber":  242,
+        "Line":  "                : L\"  → This is NOT Vipkey\\n\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.cpp",
+        "LineNumber":  297,
+        "Line":  "    MessageBoxW(nullptr, out.c_str(), L\"Vipkey Diagnostics\", MB_OK | MB_ICONINFORMATION);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.cpp",
+        "LineNumber":  306,
+        "Line":  "        NEXTKEY_LOG(L\"[TsfRegistration] Removed HKCU CLSID override for Vipkey TSF\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Registration \u0026 Diagnostics"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\TsfRegistration.h",
+        "LineNumber":  35,
+        "Line":  "/// Remove any HKCU CLSID override for the Vipkey TSF DLL."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Update Checker Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  37,
+        "Line":  "        std::wstring tempFile = GetTempFilePath(L\"vipkey_update_check.tmp\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  158,
+        "Line":  "        uint32_t localVersion = VIPKEY_VERSION_PACKED;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  168,
+        "Line":  "#ifdef VIPKEY_LITE_MODE"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  169,
+        "Line":  "        std::string assetUrl = FindAssetUrl(response, \"VipkeyClassic.zip\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  171,
+        "Line":  "        std::string assetUrl = FindAssetUrl(response, \"Vipkey.zip\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  230,
+        "Line":  "    tdc.pszWindowTitle = L\"Vipkey\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  264,
+        "Line":  "    TaskDialog(parent, nullptr, L\"Vipkey\", S(StringId::UPDATE_TITLE),"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  269,
+        "Line":  "    TaskDialog(parent, nullptr, L\"Vipkey\", S(StringId::UPDATE_TITLE),"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  282,
+        "Line":  "    tdc.pszWindowTitle = L\"Vipkey\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  325,
+        "Line":  "        TaskDialog(parent, nullptr, L\"Vipkey\", S(StringId::UPDATE_TITLE),"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.cpp",
+        "LineNumber":  337,
+        "Line":  "        std::wstring zipPath = std::wstring(tempDir) + L\"Vipkey_update.zip\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateChecker.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Update Checker"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateInstaller.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Self-Update Installer Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateInstaller.cpp",
+        "LineNumber":  141,
+        "Line":  "    // 1. Wait for all other Vipkey.exe processes to exit (30s timeout)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateInstaller.cpp",
+        "LineNumber":  233,
+        "Line":  "        // Prefer \"Vipkey.exe\", then \"NextKey.exe\", then \"NextKey32.exe\", then any \"Nexus/Next*.exe\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateInstaller.cpp",
+        "LineNumber":  234,
+        "Line":  "        const std::vector\u003cstd::wstring\u003e preferredNames = { L\"Vipkey.exe\", L\"VipkeyClassic.exe\", L\"NextKey.exe\", L\"NextKey32.exe\", L\"Vipkey64.exe\" };"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateInstaller.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Self-Update Installer"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateInstaller.h",
+        "LineNumber":  16,
+        "Line":  "/// Waits for other Vipkey processes to exit, extracts ZIP, replaces files, relaunches."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateSecurity.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Update Security Helpers Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateSecurity.cpp",
+        "LineNumber":  223,
+        "Line":  "        std::wstring checksumPath = std::wstring(tempDir) + L\"vipkey_checksum.sha256\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\system\\UpdateSecurity.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Update Security Helpers"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\about\\about.html",
+        "LineNumber":  30,
+        "Line":  "            \u003cimg class=\"app-logo\" src=\"logo.png\" alt=\"Vipkey Logo\"\u003e"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\about\\about.html",
+        "LineNumber":  49,
+        "Line":  "            \u003cbutton class=\"btn-repo btn-primary\" id=\"btn-vipkey\" data-url=\"https://github.com/wanttolov/Vipkey\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\about\\about.html",
+        "LineNumber":  50,
+        "Line":  "                data-i18n=\"a.repo_vipkey\"\u003eRepo"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\settings\\settings.css",
+        "LineNumber":  1,
+        "Line":  "/* Vipkey Settings — Claude-inspired Warm UI */"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\settings\\settings.html",
+        "LineNumber":  337,
+        "Line":  "                            \u003c!-- 8. Temp disable Vipkey with Alt --\u003e"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\settings\\settings.js",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Settings JavaScript"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\shared\\i18n.js",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Internationalization Helper"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\shared\\strings.js",
+        "LineNumber":  162,
+        "Line":  "        \"a.repo_vipkey\": \"Vipkey Repo\","
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\shared\\theme.css",
+        "LineNumber":  1,
+        "Line":  "/* Vipkey Theme — Claude-inspired Warm Edition */"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\app\\ui\\shared\\utils.js",
+        "LineNumber":  1,
+        "Line":  "// Vipkey Shared JavaScript Utilities"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Debug.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Debug Logging Infrastructure"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Debug.h",
+        "LineNumber":  36,
+        "Line":  "#define NEXTKEY_LOG(fmt, ...) ::NextKey::DebugLog(L\"Vipkey: \" fmt L\"\\n\", ##__VA_ARGS__)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\SmartSwitchManager.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Smart Switch Shared Memory Manager Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\SmartSwitchManager.cpp",
+        "LineNumber":  12,
+        "Line":  "static constexpr const wchar_t* SMART_SWITCH_MEM_NAME = L\"Local\\\\VipkeySmartSwitch\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\SmartSwitchManager.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Smart Switch Shared Memory Manager"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\SmartSwitchManager.h",
+        "LineNumber":  15,
+        "Line":  "/// Uses \"Local\\\\VipkeySmartSwitch\" named shared memory."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\SmartSwitchState.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Smart Switch Shared Memory State"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\SmartSwitchState.h",
+        "LineNumber":  25,
+        "Line":  "/// Named shared memory: \"Local\\\\VipkeySmartSwitch\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Strings.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Localized String Dictionary Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Strings.cpp",
+        "LineNumber":  24,
+        "Line":  "    L\"Giới thiệu Vipkey\",                          // MENU_ABOUT"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Strings.cpp",
+        "LineNumber":  68,
+        "Line":  "    L\"About Vipkey\",                                // MENU_ABOUT"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Strings.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Localized String Dictionary"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\SystemConfig.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - System Configuration"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\UIConfig.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - UI Configuration"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Version Information (Single Source of Truth)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  5,
+        "Line":  "// To change the version, update project(Vipkey VERSION ...) in CMakeLists.txt."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  9,
+        "Line":  "#define VIPKEY_VERSION_MAJOR 1"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  10,
+        "Line":  "#define VIPKEY_VERSION_MINOR 0"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  11,
+        "Line":  "#define VIPKEY_VERSION_PATCH 0"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  12,
+        "Line":  "#define VIPKEY_VERSION_STR   \"1.0.0\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  13,
+        "Line":  "#define VIPKEY_VERSION_WSTR  L\"1.0.0\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  14,
+        "Line":  "#define VIPKEY_VERSION_PACKED ((VIPKEY_VERSION_MAJOR \u003c\u003c 16) | (VIPKEY_VERSION_MINOR \u003c\u003c 8) | VIPKEY_VERSION_PATCH)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h",
+        "LineNumber":  15,
+        "Line":  "#define VIPKEY_VERSION_RC    VIPKEY_VERSION_MAJOR,VIPKEY_VERSION_MINOR,VIPKEY_VERSION_PATCH,0"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Version Information (Single Source of Truth)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  5,
+        "Line":  "// To change the version, update project(Vipkey VERSION ...) in CMakeLists.txt."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  9,
+        "Line":  "#define VIPKEY_VERSION_MAJOR @PROJECT_VERSION_MAJOR@"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  10,
+        "Line":  "#define VIPKEY_VERSION_MINOR @PROJECT_VERSION_MINOR@"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  11,
+        "Line":  "#define VIPKEY_VERSION_PATCH @PROJECT_VERSION_PATCH@"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  12,
+        "Line":  "#define VIPKEY_VERSION_STR   \"@PROJECT_VERSION@\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  13,
+        "Line":  "#define VIPKEY_VERSION_WSTR  L\"@PROJECT_VERSION@\""
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  14,
+        "Line":  "#define VIPKEY_VERSION_PACKED ((VIPKEY_VERSION_MAJOR \u003c\u003c 16) | (VIPKEY_VERSION_MINOR \u003c\u003c 8) | VIPKEY_VERSION_PATCH)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\Version.h.in",
+        "LineNumber":  15,
+        "Line":  "#define VIPKEY_VERSION_RC    VIPKEY_VERSION_MAJOR,VIPKEY_VERSION_MINOR,VIPKEY_VERSION_PATCH,0"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\WinStrings.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Windows UTF-8/Wide String Conversion Utilities"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigEvent.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Config Event Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigEvent.cpp",
+        "LineNumber":  11,
+        "Line":  "static constexpr wchar_t kEventName[] = L\"Local\\\\VipkeyConfigEvent\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigEvent.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Config Event Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Configuration Manager Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.cpp",
+        "LineNumber":  30,
+        "Line":  "        hMutex_ = CreateMutexW(nullptr, FALSE, L\"Local\\\\VipkeyConfigLock\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.cpp",
+        "LineNumber":  217,
+        "Line":  "    // Fallback: %APPDATA%/Vipkey/"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.cpp",
+        "LineNumber":  253,
+        "Line":  "        std::wstring vipkeyDir = appData + L\"\\\\Vipkey\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.cpp",
+        "LineNumber":  256,
+        "Line":  "        CreateDirectoryW(vipkeyDir.c_str(), nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.cpp",
+        "LineNumber":  257,
+        "Line":  "        return vipkeyDir;"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.cpp",
+        "LineNumber":  266,
+        "Line":  "    std::wstring testFile = path + L\"\\\\__vipkey_test_write__.tmp\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\ConfigManager.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Configuration Manager"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\SettingMetadata.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Setting Metadata Table"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\config\\TypingConfig.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Typing Configuration"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\CodeTableConverter.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Code Table Converter Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\CodeTableConverter.cpp",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\CodeTableConverter.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Code Table Converter"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\CodeTableConverter.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EngineFactory.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Input Engine Factory Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EngineFactory.cpp",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EngineFactory.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Input Engine Factory"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EngineFactory.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EngineHelpers.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Shared Engine Helper Functions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EngineHelpers.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EnglishProtection.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - English Protection Module (Header-Only)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\EnglishProtection.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\IInputEngine.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Input Engine Interface"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\IInputEngine.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\SpellChecker.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Vietnamese Spell Checker Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\SpellChecker.cpp",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\SpellChecker.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Vietnamese Spell Checker (Syllable Structure Validation)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\SpellChecker.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\TelexEngine.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Telex Engine Implementation V3 (Optimized Table-Driven)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\TelexEngine.cpp",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\TelexEngine.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Telex Engine Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\TelexEngine.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\VietnameseTables.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Shared Vietnamese Lookup Tables"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\VietnameseTables.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\VniEngine.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - VNI Input Method Engine Implementation (Optimized)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\VniEngine.cpp",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\VniEngine.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - VNI Input Method Engine"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\engine\\VniEngine.h",
+        "LineNumber":  3,
+        "Line":  "// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Vipkey-Commercial"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SecurityHelpers.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Security Helper Utilities"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Shared Constants between EXE and TSF DLL"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  16,
+        "Line":  "constexpr UINT WM_VIPKEY_SET_MODE = WM_USER + 100;      // Settings → Main: set mode (wParam: 1=Vietnamese, 0=English)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  17,
+        "Line":  "constexpr UINT WM_VIPKEY_MODE_CHANGED = WM_USER + 101;  // Main → Settings: mode changed (wParam: 1=Vietnamese, 0=English)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  18,
+        "Line":  "constexpr UINT WM_VIPKEY_OPEN_EXCLUDED = WM_USER + 102;  // Deferred: open excluded apps dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  19,
+        "Line":  "constexpr UINT WM_VIPKEY_OPEN_MACRO = WM_USER + 103;    // Deferred: open macro table dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  20,
+        "Line":  "constexpr UINT WM_VIPKEY_ICON_CHANGED = WM_USER + 104;  // Settings → Main: icon style/color changed, re-read config"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  21,
+        "Line":  "constexpr UINT WM_VIPKEY_CONFIG_CHANGED = WM_USER + 105;  // Main → Settings: config changed from tray menu, re-read TOML"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  22,
+        "Line":  "constexpr UINT WM_VIPKEY_UPDATE_RESULT = WM_USER + 106;    // RESERVED (was: Settings update check result, now unused — synchronous flow)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  23,
+        "Line":  "constexpr UINT WM_VIPKEY_UPDATE_AVAILABLE = WM_USER + 107; // Main: auto-check found update (lParam: UpdateInfo*)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  24,
+        "Line":  "constexpr UINT WM_VIPKEY_TRAY_MODE_SYNC = WM_USER + 108;  // Deferred: sync tray icon V/E mode (wParam: 1=Vietnamese, 0=English)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  25,
+        "Line":  "constexpr UINT WM_VIPKEY_OPEN_TSFAPPS = WM_USER + 109;    // Deferred: open TSF apps dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  26,
+        "Line":  "constexpr UINT WM_VIPKEY_SHOW_SETTINGS = WM_USER + 110;   // Main: show settings dialog (from second instance)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  27,
+        "Line":  "constexpr UINT WM_VIPKEY_OPEN_APPOVERRIDES = WM_USER + 111; // Deferred: open app overrides dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  28,
+        "Line":  "constexpr UINT WM_VIPKEY_OPEN_SPELLEXCL = WM_USER + 112;    // Deferred: open spell exclusions dialog"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedConstants.h",
+        "LineNumber":  29,
+        "Line":  "constexpr UINT WM_VIPKEY_RESTART = WM_USER + 113;           // Settings → Main: restart app (admin mode changed)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedState.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - SharedState Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedStateManager.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - SharedStateManager Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedStateManager.cpp",
+        "LineNumber":  14,
+        "Line":  "static constexpr const wchar_t* SHARED_MEM_NAME = L\"Local\\\\VipkeySharedState\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedStateManager.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - SharedStateManager"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\core\\ipc\\SharedStateManager.h",
+        "LineNumber":  12,
+        "Line":  "/// Creates/opens \"Local\\\\VipkeySharedState\" shared memory region"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\CompositionEditSession.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Composition Edit Sessions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\CompositionManager.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Composition Manager Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\CompositionManager.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Composition Manager"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\ComUtils.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - COM Utility Functions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Define.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Common Definitions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Define.h",
+        "LineNumber":  7,
+        "Line":  "#define VIPKEY_TSF_VERSION_MAJOR 1"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Define.h",
+        "LineNumber":  8,
+        "Line":  "#define VIPKEY_TSF_VERSION_MINOR 0"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Define.h",
+        "LineNumber":  9,
+        "Line":  "#define VIPKEY_TSF_VERSION_PATCH 0"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Define.h",
+        "LineNumber":  16,
+        "Line":  "    _snwprintf_s(prefix, 64, _TRUNCATE, L\"[Vipkey:%u] \", GetCurrentProcessId());"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\DisplayAttribute.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Display Attribute (No Visual Styling)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\DisplayAttribute.h",
+        "LineNumber":  46,
+        "Line":  "        *pbstrDesc = SysAllocString(L\"Vipkey Input\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\dllmain.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF DLL Entry Point"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\EditSession.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Edit Session Helper"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\EngineController.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Engine Controller Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\EngineController.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Engine Controller Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Globals.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Globals Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Globals.cpp",
+        "LineNumber":  18,
+        "Line":  "// Vipkey Text Service CLSID"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Globals.cpp",
+        "LineNumber":  23,
+        "Line":  "// Vipkey Profile GUID (Vietnamese)"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Globals.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Global Definitions"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Globals.h",
+        "LineNumber":  26,
+        "Line":  "constexpr const wchar_t* TEXT_SERVICE_DESCRIPTION = L\"Vipkey Vietnamese IME\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Globals.h",
+        "LineNumber":  31,
+        "Line":  "// Use English keyboard as base - Vipkey handles Vietnamese conversion via Telex"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\InputScopeChecker.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Input Scope Checker for TSF"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\KeyEventSink.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Key Event Sink Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\KeyEventSink.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Key Event Sink Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\LanguageBarButton.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Language Bar Button Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\LanguageBarButton.cpp",
+        "LineNumber":  149,
+        "Line":  "        AppendMenuW(hMenu, MF_STRING, MENU_ID_ABOUT, L\"About Vipkey\");"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\LanguageBarButton.cpp",
+        "LineNumber":  195,
+        "Line":  "    pMenu-\u003eAddMenuItem(MENU_ID_ABOUT, 0, nullptr, nullptr, L\"About Vipkey\", 15, nullptr);"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\LanguageBarButton.cpp",
+        "LineNumber":  223,
+        "Line":  "            exePath += L\"Vipkey.exe\";"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\LanguageBarButton.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Language Bar Button"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\LanguageBarButton.h",
+        "LineNumber":  18,
+        "Line":  "/// TSF Language Bar button — shown in system tray when Vipkey TIP is active."
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\VipkeyTSF.def",
+        "LineNumber":  1,
+        "Line":  "; Vipkey TSF DLL Module Definition File"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\VipkeyTSF.rc",
+        "LineNumber":  1,
+        "Line":  "// Vipkey TSF DLL - Resources"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\VipkeyTSF.rc",
+        "LineNumber":  13,
+        "Line":  "    FILEVERSION    VIPKEY_VERSION_RC"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\VipkeyTSF.rc",
+        "LineNumber":  14,
+        "Line":  "    PRODUCTVERSION VIPKEY_VERSION_RC"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\VipkeyTSF.rc",
+        "LineNumber":  31,
+        "Line":  "            VALUE \"FileVersion\",      VIPKEY_VERSION_STR"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\VipkeyTSF.rc",
+        "LineNumber":  36,
+        "Line":  "            VALUE \"ProductVersion\",   VIPKEY_VERSION_STR"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\Register.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF DLL Registration"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\resource.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey TSF DLL - Resource IDs"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\stdafx.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - TSF Precompiled Header"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\TextService.cpp",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Text Service Implementation"
+    },
+    {
+        "Path":  "C:\\Users\\x99\\Desktop\\Vipkey-Main\\src\\tsf\\TextService.h",
+        "LineNumber":  1,
+        "Line":  "// Vipkey - Text Service Header"
+    }
+]

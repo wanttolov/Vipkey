@@ -1,4 +1,4 @@
-// NexusKey - TSF Apps Dialog Header
+// Vipkey - TSF Apps Dialog Header
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

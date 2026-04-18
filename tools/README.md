@@ -1,16 +1,16 @@
-# NexusKey Tools
+# Vipkey Tools
 
 ## benchmark_ime.ps1
 
-End-to-end IME benchmark. Compares NexusKey vs UniKey (or any IME) by injecting keystrokes into Notepad and measuring latency.
+End-to-end IME benchmark. Compares Vipkey vs UniKey (or any IME) by injecting keystrokes into Notepad and measuring latency.
 
 **Requirements:** Windows PowerShell 5.1+ (built-in). No extra dependencies.
 
 ### Quick Start
 
 ```powershell
-# 1. Switch to NexusKey, run benchmark
-powershell -ExecutionPolicy Bypass -File .\benchmark_ime.ps1 -IME "NexusKey"
+# 1. Switch to Vipkey, run benchmark
+powershell -ExecutionPolicy Bypass -File .\benchmark_ime.ps1 -IME "Vipkey"
 
 # 2. Switch to UniKey, run again
 powershell -ExecutionPolicy Bypass -File .\benchmark_ime.ps1 -IME "UniKey"
@@ -41,7 +41,7 @@ powershell -ExecutionPolicy Bypass -File .\benchmark_ime.ps1 -Compare
 
 ```
 ============================================================
-  Vietnamese Telex - NexusKey
+  Vietnamese Telex - Vipkey
 ============================================================
   Round 1:    45.23 ms  (  34.2 us/key, 132 keys)
   Round 2:    43.87 ms  (  33.2 us/key, 132 keys)
@@ -53,22 +53,22 @@ powershell -ExecutionPolicy Bypass -File .\benchmark_ime.ps1 -Compare
 =================================================================
   IME COMPARISON
 =================================================================
-                          NexusKey         UniKey
+                          Vipkey         UniKey
                       ────────────    ────────────
 Vietnamese (avg/key)       33.7 us         35.2 us
 English (avg/key)          28.1 us         29.5 us
 
-  Vietnamese: NexusKey is 4.3% faster
+  Vietnamese: Vipkey is 4.3% faster
 ```
 
 ## build_lite.ps1 / build_app.ps1
 
-Build & run scripts for the two NexusKey variants.
+Build & run scripts for the two Vipkey variants.
 
 | Script | What it builds | Output |
 |--------|---------------|--------|
-| `build_lite.ps1` | Classic Win32 UI (no Sciter) | `build-lite\Debug\NexusKeyClassic.exe` |
-| `build_app.ps1` | Full Sciter UI | `build\Debug\NexusKey.exe` |
+| `build_lite.ps1` | Classic Win32 UI (no Sciter) | `build-lite\Debug\VipkeyClassic.exe` |
+| `build_app.ps1` | Full Sciter UI | `build\Debug\Vipkey.exe` |
 
 ```powershell
 # Build + run Classic (Lite)

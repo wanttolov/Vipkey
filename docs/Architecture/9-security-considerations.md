@@ -13,13 +13,13 @@ HANDLE hMapFile = CreateFileMapping(
     PAGE_READWRITE,
     0,
     sizeof(SharedState),
-    L"Local\\NexusKeySharedState"  // Local = same session only
+    L"Local\\VipkeySharedState"  // Local = same session only
 );
 ```
 
 ### 9.2 Config File Permissions
 
-- Location: `%APPDATA%\NexusKey\config.toml`
+- Location: `%APPDATA%\Vipkey\config.toml`
 - Permissions: User-only read/write
 - Never store credentials or sensitive data
 
@@ -27,10 +27,10 @@ HANDLE hMapFile = CreateFileMapping(
 
 ```c
 // Use Local\ prefix for session isolation
-L"Local\\NexusKeyConfigReady"
+L"Local\\VipkeyConfigReady"
 
 // Or Global\ with proper DACL for cross-session (admin tools)
-L"Global\\NexusKeyConfigReady"
+L"Global\\VipkeyConfigReady"
 ```
 
 ---

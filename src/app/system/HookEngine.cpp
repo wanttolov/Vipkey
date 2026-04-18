@@ -1,4 +1,4 @@
-// NexusKey - Keyboard Hook Engine Implementation
+// Vipkey - Keyboard Hook Engine Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "HookEngine.h"
@@ -15,7 +15,7 @@
 namespace NextKey {
 
 // ═══════════════════════════════════════════════════════════
-// Debug file logger (writes to NexusKey_hook.log next to EXE)
+// Debug file logger (writes to Vipkey_hook.log next to EXE)
 // ═══════════════════════════════════════════════════════════
 #if defined(_DEBUG) || defined(NEXTKEY_DEBUG)
 static FILE* g_hookLog = nullptr;
@@ -505,7 +505,7 @@ LRESULT CALLBACK HookEngine::LowLevelKeyboardProc(int nCode, WPARAM wParam, LPAR
     // When nCode < 0, Windows tells us to pass the message along — but the event
     // still represents a delivered synthetic that was counted when sent.
     // Without this, synthEventsPending_ leaks on every nCode < 0 delivery.
-    if (self && pKey->dwExtraInfo == NEXUSKEY_EXTRA_INFO) {
+    if (self && pKey->dwExtraInfo == VIPKEY_EXTRA_INFO) {
         HOOK_LOG(L"  PASSTHRU (dwExtraInfo=NK): vk=0x%02X scan=0x%04X flags=0x%08X nCode=%d",
                  pKey->vkCode, pKey->scanCode, pKey->flags, nCode);
         if (self->synthEventsPending_ > 0) --self->synthEventsPending_;
@@ -1411,7 +1411,7 @@ static void AppendUnicodeEvent(std::vector<INPUT>& events, WORD wScan) {
     inDown.type = INPUT_KEYBOARD;
     inDown.ki.wScan = wScan;
     inDown.ki.dwFlags = KEYEVENTF_UNICODE;
-    inDown.ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inDown.ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     events.push_back(inDown);
 
     INPUT inUp = inDown;
@@ -1424,7 +1424,7 @@ static void AppendVkEvent(std::vector<INPUT>& events, WORD wVk, WORD wScan) {
     inDown.type = INPUT_KEYBOARD;
     inDown.ki.wVk = wVk;
     inDown.ki.wScan = wScan;
-    inDown.ki.dwExtraInfo = HookEngine::NEXUSKEY_EXTRA_INFO;
+    inDown.ki.dwExtraInfo = HookEngine::VIPKEY_EXTRA_INFO;
     events.push_back(inDown);
 
     INPUT inUp = inDown;
@@ -1499,13 +1499,13 @@ void HookEngine::ClipboardPaste(const std::wstring& text) {
         return;
     }
 
-    // Simulate Ctrl+V — hook proc passes these through (NEXUSKEY_EXTRA_INFO marker)
+    // Simulate Ctrl+V — hook proc passes these through (VIPKEY_EXTRA_INFO marker)
     WORD ctrlScan = static_cast<WORD>(MapVirtualKeyW(VK_CONTROL, MAPVK_VK_TO_VSC));
     WORD vScan = static_cast<WORD>(MapVirtualKeyW('V', MAPVK_VK_TO_VSC));
     INPUT inputs[4] = {};
     for (auto& in : inputs) {
         in.type = INPUT_KEYBOARD;
-        in.ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+        in.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
     }
     inputs[0].ki.wVk = VK_CONTROL;  inputs[0].ki.wScan = ctrlScan;
     inputs[1].ki.wVk = 'V';         inputs[1].ki.wScan = vScan;
@@ -1655,7 +1655,7 @@ bool HookEngine::IsTrayOrTaskbarWindow(HWND hwnd) noexcept {
            _wcsicmp(cls, L"MSTaskSwWClass") == 0 ||            // taskbar app buttons
            _wcsicmp(cls, L"Start") == 0 ||                     // Start button
            _wcsicmp(cls, L"Windows.UI.Core.CoreWindow") == 0 || // Start Menu / Action Center (Win 10/11)
-           _wcsicmp(cls, L"VipkeyTrayClass") == 0;           // NexusKey own tray window
+           _wcsicmp(cls, L"VipkeyTrayClass") == 0;           // Vipkey own tray window
            // Note: SetForegroundWindow(hwndMessage_) in ShowContextMenu fires
            // EVENT_SYSTEM_FOREGROUND synchronously, but WinEventProc is WINEVENT_OUTOFCONTEXT
            // so it's delivered asynchronously — this filter still catches it correctly.
@@ -1898,7 +1898,7 @@ void HookEngine::OnFocusChanged(HWND triggerHwnd) {
     HWND activeHwnd = triggerHwnd ? triggerHwnd : fg;
 
     // Skip ALL app tracking for hidden and tray/taskbar windows.
-    // Hidden windows = tray message windows owned by apps (NexusKey, IDM, Discord, etc.)
+    // Hidden windows = tray message windows owned by apps (Vipkey, IDM, Discord, etc.)
     // These are not typing targets and must not update currentExe_ or the SmartSwitch map.
     // Without this guard, right-clicking any app's tray icon would set currentExe_ to that
     // app's process, then the next real focus change would SAVE the wrong mode for that app.
@@ -2257,13 +2257,13 @@ void HookEngine::ReplaceComposition(const std::wstring& newText, DWORD reinjectV
                 down.type = INPUT_KEYBOARD;
                 down.ki.wScan = ch;
                 down.ki.dwFlags = KEYEVENTF_UNICODE;
-                down.ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+                down.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
                 INPUT& up = buf[count++];
                 up = {};
                 up.type = INPUT_KEYBOARD;
                 up.ki.wScan = ch;
                 up.ki.dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP;
-                up.ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+                up.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
             };
 
             auto appendVk = [](INPUT* buf, size_t& count, WORD vk, WORD scan) {
@@ -2273,14 +2273,14 @@ void HookEngine::ReplaceComposition(const std::wstring& newText, DWORD reinjectV
                 down.type = INPUT_KEYBOARD;
                 down.ki.wVk = vk;
                 down.ki.wScan = scan;
-                down.ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+                down.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
                 INPUT& up = buf[count++];
                 up = {};
                 up.type = INPUT_KEYBOARD;
                 up.ki.wVk = vk;
                 up.ki.wScan = scan;
                 up.ki.dwFlags = KEYEVENTF_KEYUP;
-                up.ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+                up.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
             };
 
             // Re-inject VK keydown FIRST in the batch (game compatibility).
@@ -2292,7 +2292,7 @@ void HookEngine::ReplaceComposition(const std::wstring& newText, DWORD reinjectV
                 evt.type = INPUT_KEYBOARD;
                 evt.ki.wVk = static_cast<WORD>(reinjectVk);
                 evt.ki.wScan = static_cast<WORD>(MapVirtualKeyW(reinjectVk, MAPVK_VK_TO_VSC));
-                evt.ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+                evt.ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
             }
 
             if (backspaceCount > 0) {
@@ -2447,12 +2447,12 @@ void HookEngine::InjectKey(DWORD vkCode) {
     inputs[0].type = INPUT_KEYBOARD;
     inputs[0].ki.wVk = static_cast<WORD>(vkCode);
     inputs[0].ki.wScan = scan;
-    inputs[0].ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+    inputs[0].ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
     inputs[1].type = INPUT_KEYBOARD;
     inputs[1].ki.wVk = static_cast<WORD>(vkCode);
     inputs[1].ki.wScan = scan;
     inputs[1].ki.dwFlags = KEYEVENTF_KEYUP;
-    inputs[1].ki.dwExtraInfo = NEXUSKEY_EXTRA_INFO;
+    inputs[1].ki.dwExtraInfo = VIPKEY_EXTRA_INFO;
     sending_ = true;
     TrackedSendInput(inputs, _countof(inputs));
     sending_ = false;

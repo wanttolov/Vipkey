@@ -1,4 +1,4 @@
-// NexusKey - Self-Update Installer
+// Vipkey - Self-Update Installer
 // SPDX-License-Identifier: GPL-3.0-only
 //
 // Handles the --install-update CLI mode: waits for processes to exit,
@@ -13,7 +13,7 @@
 namespace NextKey {
 
 /// Run the self-update installer mode.
-/// Waits for other NexusKey processes to exit, extracts ZIP, replaces files, relaunches.
+/// Waits for other Vipkey processes to exit, extracts ZIP, replaces files, relaunches.
 /// Called from --install-update CLI route. Never returns.
 [[noreturn]] void RunUpdateInstaller(const std::wstring& zipPath);
 

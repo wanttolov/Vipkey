@@ -2,7 +2,7 @@
 type: bmad-distillate
 sources:
   - "pre-tone-stop-final-check.md"
-downstream_consumer: "NexusKey engine development — stop-final tone blocking rules, test cases, implementation details"
+downstream_consumer: "Vipkey engine development — stop-final tone blocking rules, test cases, implementation details"
 created: "2026-04-01"
 token_estimate: 1800
 parts: 1

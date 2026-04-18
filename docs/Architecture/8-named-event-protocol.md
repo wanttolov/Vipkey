@@ -3,7 +3,7 @@
 ### 8.1 Event Name
 
 ```
-Global\NexusKeyConfigReady
+Global\VipkeyConfigReady
 ```
 
 ### 8.2 Event Semantics
@@ -21,7 +21,7 @@ void config_watcher_thread(Engine* engine) {
     HANDLE event = OpenEvent(
         SYNCHRONIZE,
         FALSE,
-        L"Global\\NexusKeyConfigReady"
+        L"Global\\VipkeyConfigReady"
     );
 
     while (engine->running) {

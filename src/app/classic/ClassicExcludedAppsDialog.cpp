@@ -1,4 +1,4 @@
-// NexusKey Classic — Excluded Apps Dialog Implementation
+// Vipkey Classic — Excluded Apps Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "ClassicExcludedAppsDialog.h"
@@ -179,9 +179,9 @@ void ClassicExcludedAppsDialog::AddApp(const std::wstring& name) {
 
     std::wstring lower = ToLowerAscii(name);
 
-    // Block NexusKey itself
+    // Block Vipkey itself
     if (lower == L"vipkey.exe" || lower == L"vipkeylite.exe") {
-        MessageBoxW(hwnd_, L"Không thể thêm NexusKey vào danh sách loại trừ.",
+        MessageBoxW(hwnd_, L"Không thể thêm Vipkey vào danh sách loại trừ.",
             L"Lỗi", MB_ICONWARNING);
         return;
     }
@@ -259,7 +259,7 @@ void ClassicExcludedAppsDialog::ExportToFile() {
         return;
     }
 
-    file << ";NexusKey Excluded Apps\n";
+    file << ";Vipkey Excluded Apps\n";
     auto sorted = appList_;
     std::sort(sorted.begin(), sorted.end());
     for (auto& app : sorted) {

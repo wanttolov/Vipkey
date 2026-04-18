@@ -1,4 +1,4 @@
-// NexusKey - Excluded Apps Dialog Implementation
+// Vipkey - Excluded Apps Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "ExcludedAppsDialog.h"
@@ -15,7 +15,7 @@ using namespace sciter::dom;
 
 // TODO: Add to i18n string table
 static constexpr const wchar_t* MSG_CANNOT_EXCLUDE_SELF =
-    L"Không thể thêm NexusKey vào danh sách loại trừ.";
+    L"Không thể thêm Vipkey vào danh sách loại trừ.";
 
 namespace NextKey {
 
@@ -193,7 +193,7 @@ void ExcludedAppsDialog::exportApps() {
     std::ofstream outfile(path);
     if (!outfile.is_open()) return;
 
-    outfile << ";NexusKey Excluded Apps\n";
+    outfile << ";Vipkey Excluded Apps\n";
 
     std::vector<std::wstring> sorted = appList_;
     std::sort(sorted.begin(), sorted.end());

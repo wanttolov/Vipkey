@@ -1,4 +1,4 @@
-// NexusKey - App-Layer Helper Functions
+// Vipkey - App-Layer Helper Functions
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

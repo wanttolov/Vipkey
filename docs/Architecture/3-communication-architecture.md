@@ -24,7 +24,7 @@
 ### 3.3 TOML Config Structure
 
 ```toml
-# ~/.nexuskey/config.toml
+# ~/.vipkey/config.toml
 
 [input]
 method = "telex"          # telex, vni, viqr

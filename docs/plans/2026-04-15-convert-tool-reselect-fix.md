@@ -1,6 +1,6 @@
 # Fix: Convert Tool Re-select + Sequential Recovery
 
-**Issue:** [#85](https://github.com/phatMT97/NexusKey/issues/85)  
+**Issue:** [#85](https://github.com/phatMT97/Vipkey/issues/85)  
 **Date:** 2026-04-15
 
 ## Problem

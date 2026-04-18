@@ -1,4 +1,4 @@
-// NexusKey TSF DLL - Resource IDs
+// Vipkey TSF DLL - Resource IDs
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

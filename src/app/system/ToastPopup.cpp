@@ -1,4 +1,4 @@
-// NexusKey - Lightweight Toast Notification Implementation
+// Vipkey - Lightweight Toast Notification Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "ToastPopup.h"

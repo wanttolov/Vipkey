@@ -1,4 +1,4 @@
-// NexusKey Classic — Excluded Apps Dialog
+// Vipkey Classic — Excluded Apps Dialog
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

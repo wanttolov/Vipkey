@@ -1,4 +1,4 @@
-// NexusKey - Self-Update Installer Implementation
+// Vipkey - Self-Update Installer Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "UpdateInstaller.h"
@@ -138,7 +138,7 @@ bool CopyDirectoryContents(const std::wstring& srcDir, const std::wstring& destD
     std::wstring currentExePath = GetExePath();
     std::wstring tempDir = exeDir + L"\\_update_temp";
 
-    // 1. Wait for all other NexusKey.exe processes to exit (30s timeout)
+    // 1. Wait for all other Vipkey.exe processes to exit (30s timeout)
     WaitForOtherProcesses(30000);
 
     // 2. Move ALL .exe and .dll files to _old_version/ folder

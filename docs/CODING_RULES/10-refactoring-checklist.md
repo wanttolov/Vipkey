@@ -8,7 +8,7 @@ These have been broken before by well-intentioned changes.
 - [ ] `CreateMutexW` uses **`nullptr`** for security attributes (not `MakeCreatorOnlySecurityAttributes`)
 - [ ] CO (Creator Owner) SID does NOT resolve for non-container objects (mutex, event, file mapping) — using it causes `ERROR_ACCESS_DENIED` instead of `ERROR_ALREADY_EXISTS`
 - [ ] Test: launch EXE twice rapidly — second instance must exit silently (or show existing Settings)
-- [ ] Mutex name matches between builds: `Local\NexusKey_Main_Mutex` / `Local\NexusKeyLite_Main_Mutex`
+- [ ] Mutex name matches between builds: `Local\Vipkey_Main_Mutex` / `Local\VipkeyLite_Main_Mutex`
 
 ## 10.2 Subprocess Lifecycle
 
@@ -20,8 +20,8 @@ These have been broken before by well-intentioned changes.
 
 ## 10.3 DPI Awareness
 
-- [ ] `NexusKey.exe.manifest` exists with `PerMonitorV2` DPI awareness
-- [ ] `NexusKeyLite.exe.manifest` exists with `PerMonitorV2` DPI awareness
+- [ ] `Vipkey.exe.manifest` exists with `PerMonitorV2` DPI awareness
+- [ ] `VipkeyLite.exe.manifest` exists with `PerMonitorV2` DPI awareness
 - [ ] Both manifests include Common Controls v6 dependency
 - [ ] No duplicate manifest sources (don't mix `.manifest` file with `#pragma comment(linker, "/manifestdependency:...")`)
 - [ ] Test: right-click tray icon at 125%/150% — menu text must be crisp, not blurry

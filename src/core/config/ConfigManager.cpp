@@ -1,4 +1,4 @@
-// NexusKey - Configuration Manager Implementation
+// Vipkey - Configuration Manager Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "ConfigManager.h"
@@ -27,7 +27,7 @@ namespace {
 class ConfigFileLock {
 public:
     ConfigFileLock() noexcept {
-        hMutex_ = CreateMutexW(nullptr, FALSE, L"Local\\NexusKeyConfigLock");
+        hMutex_ = CreateMutexW(nullptr, FALSE, L"Local\\VipkeyConfigLock");
         if (hMutex_) {
             DWORD result = WaitForSingleObject(hMutex_, 5000);
             // WAIT_OBJECT_0: acquired normally
@@ -214,7 +214,7 @@ std::wstring ConfigManager::GetConfigPath() {
         return exeDir + L"\\config.toml";
     }
     
-    // Fallback: %APPDATA%/NexusKey/
+    // Fallback: %APPDATA%/Vipkey/
     std::wstring appDataDir = GetAppDataDirectory();
     return appDataDir + L"\\config.toml";
 }
@@ -250,11 +250,11 @@ std::wstring ConfigManager::GetAppDataDirectory() {
     wchar_t path[MAX_PATH] = {0};
     if (SUCCEEDED(SHGetFolderPathW(nullptr, CSIDL_APPDATA, nullptr, 0, path))) {
         std::wstring appData(path);
-        std::wstring nexusKeyDir = appData + L"\\NexusKey";
+        std::wstring vipkeyDir = appData + L"\\Vipkey";
         
         // Create directory if it doesn't exist
-        CreateDirectoryW(nexusKeyDir.c_str(), nullptr);
-        return nexusKeyDir;
+        CreateDirectoryW(vipkeyDir.c_str(), nullptr);
+        return vipkeyDir;
     }
 #endif
     return L".";

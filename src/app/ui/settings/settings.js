@@ -1,4 +1,4 @@
-// NexusKey Settings JavaScript
+// Vipkey Settings JavaScript
 // Handles div-based toggles with hidden inputs for VALUE_CHANGED events
 
 document.on("ready", function () {

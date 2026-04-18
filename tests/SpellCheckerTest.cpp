@@ -1,4 +1,4 @@
-// NexusKey - SpellChecker Unit Tests
+// Vipkey - SpellChecker Unit Tests
 // SPDX-License-Identifier: GPL-3.0-only
 //
 // Tests: Direct validator tests + engine integration tests

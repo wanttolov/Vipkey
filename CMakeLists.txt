@@ -99,19 +99,19 @@ add_library(NextKeyTSF SHARED
     src/tsf/ComUtils.h
     src/tsf/Define.h
     src/tsf/resource.h
-    src/tsf/NexusKeyTSF.rc
-    src/tsf/NexusKeyTSF.def
+    src/tsf/VipkeyTSF.rc
+    src/tsf/VipkeyTSF.def
 )
 target_link_libraries(NextKeyTSF PRIVATE NextKeyCore)
 set_target_properties(NextKeyTSF PROPERTIES 
-    LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_SOURCE_DIR}/src/tsf/NexusKeyTSF.def\""
+    LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_SOURCE_DIR}/src/tsf/VipkeyTSF.def\""
 )
 
 # Core App (EXE) - Win32 GUI application with Sciter UI
 add_executable(NextKeyApp WIN32
     src/app/main.cpp
     src/app/resource.h
-    src/app/NexusKey.rc
+    src/app/Vipkey.rc
     # dialogs/
     src/app/dialogs/SciterSubDialog.h
     src/app/dialogs/SciterSubDialog.cpp
@@ -171,7 +171,7 @@ add_executable(NextKeyApp WIN32
     # other
     src/core/Version.h
     extern/sciter/include/sciter-main.cpp
-    src/app/NexusKey.exe.manifest
+    src/app/Vipkey.exe.manifest
 )
 target_include_directories(NextKeyApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/extern/sciter/include
@@ -180,7 +180,7 @@ target_include_directories(NextKeyApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/app/system
     ${CMAKE_CURRENT_SOURCE_DIR}/src/app/sciter
 )
-target_compile_definitions(NextKeyApp PRIVATE SKIP_MAIN NEXUSKEY_HOOK_ENGINE $<$<CONFIG:Debug>:NEXTKEY_DEBUG>)
+target_compile_definitions(NextKeyApp PRIVATE SKIP_MAIN VIPKEY_HOOK_ENGINE $<$<CONFIG:Debug>:NEXTKEY_DEBUG>)
 target_link_libraries(NextKeyApp PRIVATE NextKeyCore)
 set_target_properties(NextKeyApp PROPERTIES OUTPUT_NAME "Vipkey")
 if(MSVC)
@@ -189,16 +189,16 @@ endif()
 
 # ============================================================================
 # Classic UI (Lite build) — Win32 native, no Sciter dependency
-# Build with: cmake -B build -DNEXUSKEY_LITE_MODE=ON
+# Build with: cmake -B build -DVIPKEY_LITE_MODE=ON
 # ============================================================================
-option(NEXUSKEY_LITE_MODE "Build Classic (Win32 native) UI instead of Sciter" OFF)
+option(VIPKEY_LITE_MODE "Build Classic (Win32 native) UI instead of Sciter" OFF)
 
-if(NEXUSKEY_LITE_MODE AND WIN32)
+if(VIPKEY_LITE_MODE AND WIN32)
     add_executable(NextKeyLite WIN32
         src/app/main_lite.cpp
         src/app/classic/resource.h
-        src/app/classic/NexusKeyLite.rc
-        src/app/classic/NexusKeyLite.exe.manifest
+        src/app/classic/VipkeyLite.rc
+        src/app/classic/VipkeyLite.exe.manifest
         # system/ (shared with main app)
         src/app/system/TrayIcon.h
         src/app/system/TrayIcon.cpp
@@ -252,8 +252,8 @@ if(NEXUSKEY_LITE_MODE AND WIN32)
         ${CMAKE_CURRENT_SOURCE_DIR}/src/app/system
     )
     target_compile_definitions(NextKeyLite PRIVATE
-        NEXUSKEY_HOOK_ENGINE
-        NEXUSKEY_LITE_MODE
+        VIPKEY_HOOK_ENGINE
+        VIPKEY_LITE_MODE
         $<$<CONFIG:Debug>:NEXTKEY_DEBUG>
     )
     target_link_libraries(NextKeyLite PRIVATE

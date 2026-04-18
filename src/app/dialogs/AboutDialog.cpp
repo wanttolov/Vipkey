@@ -1,4 +1,4 @@
-// NexusKey - About Dialog Implementation
+// Vipkey - About Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "AboutDialog.h"

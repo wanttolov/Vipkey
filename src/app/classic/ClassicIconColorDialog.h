@@ -1,4 +1,4 @@
-// NexusKey Classic — Icon Color Customization Dialog
+// Vipkey Classic — Icon Color Customization Dialog
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

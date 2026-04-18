@@ -1,4 +1,4 @@
-// NexusKey Classic — Settings Dialog Implementation
+// Vipkey Classic — Settings Dialog Implementation
 // Compact (Unikey-style) + Advanced (EVKey-style) modes
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -58,7 +58,7 @@ bool ClassicSettingsDialog::Show(HINSTANCE hInstance, HWND parent) {
     hwnd_ = CreateWindowExW(
         0,
         kClassName,
-        L"Vipkey v" NEXUSKEY_VERSION_WSTR,
+        L"Vipkey v" VIPKEY_VERSION_WSTR,
         style,
         CW_USEDEFAULT, CW_USEDEFAULT, 400, 300,  // temporary size
         parent, nullptr, hInstance, this
@@ -810,7 +810,7 @@ void ClassicSettingsDialog::OnCommand(WPARAM wParam, LPARAM lParam) {
                     KillTimer(hwnd_, kTimerDeferredSave);
                     SaveToToml();
                     HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
-                    if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
+                    if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);
                     return;
                 }
 
@@ -958,7 +958,7 @@ void ClassicSettingsDialog::OnSystemToggle(const wchar_t* id, bool value) {
         // Startup registration handled by EnsureStartupRegistration() in new instance.
         HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
         if (trayWnd) {
-            PostMessageW(trayWnd, WM_NEXUSKEY_RESTART, 0, 0);
+            PostMessageW(trayWnd, WM_VIPKEY_RESTART, 0, 0);
         }
     }
     else if (wcscmp(id, L"desktop-shortcut") == 0) {
@@ -972,14 +972,14 @@ void ClassicSettingsDialog::OnSystemToggle(const wchar_t* id, bool value) {
         KillTimer(hwnd_, kTimerDeferredSave);
         SaveToToml();
         HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
-        if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
+        if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);
     }
     else if (wcscmp(id, L"floating-icon") == 0) {
         // Flush TOML + notify main thread to show/hide floating icon immediately
         KillTimer(hwnd_, kTimerDeferredSave);
         SaveToToml();
         HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
-        if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
+        if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);
     }
     else if (wcscmp(id, L"force-light-theme") == 0) {
         // Re-init theme with new setting, repaint entire window
@@ -1014,7 +1014,7 @@ void ClassicSettingsDialog::OnPickIconColors() {
         KillTimer(hwnd_, kTimerDeferredSave);
         SaveToToml();
         HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
-        if (trayWnd) PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
+        if (trayWnd) PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);
     }
 }
 
@@ -1266,7 +1266,7 @@ LRESULT CALLBACK ClassicSettingsDialog::WndProc(HWND hwnd, UINT msg, WPARAM wPar
             self->OnCommand(wParam, lParam);
             return 0;
 
-        case WM_NEXUSKEY_CONFIG_CHANGED:
+        case WM_VIPKEY_CONFIG_CHANGED:
             self->LoadSettings();
             self->PopulateControls();
             return 0;

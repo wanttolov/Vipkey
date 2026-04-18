@@ -1,4 +1,4 @@
-// NexusKey - Core Application Entry Point
+// Vipkey - Core Application Entry Point
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "system/TrayIcon.h"
@@ -19,7 +19,7 @@
 #include "system/TsfRegistration.h"
 #include "system/StartupHelper.h"
 
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
 #include "system/HookEngine.h"
 #include "system/QuickConvert.h"
 #include "core/ipc/SharedStateManager.h"
@@ -39,7 +39,7 @@
 #pragma comment(lib, "ole32.lib")
 #pragma comment(lib, "winmm.lib")
 
-// Common Controls v6 is declared in NexusKey.exe.manifest (DPI awareness + CC v6)
+// Common Controls v6 is declared in Vipkey.exe.manifest (DPI awareness + CC v6)
 
 using namespace NextKey;
 
@@ -52,7 +52,7 @@ static TrayIcon g_trayIcon;
 static FloatingIcon g_floatingIcon;
 static HINSTANCE g_hInstance = nullptr;
 
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
 static HookEngine g_hookEngine;
 static std::unique_ptr<QuickConvert> g_quickConvert;
 static SharedStateManager g_sharedState;  // Shared memory for Settings subprocess IPC
@@ -71,11 +71,11 @@ static HWND GetSettingsHwnd() noexcept {
 }
 static void NotifySettingsMode(bool vietnamese) noexcept {
     if (HWND h = GetSettingsHwnd()) {
-        PostMessageW(h, WM_NEXUSKEY_MODE_CHANGED, vietnamese ? 1 : 0, 0);
+        PostMessageW(h, WM_VIPKEY_MODE_CHANGED, vietnamese ? 1 : 0, 0);
     }
 }
 
-#ifndef NEXUSKEY_HOOK_ENGINE
+#ifndef VIPKEY_HOOK_ENGINE
 // V/E icon sync: 250ms poll of SharedState flags (atomic read, no IPC)
 static constexpr UINT_PTR TIMER_ID_ICON_POLL = 100;
 
@@ -236,13 +236,13 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
         }
     }
 
-    // Ensure only one background instance of NexusKey runs at a time.
+    // Ensure only one background instance of Vipkey runs at a time.
     // We check this AFTER subprocess routing so settings/macro dialogs
     // can spawn freely, but a second background process cannot.
     // NOTE: Use default DACL (nullptr). MakeCreatorOnlySecurityAttributes() uses
     // CO (Creator Owner) SID which does NOT resolve for non-container objects like
     // mutexes — second instance gets ERROR_ACCESS_DENIED instead of ERROR_ALREADY_EXISTS.
-    HANDLE hMutex = CreateMutexW(nullptr, TRUE, L"Local\\NexusKey_Main_Mutex");
+    HANDLE hMutex = CreateMutexW(nullptr, TRUE, L"Local\\Vipkey_Main_Mutex");
     if (GetLastError() == ERROR_ALREADY_EXISTS) {
         // Another background instance is already running.
         // If the user has "show on startup" configured, popup the settings dialog of the 
@@ -251,7 +251,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
         if (sysConfig.showOnStartup) {
             HWND existingTrayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
             if (existingTrayWnd) {
-                PostMessageW(existingTrayWnd, WM_NEXUSKEY_SHOW_SETTINGS, 0, 0);
+                PostMessageW(existingTrayWnd, WM_VIPKEY_SHOW_SETTINGS, 0, 0);
                 
                 HWND existingSettings = GetSettingsHwnd();
                 if (existingSettings) {
@@ -305,7 +305,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
         }
     }
 
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
     // ═══════════════════════════════════════════════════════════
     // Hook Engine Mode — single process, no DLL/COM needed
     // ═══════════════════════════════════════════════════════════
@@ -345,7 +345,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
         WPARAM wp = vietnamese ? 1 : 0;
         HWND trayWnd = g_trayIcon.GetMessageWindow();
         if (trayWnd) {
-            PostMessageW(trayWnd, WM_NEXUSKEY_TRAY_MODE_SYNC, wp, 0);
+            PostMessageW(trayWnd, WM_VIPKEY_TRAY_MODE_SYNC, wp, 0);
         }
         // Floating icon: direct update (same thread, no PostMessage needed)
         g_floatingIcon.SetVietnameseMode(vietnamese);
@@ -454,7 +454,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
                     if (pInfo) {
                         // WndProc returns true (1) on success and takes ownership of pInfo.
                         // If window was destroyed, SendMessageW returns 0 — we still own pInfo.
-                        if (!SendMessageW(trayWnd, WM_NEXUSKEY_UPDATE_AVAILABLE, 0,
+                        if (!SendMessageW(trayWnd, WM_VIPKEY_UPDATE_AVAILABLE, 0,
                                           reinterpret_cast<LPARAM>(pInfo))) {
                             delete pInfo;
                         }
@@ -612,7 +612,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR lpCmdLine, int) {
                     if (pInfo) {
                         // WndProc returns true (1) on success and takes ownership of pInfo.
                         // If window was destroyed, SendMessageW returns 0 — we still own pInfo.
-                        if (!SendMessageW(trayWnd, WM_NEXUSKEY_UPDATE_AVAILABLE, 0,
+                        if (!SendMessageW(trayWnd, WM_VIPKEY_UPDATE_AVAILABLE, 0,
                                           reinterpret_cast<LPARAM>(pInfo))) {
                             delete pInfo;
                         }
@@ -681,7 +681,7 @@ static void ApplyConfigChange(const TypingConfig& config) {
 
     // 4. Notify Settings dialog (if open) to refresh UI
     if (HWND settingsWnd = GetSettingsHwnd()) {
-        PostMessageW(settingsWnd, WM_NEXUSKEY_CONFIG_CHANGED, 0, 0);
+        PostMessageW(settingsWnd, WM_VIPKEY_CONFIG_CHANGED, 0, 0);
     }
 }
 
@@ -696,7 +696,7 @@ void OnMenuCommand(TrayMenuId id) {
             break;
 
         case TrayMenuId::ToggleMode:
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
             g_hookEngine.ToggleVietnameseMode();
 #else
             g_sharedState.ToggleFlag(SharedFlags::VIETNAMESE_MODE);
@@ -734,7 +734,7 @@ void OnMenuCommand(TrayMenuId id) {
             SpawnSubprocess(L"Vipkey - Convert Tool", L"--convert");
             break;
 
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
         case TrayMenuId::QuickConvert:
             if (g_quickConvert) {
                 g_quickConvert->Execute();
@@ -764,7 +764,7 @@ void OnMenuCommand(TrayMenuId id) {
             if (rawId >= static_cast<UINT>(TrayMenuId::CodeTableUnicode) &&
                 rawId <= static_cast<UINT>(TrayMenuId::CodeTableCP1258)) {
                 auto ct = static_cast<CodeTable>(rawId - static_cast<UINT>(TrayMenuId::CodeTableUnicode));
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
                 g_hookEngine.SetCodeTable(ct);
 #endif
                 // Update SharedState immediately (source of truth at runtime)
@@ -783,7 +783,7 @@ void OnMenuCommand(TrayMenuId id) {
 
                 // Notify Settings dialog to refresh UI
                 if (HWND settingsWnd = GetSettingsHwnd()) {
-                    PostMessageW(settingsWnd, WM_NEXUSKEY_CONFIG_CHANGED, 0, 0);
+                    PostMessageW(settingsWnd, WM_VIPKEY_CONFIG_CHANGED, 0, 0);
                 }
                 NEXTKEY_LOG(L"Code table changed via tray menu: %d", static_cast<int>(ct));
             }
@@ -797,7 +797,7 @@ void SpawnSettingsSubprocess() {
     HWND existing = GetSettingsHwnd();
     if (existing) {
         SetForegroundWindow(existing);
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
         NotifySettingsMode(g_hookEngine.IsVietnameseMode());
 #endif
         return;
@@ -809,7 +809,7 @@ void SpawnSettingsSubprocess() {
 
     // Build command line (pass current V/E mode to subprocess)
     wchar_t cmdLine[MAX_PATH + 64];
-#ifdef NEXUSKEY_HOOK_ENGINE
+#ifdef VIPKEY_HOOK_ENGINE
     int mode = g_hookEngine.IsVietnameseMode() ? 1 : 0;
 #else
     int mode = (g_sharedState.ReadFlags() & SharedFlags::VIETNAMESE_MODE) ? 1 : 0;

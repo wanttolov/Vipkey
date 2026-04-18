@@ -1,4 +1,4 @@
-// NexusKey - Floating V/E Icon Overlay Implementation
+// Vipkey - Floating V/E Icon Overlay Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 //
 // Pure GDI + direct pixel math — no GDI+ dependency.

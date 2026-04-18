@@ -1,4 +1,4 @@
-// NexusKey - System Tray Icon
+// Vipkey - System Tray Icon
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once
@@ -89,7 +89,7 @@ public:
     /// Set getter to query current state when right-click menu opens
     void SetMenuStateGetter(MenuStateGetter getter) noexcept { menuStateGetter_ = std::move(getter); }
 
-    /// Set callback when system config changes (WM_NEXUSKEY_ICON_CHANGED)
+    /// Set callback when system config changes (WM_VIPKEY_ICON_CHANGED)
     void SetIconConfigChangedCallback(std::function<void()> callback) noexcept { iconConfigChangedCallback_ = std::move(callback); }
 
     /// Process window messages (call from WndProc)

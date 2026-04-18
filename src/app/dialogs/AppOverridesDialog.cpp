@@ -1,4 +1,4 @@
-// NexusKey - App Overrides Dialog Implementation
+// Vipkey - App Overrides Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "AppOverridesDialog.h"

@@ -1,4 +1,4 @@
-// NexusKey - App Overrides Dialog Header
+// Vipkey - App Overrides Dialog Header
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

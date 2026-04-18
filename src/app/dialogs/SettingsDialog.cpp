@@ -1,4 +1,4 @@
-// NexusKey - Settings Dialog Implementation
+// Vipkey - Settings Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "SettingsDialog.h"
@@ -275,7 +275,7 @@ LRESULT CALLBACK SettingsDialog::SubclassProc(
     // Handle V/E mode change notification from main process.
     // Coalesce rapid messages: update the flag immediately but defer the
     // DOM update so N rapid tray clicks produce one toggle repaint, not N.
-    if (msg == WM_NEXUSKEY_MODE_CHANGED) {
+    if (msg == WM_VIPKEY_MODE_CHANGED) {
         if (s_instance) {
             s_instance->vietnameseMode_ = (wParam != 0);
             if (!s_instance->modeSyncPending_) {
@@ -300,7 +300,7 @@ LRESULT CALLBACK SettingsDialog::SubclassProc(
     }
 
     // Handle config changed from tray menu — reload TOML and refresh UI
-    if (msg == WM_NEXUSKEY_CONFIG_CHANGED) {
+    if (msg == WM_VIPKEY_CONFIG_CHANGED) {
         if (s_instance) {
             s_instance->loadSettings();
             s_instance->initializeUI();
@@ -329,27 +329,27 @@ LRESULT CALLBACK SettingsDialog::SubclassProc(
     // Deferred: open excluded apps dialog as subprocess
     // (must be a separate process — Sciter SOM assertion fires if a sciter::window
     //  is destroyed while the Sciter runtime is still active in this process)
-    if (msg == WM_NEXUSKEY_OPEN_EXCLUDED) {
+    if (msg == WM_VIPKEY_OPEN_EXCLUDED) {
         SpawnSubprocess(L"Vipkey - Excluded Apps", L"--excludedapps");
         return 0;
     }
 
-    if (msg == WM_NEXUSKEY_OPEN_TSFAPPS) {
+    if (msg == WM_VIPKEY_OPEN_TSFAPPS) {
         SpawnSubprocess(L"Vipkey - TSF Apps", L"--tsfapps");
         return 0;
     }
 
-    if (msg == WM_NEXUSKEY_OPEN_MACRO) {
+    if (msg == WM_VIPKEY_OPEN_MACRO) {
         SpawnSubprocess(L"Vipkey - Macro Table", L"--macro");
         return 0;
     }
 
-    if (msg == WM_NEXUSKEY_OPEN_APPOVERRIDES) {
+    if (msg == WM_VIPKEY_OPEN_APPOVERRIDES) {
         SpawnSubprocess(L"Vipkey - App Overrides", L"--appoverrides");
         return 0;
     }
 
-    if (msg == WM_NEXUSKEY_OPEN_SPELLEXCL) {
+    if (msg == WM_VIPKEY_OPEN_SPELLEXCL) {
         SpawnSubprocess(L"Vipkey - Spell Exclusions", L"--spellexclusions");
         return 0;
     }
@@ -547,7 +547,7 @@ void SettingsDialog::handleToggleChange(const std::wstring& id, bool value) {
         vietnameseMode_ = !value;
         HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
         if (trayWnd) {
-            PostMessageW(trayWnd, WM_NEXUSKEY_SET_MODE, vietnameseMode_ ? 1 : 0, 0);
+            PostMessageW(trayWnd, WM_VIPKEY_SET_MODE, vietnameseMode_ ? 1 : 0, 0);
         }
         return;  // V/E mode is not a persistent config setting
     }
@@ -681,7 +681,7 @@ void SettingsDialog::handleToggleChange(const std::wstring& id, bool value) {
         // EnsureStartupRegistration() in the new instance — no double UAC.
         HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
         if (trayWnd) {
-            PostMessageW(trayWnd, WM_NEXUSKEY_RESTART, 0, 0);
+            PostMessageW(trayWnd, WM_VIPKEY_RESTART, 0, 0);
         }
         return;
     }
@@ -776,15 +776,15 @@ void SettingsDialog::handleDropdownChange(const std::wstring& id, int value) {
 void SettingsDialog::handleButtonClick(const std::wstring& id) {
     if (id == L"btn-excluded-apps") {
         // Defer dialog creation — creating a Sciter window inside handle_event causes reentrancy issues
-        PostMessage(get_hwnd(), WM_NEXUSKEY_OPEN_EXCLUDED, 0, 0);
+        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_EXCLUDED, 0, 0);
         return;
     }
     else if (id == L"btn-tsf-apps") {
-        PostMessage(get_hwnd(), WM_NEXUSKEY_OPEN_TSFAPPS, 0, 0);
+        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_TSFAPPS, 0, 0);
         return;
     }
     else if (id == L"btn-macro-table") {
-        PostMessage(get_hwnd(), WM_NEXUSKEY_OPEN_MACRO, 0, 0);
+        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_MACRO, 0, 0);
         return;
     }
     else if (id == L"btn-color-v") {
@@ -804,11 +804,11 @@ void SettingsDialog::handleButtonClick(const std::wstring& id) {
         return;
     }
     else if (id == L"btn-app-overrides") {
-        PostMessage(get_hwnd(), WM_NEXUSKEY_OPEN_APPOVERRIDES, 0, 0);
+        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_APPOVERRIDES, 0, 0);
         return;
     }
     else if (id == L"btn-spell-exclusions") {
-        PostMessage(get_hwnd(), WM_NEXUSKEY_OPEN_SPELLEXCL, 0, 0);
+        PostMessage(get_hwnd(), WM_VIPKEY_OPEN_SPELLEXCL, 0, 0);
         return;
     }
     else if (id == L"btn-reset-settings") {
@@ -1021,12 +1021,12 @@ void SettingsDialog::initializeUI() {
     {
         sciter::dom::element verSpan = root.find_first("#app-version-number");
         if (verSpan.is_valid()) {
-            verSpan.set_text(NEXUSKEY_VERSION_WSTR);
+            verSpan.set_text(VIPKEY_VERSION_WSTR);
         }
         // Also update title bar version
         sciter::dom::element titleText = root.find_first(".title-text");
         if (titleText.is_valid()) {
-            titleText.set_text(L"Vipkey v" NEXUSKEY_VERSION_WSTR);
+            titleText.set_text(L"Vipkey v" VIPKEY_VERSION_WSTR);
         }
     }
 
@@ -1259,7 +1259,7 @@ void SettingsDialog::notifyIconChanged() {
     // Notify main process to re-read icon config
     HWND trayWnd = FindWindowW(L"VipkeyTrayClass", nullptr);
     if (trayWnd) {
-        PostMessageW(trayWnd, WM_NEXUSKEY_ICON_CHANGED, 0, 0);
+        PostMessageW(trayWnd, WM_VIPKEY_ICON_CHANGED, 0, 0);
     }
 }
 

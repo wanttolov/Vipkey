@@ -1,4 +1,4 @@
-// NexusKey Classic — Macro Table Dialog
+// Vipkey Classic — Macro Table Dialog
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

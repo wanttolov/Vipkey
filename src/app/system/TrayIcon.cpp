@@ -1,4 +1,4 @@
-// NexusKey - System Tray Icon Implementation
+// Vipkey - System Tray Icon Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "TrayIcon.h"
@@ -385,13 +385,13 @@ bool TrayIcon::ProcessMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     // Deferred V/E mode sync from hook callback or tray click (PostMessage pattern).
     // Settings notification is posted directly from modeChangeCallback_ (1 hop) —
     // no FindWindow needed here.
-    if (msg == WM_NEXUSKEY_TRAY_MODE_SYNC && hwnd == hwndMessage_) {
+    if (msg == WM_VIPKEY_TRAY_MODE_SYNC && hwnd == hwndMessage_) {
         SetVietnameseMode(wParam != 0);
         return true;
     }
 
     // Settings dialog requesting a specific V/E mode (cross-process)
-    if (msg == WM_NEXUSKEY_SET_MODE && hwnd == hwndMessage_) {
+    if (msg == WM_VIPKEY_SET_MODE && hwnd == hwndMessage_) {
         bool vietnamese = (wParam != 0);
         if (modeRequestCallback_) {
             modeRequestCallback_(vietnamese);
@@ -410,7 +410,7 @@ bool TrayIcon::ProcessMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
 
     // Auto-update check found an available update — show TaskDialog
-    if (msg == WM_NEXUSKEY_UPDATE_AVAILABLE && hwnd == hwndMessage_) {
+    if (msg == WM_VIPKEY_UPDATE_AVAILABLE && hwnd == hwndMessage_) {
         auto* info = reinterpret_cast<UpdateInfo*>(lParam);
         if (info) {
             if (UpdateChecker::ShowUpdateDialog(hwnd, *info)) {
@@ -429,7 +429,7 @@ bool TrayIcon::ProcessMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
 
     // System config changed (icon style, language, etc.) — re-read from TOML and refresh
-    if (msg == WM_NEXUSKEY_ICON_CHANGED && hwnd == hwndMessage_) {
+    if (msg == WM_VIPKEY_ICON_CHANGED && hwnd == hwndMessage_) {
         auto sysConfig = ConfigManager::LoadSystemConfigOrDefault();
         SetIconConfig(sysConfig.iconStyle, sysConfig.customColorV, sysConfig.customColorE);
         SetLanguage(static_cast<Language>(sysConfig.language));
@@ -439,7 +439,7 @@ bool TrayIcon::ProcessMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
 
     // Restart app (admin mode changed in settings)
-    if (msg == WM_NEXUSKEY_RESTART && hwnd == hwndMessage_) {
+    if (msg == WM_VIPKEY_RESTART && hwnd == hwndMessage_) {
         if (RestartWithNewAdminMode()) {
             // New instance launched — exit via menu callback
             // (TerminateAllSubprocesses is called inside OnMenuCommand::Exit)
@@ -451,7 +451,7 @@ bool TrayIcon::ProcessMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
 
     // Another instance tried to start and requests to show Settings
-    if (msg == WM_NEXUSKEY_SHOW_SETTINGS && hwnd == hwndMessage_) {
+    if (msg == WM_VIPKEY_SHOW_SETTINGS && hwnd == hwndMessage_) {
         if (menuCallback_) {
             menuCallback_(TrayMenuId::Settings);
         }

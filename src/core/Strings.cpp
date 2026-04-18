@@ -1,4 +1,4 @@
-// NexusKey - Localized String Dictionary Implementation
+// Vipkey - Localized String Dictionary Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "Strings.h"
@@ -21,7 +21,7 @@ static const wchar_t* const kVietnamese[] = {
     L"Bảng mã",                                      // MENU_CODE_TABLE
     L"Unicode tổ hợp",                               // MENU_UNICODE_COMPOUND
     L"Bảng điều khiển...",                            // MENU_SETTINGS
-    L"Giới thiệu NexusKey",                          // MENU_ABOUT
+    L"Giới thiệu Vipkey",                          // MENU_ABOUT
     L"Thoát",                                        // MENU_EXIT
     L"Vipkey - Tiếng Việt",                        // TIP_VIETNAMESE
     L"Vipkey - English",                            // TIP_ENGLISH
@@ -65,7 +65,7 @@ static const wchar_t* const kEnglish[] = {
     L"Code table",                                    // MENU_CODE_TABLE
     L"Unicode Compound",                              // MENU_UNICODE_COMPOUND
     L"Settings...",                                   // MENU_SETTINGS
-    L"About NexusKey",                                // MENU_ABOUT
+    L"About Vipkey",                                // MENU_ABOUT
     L"Exit",                                          // MENU_EXIT
     L"Vipkey - Vietnamese",                         // TIP_VIETNAMESE
     L"Vipkey - English",                            // TIP_ENGLISH

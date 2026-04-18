@@ -1,4 +1,4 @@
-// NexusKey - Macro Table Dialog Implementation
+// Vipkey - Macro Table Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "MacroTableDialog.h"

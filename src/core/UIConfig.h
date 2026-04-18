@@ -1,4 +1,4 @@
-// NexusKey - UI Configuration
+// Vipkey - UI Configuration
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

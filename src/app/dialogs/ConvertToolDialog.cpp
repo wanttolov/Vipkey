@@ -1,4 +1,4 @@
-// NexusKey - Convert Tool Dialog Implementation
+// Vipkey - Convert Tool Dialog Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "ConvertToolDialog.h"

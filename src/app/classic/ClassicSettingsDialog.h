@@ -1,4 +1,4 @@
-// NexusKey Classic — Settings Dialog
+// Vipkey Classic — Settings Dialog
 // Compact (Unikey-style) + Advanced (EVKey-style) modes
 // SPDX-License-Identifier: GPL-3.0-only
 

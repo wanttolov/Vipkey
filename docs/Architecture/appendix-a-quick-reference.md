@@ -4,16 +4,16 @@
 
 | File | Path | Purpose |
 |------|------|---------|
-| Config | `%APPDATA%\NexusKey\config.toml` | User settings |
-| Log | `%APPDATA%\NexusKey\logs\` | Debug logs |
-| Dictionary | `%APPDATA%\NexusKey\dict\` | Custom words |
+| Config | `%APPDATA%\Vipkey\config.toml` | User settings |
+| Log | `%APPDATA%\Vipkey\logs\` | Debug logs |
+| Dictionary | `%APPDATA%\Vipkey\dict\` | Custom words |
 
 ### A.2 Named Objects
 
 | Object | Name | Type |
 |--------|------|------|
-| Shared memory | `Local\NexusKeySharedState` | File mapping |
-| Config event | `Local\NexusKeyConfigReady` | Manual-reset event |
+| Shared memory | `Local\VipkeySharedState` | File mapping |
+| Config event | `Local\VipkeyConfigReady` | Manual-reset event |
 
 ### A.3 Magic Numbers
 

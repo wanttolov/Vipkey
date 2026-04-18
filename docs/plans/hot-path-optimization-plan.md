@@ -2,16 +2,16 @@
 
 > Target: v2.1.14
 > Date: 2026-04-11
-> Source: Benchmark analysis — NexusKey 2131 us/key vs EVKey 1940 us/key (10% gap, default config)
+> Source: Benchmark analysis — Vipkey 2131 us/key vs EVKey 1940 us/key (10% gap, default config)
 > Updated: Deep analysis confirmed only 3 of 6 original optimizations are valid.
 
 ---
 
 ## 1. Problem Summary
 
-NexusKey is 10% slower than EVKey on Vietnamese typing with **all features OFF** (default config). The gap comes from architecture overhead, not feature cost.
+Vipkey is 10% slower than EVKey on Vietnamese typing with **all features OFF** (default config). The gap comes from architecture overhead, not feature cost.
 
-| Metric | NexusKey | EVKey64 | Gap |
+| Metric | Vipkey | EVKey64 | Gap |
 |--------|----------|---------|-----|
 | VN avg | 2131 us/key | 1940 us/key | +10% |
 | VN p95 | 6453 us | 4880 us | +32% |
@@ -156,7 +156,7 @@ Note: `composeBuf_` reuses its internal allocation across calls (std::wstring::c
 
 Gap to close: 191 us. Expected closure: **85-155 us (45-80%).**
 
-Remaining gap (~36-106 us) is irreducible overhead: NexusKey's state-machine architecture (CharState array + tone/modifier tracking) vs EVKey's simpler approach. This is the cost of features like auto-restore, English protection, and escape handling — even when disabled, the code paths exist.
+Remaining gap (~36-106 us) is irreducible overhead: Vipkey's state-machine architecture (CharState array + tone/modifier tracking) vs EVKey's simpler approach. This is the cost of features like auto-restore, English protection, and escape handling — even when disabled, the code paths exist.
 
 ---
 
@@ -175,6 +175,6 @@ Remaining gap (~36-106 us) is irreducible overhead: NexusKey's state-machine arc
 
 After each fix:
 1. Build + run 1154 tests on Linux
-2. Run `benchmark_ime.ps1 -IME "NexusKey"` on Windows
+2. Run `benchmark_ime.ps1 -IME "Vipkey"` on Windows
 3. Compare with saved EVKey baseline
 4. Smoke test: Notepad, Chrome, VSCode

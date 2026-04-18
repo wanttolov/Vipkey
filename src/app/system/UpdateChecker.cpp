@@ -1,4 +1,4 @@
-// NexusKey - Update Checker Implementation
+// Vipkey - Update Checker Implementation
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "UpdateChecker.h"
@@ -155,7 +155,7 @@ UpdateInfo UpdateChecker::CheckForUpdate() noexcept {
 
         std::wstring version = Utf8ToWide(tagName);
         uint32_t remoteVersion = ParseVersion(version);
-        uint32_t localVersion = NEXUSKEY_VERSION_PACKED;
+        uint32_t localVersion = VIPKEY_VERSION_PACKED;
 
         info.checkSucceeded = true;  // API call worked
 
@@ -165,7 +165,7 @@ UpdateInfo UpdateChecker::CheckForUpdate() noexcept {
         std::string htmlUrl = ExtractJsonString(response, "html_url");
 
         // Find release asset
-#ifdef NEXUSKEY_LITE_MODE
+#ifdef VIPKEY_LITE_MODE
         std::string assetUrl = FindAssetUrl(response, "VipkeyClassic.zip");
 #else
         std::string assetUrl = FindAssetUrl(response, "Vipkey.zip");

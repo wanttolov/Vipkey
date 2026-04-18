@@ -1,4 +1,4 @@
-// NexusKey - Security Helper Utilities
+// Vipkey - Security Helper Utilities
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

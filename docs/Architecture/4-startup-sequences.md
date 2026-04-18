@@ -68,7 +68,7 @@ Core Process Starts
          │
          ▼
     Signal named event ──────────► Engine receives event
-    "Global\NexusKeyConfigReady"            │
+    "Global\VipkeyConfigReady"            │
          │                                   ▼
          │                          Mark "pending update"
          │                                   │

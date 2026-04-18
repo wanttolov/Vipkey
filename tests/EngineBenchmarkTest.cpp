@@ -1,4 +1,4 @@
-// NexusKey - Engine CPU Benchmark Tests
+// Vipkey - Engine CPU Benchmark Tests
 // SPDX-License-Identifier: GPL-3.0-only
 // Measures per-keystroke latency and throughput for TelexEngine and VniEngine.
 

@@ -1,4 +1,4 @@
-// NexusKey - Shared file dialog helpers
+// Vipkey - Shared file dialog helpers
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

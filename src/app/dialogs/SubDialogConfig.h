@@ -1,4 +1,4 @@
-// NexusKey - SubDialog Configuration
+// Vipkey - SubDialog Configuration
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once

@@ -1,4 +1,4 @@
-// NexusKey - TSF Global Definitions
+// Vipkey - TSF Global Definitions
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once
@@ -28,7 +28,7 @@ constexpr const wchar_t* TEXT_SERVICE_DESCRIPTION = L"Vipkey Vietnamese IME";
 // CLSID as string for registry checks (matches CLSID_TextService in Globals.cpp)
 // {D84D1E5B-8F2C-4B1A-9D3E-6F7A8B9C0D1E}
 constexpr const wchar_t* CLSID_TEXTSERVICE_STRING = L"{D84D1E5B-8F2C-4B1A-9D3E-6F7A8B9C0D1E}";
-// Use English keyboard as base - NexusKey handles Vietnamese conversion via Telex
+// Use English keyboard as base - Vipkey handles Vietnamese conversion via Telex
 constexpr LANGID TEXTSERVICE_LANGID = MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US);
 constexpr ULONG TEXTSERVICE_ICON_INDEX = 0;
 

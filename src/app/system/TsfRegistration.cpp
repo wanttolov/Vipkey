@@ -1,4 +1,4 @@
-// NexusKey - TSF Registration & Diagnostics
+// Vipkey - TSF Registration & Diagnostics
 // SPDX-License-Identifier: GPL-3.0-only
 
 // Windows/COM headers MUST come first — <msctf.h> includes <comcat.h>
@@ -156,7 +156,7 @@ void RunDiagnostics() {
     CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
 
     std::wstring out;
-    out += L"=== NexusKey Diagnostics ===\n\n";
+    out += L"=== Vipkey Diagnostics ===\n\n";
 
     // 1. TSF Registration check
     out += IsTsfRegistered() ? L"[OK] TSF registered\n" : L"[FAIL] TSF NOT registered\n";
@@ -232,14 +232,14 @@ void RunDiagnostics() {
             out += clsidStr;
             out += L"\n";
 
-            // NexusKey CLSID for comparison
+            // Vipkey CLSID for comparison
             static const GUID CLSID_NK = {
                 0xD84D1E5B, 0x8F2C, 0x4B1A,
                 {0x9D, 0x3E, 0x6F, 0x7A, 0x8B, 0x9C, 0x0D, 0x1E}
             };
             out += IsEqualCLSID(activeProfile.clsid, CLSID_NK)
-                ? L"  → This IS NexusKey\n"
-                : L"  → This is NOT NexusKey\n";
+                ? L"  → This IS Vipkey\n"
+                : L"  → This is NOT Vipkey\n";
         } else {
             out += L"  GetActiveProfile failed\n";
         }
@@ -303,7 +303,7 @@ void CleanupHkcuClsidOverride() noexcept {
 
     LSTATUS ls = RegDeleteTreeW(HKEY_CURRENT_USER, keyPath);
     if (ls == ERROR_SUCCESS) {
-        NEXTKEY_LOG(L"[TsfRegistration] Removed HKCU CLSID override for NexusKey TSF");
+        NEXTKEY_LOG(L"[TsfRegistration] Removed HKCU CLSID override for Vipkey TSF");
     } else if (ls != ERROR_FILE_NOT_FOUND) {
         NEXTKEY_LOG(L"[TsfRegistration] Warning: could not remove HKCU CLSID override (error=%ld)", ls);
     }

@@ -338,7 +338,7 @@ Work on feature branch `refactor/escape-state-enum`. Each session = 1 atomic com
 - Do NOT call `qc_.Reset()` in Backspace — partial updates required
 - Do NOT "unify" VniEngine ApplyAutoUO with TelexEngine — behavioral difference is likely intentional
 - Do NOT refactor `spellCheckDisabled_` or `EnglishProtectionState` — already clean
-- Do NOT copy Go Nhanh's `last_transform` pattern directly — their replay-based undo model is different from NexusKey's incremental mutation
+- Do NOT copy Go Nhanh's `last_transform` pattern directly — their replay-based undo model is different from Vipkey's incremental mutation
 - Do NOT add implicit conversion operators on EscapeKind enum class — keep type safety
 
 ---
