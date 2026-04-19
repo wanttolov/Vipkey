@@ -403,18 +403,33 @@ bool TelexEngine::ProcessTone(wchar_t c, size_t cachedTarget) {
         target.tone = Tone::None;
         // Only remove the consumed tone key from rawInput_ when it was the
         // IMMEDIATELY preceding raw entry (direct "ss", "ff", "rr" escape).
-        // For non-adjacent tone escape — e.g. "asus" where the 1st 's' at
-        // raw[1] is escaped by the 4th 's' at raw[3] — preserve rawInput_
-        // intact so auto-restore can output the full original sequence
-        // ("asus") instead of a truncated one ("aus").
         if (target.toneRawIdx != SIZE_MAX &&
             target.toneRawIdx + 1 == rawInput_.size() - 1) {
             EraseConsumedRaw(target.toneRawIdx);
+            target.toneRawIdx = SIZE_MAX;
+            ProcessChar(c);
+            escape_.escape(EscapeKind::Tone);  // Signal caller: user canceled tone
+            return true;
+        } else {
+            // Non-adjacent tone escape (e.g. "asus" where the 1st 's' at raw[1]
+            // is escaped by the 4th 's' at raw[3]). This indicates an English word.
+            // Rebuild states_ directly from rawInput_ as literal characters so 
+            // the user immediately sees the full sequence ("asus") instead of "aus".
+            std::wstring raw(rawInput_.begin(), rawInput_.end());
+            states_.clear();
+            for (size_t i = 0; i < raw.size(); ++i) {
+                CharState s;
+                s.base = towlower(raw[i]);
+                s.isUpper = iswupper(raw[i]);
+                s.rawIdx = i;
+                states_.push_back(s);
+            }
+            engProt_.bias = LanguageBias::HardEnglish;
+            spellCheckDisabled_ = true;
+            qc_.Reset();
+            escape_.escape(EscapeKind::Tone);
+            return true;
         }
-        target.toneRawIdx = SIZE_MAX;
-        ProcessChar(c);
-        escape_.escape(EscapeKind::Tone);  // Signal caller: user canceled tone
-        return true;
     }
 
     // Apply or replace tone
@@ -515,6 +530,10 @@ bool TelexEngine::ProcessModifier(wchar_t c, wchar_t lower) {
             // Escape: already has circumflex (adjacent case — last char, no coda possible)
             if (last.mod == Modifier::Circumflex) {
                 last.mod = Modifier::None;
+                if (last.modRawIdx != SIZE_MAX) {
+                    EraseConsumedRaw(last.modRawIdx);
+                    last.modRawIdx = SIZE_MAX;
+                }
                 ProcessChar(c);
                 // With spell check ON, block further modifiers to prevent
                 // oo→ô→oo→ô re-trigger cycle ("oo" is ValidPrefix in spell
@@ -527,6 +546,7 @@ bool TelexEngine::ProcessModifier(wchar_t c, wchar_t lower) {
             }
             // Apply circumflex - PRESERVE FIRST LETTER CASE
             last.mod = Modifier::Circumflex;
+            last.modRawIdx = rawInput_.size() - 1;
             return true;
         }
 
@@ -559,6 +579,10 @@ bool TelexEngine::ProcessModifier(wchar_t c, wchar_t lower) {
 
                     if (it->mod == Modifier::Circumflex) {
                         it->mod = Modifier::None;
+                        if (it->modRawIdx != SIZE_MAX) {
+                            EraseConsumedRaw(it->modRawIdx);
+                            it->modRawIdx = SIZE_MAX;
+                        }
                         ProcessChar(c);
                         escape_.escape(EscapeKind::Circumflex);
                         return true;
@@ -606,6 +630,7 @@ bool TelexEngine::ProcessModifier(wchar_t c, wchar_t lower) {
                             }
                         }
                         it->mod = Modifier::Circumflex;
+                        it->modRawIdx = rawInput_.size() - 1;
                         RelocateToneToTarget();
                         return true;
                     }
@@ -703,8 +728,10 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
     // P1: "ua" pattern → horn on 'u' (mưa, được, thưa)
     if (hasUA && uIdx != SIZE_MAX) {
         states_[uIdx].mod = Modifier::Horn;
+        states_[uIdx].modRawIdx = rawInput_.size() - 1;
         if (aIdx != SIZE_MAX && states_[aIdx].mod == Modifier::Circumflex) {
             states_[aIdx].mod = Modifier::None;
+            states_[aIdx].modRawIdx = SIZE_MAX;
         }
         RelocateToneToHornVowel();
         return true;
@@ -724,9 +751,12 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
         if (uMod != Modifier::Horn && (oMod == Modifier::None || oMod == Modifier::Circumflex)) {
             if (isEdge) {
                 states_[pairO].mod = Modifier::Horn;
+                states_[pairO].modRawIdx = rawInput_.size() - 1;
             } else {
                 states_[pairU].mod = Modifier::Horn;
+                states_[pairU].modRawIdx = rawInput_.size() - 1;
                 states_[pairO].mod = Modifier::Horn;
+                states_[pairO].modRawIdx = rawInput_.size() - 1;
             }
             RelocateToneToHornVowel();
             return true;
@@ -735,6 +765,7 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
         // Forward: ưo → ươ (u already horned via P5, now complete pair)
         if (uMod == Modifier::Horn && oMod == Modifier::None) {
             states_[pairO].mod = Modifier::Horn;
+            states_[pairO].modRawIdx = rawInput_.size() - 1;
             RelocateToneToHornVowel();
             return true;
         }
@@ -742,14 +773,22 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
         // Forward (edge): uơ → ươ (h/th/kh second press — complete the pair)
         if (uMod == Modifier::None && oMod == Modifier::Horn && isEdge) {
             states_[pairU].mod = Modifier::Horn;
+            states_[pairU].modRawIdx = rawInput_.size() - 1;
             RelocateToneToHornVowel();
             return true;
         }
 
         // Escape: ươ → uo (third press for h/th/kh, second press for others)
         if (uMod == Modifier::Horn && oMod == Modifier::Horn) {
+            if (states_[pairO].modRawIdx != SIZE_MAX) {
+                EraseConsumedRaw(states_[pairO].modRawIdx);
+            } else if (states_[pairU].modRawIdx != SIZE_MAX) {
+                EraseConsumedRaw(states_[pairU].modRawIdx);
+            }
             states_[pairU].mod = Modifier::None;
+            states_[pairU].modRawIdx = SIZE_MAX;
             states_[pairO].mod = Modifier::None;
+            states_[pairO].modRawIdx = SIZE_MAX;
             ProcessChar(c);
             escape_.escape(EscapeKind::Horn);
             return true;
@@ -757,7 +796,11 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
 
         // Escape: uơ → uo (non h/th/kh, or any remaining uơ state)
         if (uMod == Modifier::None && oMod == Modifier::Horn) {
+            if (states_[pairO].modRawIdx != SIZE_MAX) {
+                EraseConsumedRaw(states_[pairO].modRawIdx);
+            }
             states_[pairO].mod = Modifier::None;
+            states_[pairO].modRawIdx = SIZE_MAX;
             ProcessChar(c);
             escape_.escape(EscapeKind::Horn);
             return true;
@@ -767,6 +810,7 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
     // P3: "oa" pattern → breve on 'a' (hoặc)
     if (hasOA && aIdx != SIZE_MAX) {
         states_[aIdx].mod = Modifier::Breve;
+        states_[aIdx].modRawIdx = rawInput_.size() - 1;
         return true;
     }
 
@@ -785,13 +829,21 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
             return true;
         }
         UndoHornU(states_.data(), hornedIdx);  // Undo companion 'u' horn BEFORE clearing 'o'
+        if (states_[hornedIdx].modRawIdx != SIZE_MAX) {
+            EraseConsumedRaw(states_[hornedIdx].modRawIdx);
+        }
         states_[hornedIdx].mod = Modifier::None;
+        states_[hornedIdx].modRawIdx = SIZE_MAX;
         ProcessChar(c);
         escape_.escape(EscapeKind::Horn);
         return true;
     }
     if (brevedIdx != SIZE_MAX) {
+        if (states_[brevedIdx].modRawIdx != SIZE_MAX) {
+            EraseConsumedRaw(states_[brevedIdx].modRawIdx);
+        }
         states_[brevedIdx].mod = Modifier::None;
+        states_[brevedIdx].modRawIdx = SIZE_MAX;
         ProcessChar(c);
         escape_.escape(EscapeKind::Breve);
         return true;
@@ -802,8 +854,10 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
     if (uIdx != SIZE_MAX) {
         size_t targetU = (hasUU && firstUIdx != SIZE_MAX) ? firstUIdx : uIdx;
         states_[targetU].mod = Modifier::Horn;
+        states_[targetU].modRawIdx = rawInput_.size() - 1;
         if (aIdx != SIZE_MAX && states_[aIdx].mod == Modifier::Circumflex) {
             states_[aIdx].mod = Modifier::None;
+            states_[aIdx].modRawIdx = SIZE_MAX;
         }
         RelocateToneToHornVowel();
         return true;
@@ -812,6 +866,7 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
     // P6: Standalone 'o' (not in oa pattern) → horn (replaces circumflex: ô→ơ)
     if (oIdx != SIZE_MAX && !hasOA) {
         states_[oIdx].mod = Modifier::Horn;
+        states_[oIdx].modRawIdx = rawInput_.size() - 1;
         RelocateToneToHornVowel();
         return true;
     }
@@ -820,6 +875,7 @@ bool TelexEngine::ProcessWModifier(wchar_t c) {
     if (aIdx != SIZE_MAX && (states_[aIdx].mod == Modifier::None ||
                               states_[aIdx].mod == Modifier::Circumflex)) {
         states_[aIdx].mod = Modifier::Breve;
+        states_[aIdx].modRawIdx = rawInput_.size() - 1;
         return true;
     }
 
@@ -866,9 +922,14 @@ bool TelexEngine::ProcessDModifier(wchar_t c) {
     CharState& target = states_[dIdx];
     if (target.mod == Modifier::None) {
         target.mod = Modifier::Stroke;
+        target.modRawIdx = rawInput_.size() - 1;
         return true;
     } else if (target.mod == Modifier::Stroke) {
+        if (target.modRawIdx != SIZE_MAX) {
+            EraseConsumedRaw(target.modRawIdx);
+        }
         target.mod = Modifier::None;
+        target.modRawIdx = SIZE_MAX;
         escape_.escape(EscapeKind::Stroke);
         ProcessChar(c);
         return true;
@@ -903,6 +964,7 @@ void TelexEngine::EraseConsumedRaw(size_t idx) {
     for (auto& s : states_) {
         if (s.rawIdx > idx) s.rawIdx--;
         if (s.toneRawIdx != SIZE_MAX && s.toneRawIdx > idx) s.toneRawIdx--;
+        if (s.modRawIdx != SIZE_MAX && s.modRawIdx > idx) s.modRawIdx--;
     }
 }
 

@@ -46,6 +46,7 @@ struct CharState {
     bool synthetic = false;         // True if created by P8 standalone 'w' (not a real keystroke)
     size_t rawIdx = 0;              // rawInput_ index when this state was created (for backspace sync)
     size_t toneRawIdx = SIZE_MAX;   // rawInput_ index of consumed tone key (for escape removal)
+    size_t modRawIdx = SIZE_MAX;    // rawInput_ index of consumed modifier key (for escape removal)
 
     [[nodiscard]] constexpr bool IsVowel() const noexcept {
         return base == L'a' || base == L'e' || base == L'i' ||

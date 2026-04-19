@@ -519,6 +519,10 @@ bool SettingsDialog::handle_event(HELEMENT he, BEHAVIOR_EVENT_PARAMS& params) {
                 } else {
                     switchKeyChar_ = raw;
                 }
+                
+                // Immediately sync to hotkeyConfig_ so SharedState gets it
+                hotkeyConfig_.key = switchKeyChar_.empty() ? 0 : switchKeyChar_[0];
+                
                 saveSettings();
             }
             return true;

@@ -2392,16 +2392,11 @@ bool HookEngine::CheckHotkeyMatch() const {
         return false;
     }
 
-    // Strict XOR matching: modifiers must match EXACTLY (like OpenKey)
-    bool ctrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
-    bool alt = (GetKeyState(VK_MENU) & 0x8000) != 0;
-    bool shift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
-    bool win = (GetKeyState(VK_LWIN) & 0x8000) != 0 || (GetKeyState(VK_RWIN) & 0x8000) != 0;
-
-    if (hotkeyConfig_.ctrl != ctrl) return false;
-    if (hotkeyConfig_.alt != alt) return false;
-    if (hotkeyConfig_.shift != shift) return false;
-    if (hotkeyConfig_.win != win) return false;
+    // Strict XOR matching against tracked state (handles modifier-only key release correctly)
+    if (hotkeyConfig_.ctrl != modCtrlDown_) return false;
+    if (hotkeyConfig_.alt != modAltDown_) return false;
+    if (hotkeyConfig_.shift != modShiftDown_) return false;
+    if (hotkeyConfig_.win != modWinDown_) return false;
 
     return true;
 }
@@ -2413,15 +2408,11 @@ bool HookEngine::CheckConvertHotkeyMatch() const {
         return false;
     }
 
-    bool ctrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
-    bool alt = (GetKeyState(VK_MENU) & 0x8000) != 0;
-    bool shift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
-    bool win = (GetKeyState(VK_LWIN) & 0x8000) != 0 || (GetKeyState(VK_RWIN) & 0x8000) != 0;
-
-    if (convertHotkeyConfig_.ctrl != ctrl) return false;
-    if (convertHotkeyConfig_.alt != alt) return false;
-    if (convertHotkeyConfig_.shift != shift) return false;
-    if (convertHotkeyConfig_.win != win) return false;
+    // Strict XOR matching against tracked state (handles modifier-only key release correctly)
+    if (convertHotkeyConfig_.ctrl != modCtrlDown_) return false;
+    if (convertHotkeyConfig_.alt != modAltDown_) return false;
+    if (convertHotkeyConfig_.shift != modShiftDown_) return false;
+    if (convertHotkeyConfig_.win != modWinDown_) return false;
 
     return true;
 }

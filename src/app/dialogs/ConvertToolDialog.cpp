@@ -53,6 +53,8 @@ bool ConvertToolDialog::handle_event(HELEMENT he, BEHAVIOR_EVENT_PARAMS& params)
         if (config_.hotkey.key != 0) {
             wchar_t keyStr[2] = { config_.hotkey.key, 0 };
             setHotkeyCharUI(keyStr);
+        } else {
+            setHotkeyCharUI(L"");
         }
 
         // Sync sequential toggle enabled/disabled state from the actual autoPaste value.

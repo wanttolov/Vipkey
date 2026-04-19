@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(Vipkey VERSION 1.0.0 LANGUAGES CXX)
+project(Vipkey VERSION 1.1.0 LANGUAGES CXX)
 
 # Generate Version.h from Version.h.in — version is defined once in project() above.
 configure_file(
